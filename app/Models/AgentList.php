@@ -18,4 +18,9 @@ class AgentList extends Model
     {
         return $this->belongsTo(Township::class, 'township_id', 'id');
     }
+
+    public function passport_table()
+    {
+        return $this->hasMany(Passport::class, 'agent_list_id', 'id');
+    }
 }

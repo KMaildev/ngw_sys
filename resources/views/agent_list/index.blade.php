@@ -115,6 +115,15 @@
                                         {{ $agent_list->address }}
                                     </td>
 
+                                    <td class="text-center">
+                                        <label class="btn btn-primary btn-sm" for="btnradio3">
+                                            <a class="text-white"
+                                                href="{{ route('passport.index', ['agent_list_id' => $agent_list->id]) }}">
+                                                Total: {{ $agent_list->passport_table_count ?? 0 }}
+                                            </a>
+                                        </label>
+                                    </td>
+
                                     <td>
                                         <div class="btn-group">
                                             <button type="button" class="btn btn-primary btn-sm dropdown-toggle"
