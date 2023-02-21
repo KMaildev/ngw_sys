@@ -236,7 +236,6 @@
                     type: "GET",
                     dataType: "json",
                     success: function(data) {
-                        console.log(data)
                         $('select[name="township_id"]').empty();
                         $.each(data, function(key, value) {
                             $('select[name="township_id"]').append(

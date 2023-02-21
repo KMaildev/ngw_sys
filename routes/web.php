@@ -5,6 +5,7 @@ use App\Http\Controllers\ContractController;
 use App\Http\Controllers\CountryController;
 use App\Http\Controllers\DemandController;
 use App\Http\Controllers\LabourManagementController;
+use App\Http\Controllers\MembersListsController;
 use App\Http\Controllers\OverseasAgentController;
 use App\Http\Controllers\PassportController;
 use App\Http\Controllers\SendingController;
@@ -51,4 +52,5 @@ Route::middleware('auth')->group(function () {
 
     Route::resource('township', TownshipController::class);
     Route::get('get_by_region_id/{id}', [TownshipController::class, 'getByRegionId'])->name('get_by_region_id');
+    Route::resource('members_list', MembersListsController::class);
 });

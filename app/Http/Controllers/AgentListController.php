@@ -110,7 +110,8 @@ class AgentListController extends Controller
      */
     public function show($id)
     {
-        //
+        $agent_list = AgentList::findOrFail($id);
+        return view('agent_list.show', compact('agent_list'));
     }
 
     /**
@@ -122,7 +123,8 @@ class AgentListController extends Controller
     public function edit($id)
     {
         $agent_list = AgentList::findOrFail($id);
-        return view('agent_list.edit', compact('agent_list'));
+        $regions = Region::all();
+        return view('agent_list.edit', compact('agent_list', 'regions'));
     }
 
     /**
@@ -134,12 +136,38 @@ class AgentListController extends Controller
      */
     public function update(UpdateAgentList $request, $id)
     {
-        $oversea = AgentList::findOrFail($id);
-        $oversea->name = $request->name;
-        $oversea->phone = $request->phone;
-        $oversea->email = $request->email;
-        $oversea->address = $request->address;
-        $oversea->update();
+        if ($request->hasFile('photo')) {
+            $photo = $request->file('photo');
+            $photo_path = $photo->store('public/agents');
+        }
+
+        if ($request->hasFile('nrc_front')) {
+            $nrc_front = $request->file('nrc_front');
+            $nrc_front_path = $nrc_front->store('public/agents');
+        }
+
+        if ($request->hasFile('nrc_back')) {
+            $nrc_back = $request->file('nrc_back');
+            $nrc_back_path = $nrc_back->store('public/agents');
+        }
+
+        $agent_list = AgentList::findOrFail($id);
+        $agent_list->name = $request->name;
+        $agent_list->phone = $request->phone;
+        $agent_list->email = $request->email;
+        $agent_list->address = $request->address;
+        $agent_list->agent_code = $request->agent_code;
+        $agent_list->nrc = $request->nrc;
+        $agent_list->region_id = $request->region_id;
+        $agent_list->township_id = $request->township_id;
+        $agent_list->remark = $request->remark;
+        $agent_list->add_user_id = auth()->user()->id ?? 0;
+        $agent_list->join_date = $request->join_date;
+
+        $agent_list->photo = $photo_path ?? $agent_list->photo;
+        $agent_list->nrc_front = $nrc_front_path ?? $agent_list->nrc_front;
+        $agent_list->nrc_back = $nrc_back_path ?? $agent_list->nrc_back;
+        $agent_list->update();
         return redirect()->back()->with('success', 'Process is completed.');
     }
 

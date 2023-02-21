@@ -61,6 +61,9 @@
                                 <th class="text-center text-white" style="background-color: #296166;">
                                     Address
                                 </th>
+                                <th class="text-center text-white" style="background-color: #296166;">
+                                    Total Worker
+                                </th>
                                 <th class="text-center text-white" style="background-color: #296166; width: 5%;">
                                     Action
                                 </th>
@@ -120,7 +123,14 @@
                                             </button>
                                             <div class="dropdown-menu">
                                                 <a class="dropdown-item"
-                                                    href="{{ route('agent_list.edit', $agent_list->id) }}">Edit</a>
+                                                    href="{{ route('agent_list.edit', $agent_list->id) }}">
+                                                    Edit
+                                                </a>
+
+                                                <a class="dropdown-item"
+                                                    href="{{ route('agent_list.show', $agent_list->id) }}">
+                                                    Detail
+                                                </a>
                                             </div>
                                         </div>
                                     </td>
