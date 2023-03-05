@@ -37,6 +37,24 @@ class Passport extends Model
         'entry_date',
         'nation_religion',
         'region_state',
+        
+        'labour_code',
+        'age',
+        'photo',
+        'nrc_front',
+        'nrc_back',
+        'passport_expiry_date',
+        'qualification',
+        'weight',
+        'height',
+        'tatto',
+        'smoking',
+        'alcohol',
+        'prominent_sign',
+        'working_experience',
+        'selected_country',
+        'labour_card_no',
+        'issue_of_labour_date',
     ];
 
     public function agent_list_table()

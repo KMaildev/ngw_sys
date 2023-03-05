@@ -29,6 +29,7 @@ class StoreAgentList extends FormRequest
             'region_id' => 'required',
             'township_id' => 'required',
 
+            'nrc' => 'required',
             'photo' => 'mimes:png,jpg,jpeg|max:2048',
             'nrc_front' => 'mimes:png,jpg,jpeg|max:2048',
             'nrc_back' => 'mimes:png,jpg,jpeg|max:2048',

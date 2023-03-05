@@ -5,3 +5,9 @@ $(".date_picker").datetimepicker({
     value: now,
     format: "Y-m-d h:i A",
 });
+
+
+$(".dob").datetimepicker({
+    value: now,
+    format: "Y-m-d",
+});

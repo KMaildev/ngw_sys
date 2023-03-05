@@ -24,6 +24,7 @@ class StorePassport extends FormRequest
     public function rules()
     {
         return [
+            'labour_code' => 'required|unique:passports,labour_code',
             'name' => 'required',
             'address' => 'required',
             'phone' => 'required',

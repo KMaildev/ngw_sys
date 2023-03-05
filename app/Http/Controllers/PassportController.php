@@ -67,6 +67,22 @@ class PassportController extends Controller
 
     public function store(StorePassport $request)
     {
+
+        if ($request->hasFile('photo')) {
+            $photo = $request->file('photo');
+            $photo_path = $photo->store('public/agents');
+        }
+
+        if ($request->hasFile('nrc_front')) {
+            $nrc_front = $request->file('nrc_front');
+            $nrc_front_path = $nrc_front->store('public/agents');
+        }
+
+        if ($request->hasFile('nrc_back')) {
+            $nrc_back = $request->file('nrc_back');
+            $nrc_back_path = $nrc_back->store('public/agents');
+        }
+
         $Passport = new Passport();
         $Passport->name = $request->name;
         $Passport->father_name = $request->father_name;
@@ -92,6 +108,25 @@ class PassportController extends Controller
         $Passport->entry_date = $request->entry_date;
         $Passport->nation_religion = $request->nation_religion;
         $Passport->region_state = $request->region_state;
+
+        $Passport->labour_code = $request->labour_code;
+        $Passport->age = $request->age;
+        $Passport->passport_expiry_date = $request->passport_expiry_date;
+        $Passport->qualification = $request->qualification;
+        $Passport->weight = $request->weight;
+        $Passport->height = $request->height;
+        $Passport->tatto = $request->tatto;
+        $Passport->smoking = $request->smoking;
+        $Passport->alcohol = $request->alcohol;
+        $Passport->prominent_sign = $request->prominent_sign;
+        $Passport->working_experience = $request->working_experience;
+        $Passport->selected_country = $request->selected_country;
+        $Passport->labour_card_no = $request->labour_card_no;
+        $Passport->issue_of_labour_date = $request->issue_of_labour_date;
+
+        $Passport->photo = $photo_path ?? '';
+        $Passport->nrc_front = $nrc_front_path ?? '';
+        $Passport->nrc_back = $nrc_back_path ?? '';
 
         $Passport->save();
         return redirect()->back()->with('success', 'Created successfully.');

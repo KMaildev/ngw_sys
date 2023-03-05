@@ -2,6 +2,9 @@
 @section('content')
     <div class="container-xxl flex-grow-1 container-p-y">
         <div class="row">
+            <h1 style="color: red;">
+                Under construction
+            </h1>
             <h5>
                 Data Analysis Report
             </h5>

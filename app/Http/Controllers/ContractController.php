@@ -6,6 +6,7 @@ use App\Http\Requests\StoreContracts;
 use App\Http\Requests\UpdateContracts;
 use App\Models\Contract;
 use App\Models\Demand;
+use App\Models\LabourManagement;
 use App\Models\Office;
 use App\Models\OverseasAgency;
 use Illuminate\Http\Request;
@@ -82,6 +83,10 @@ class ContractController extends Controller
 
     public function destroy($id)
     {
+
+        LabourManagement::where('contract_id', $id)
+            ->delete();
+
         $contract = Contract::findOrFail($id);
         $contract->delete();
         return redirect()->back()->with('success', 'Deleted successfully.');

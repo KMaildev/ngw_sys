@@ -40,19 +40,46 @@
                 </a>
             </li>
 
-            <li class="menu-item">
-                <a href="{{ route('passport.index') }}" class="menu-link">
-                    <i class="menu-icon fa-solid fa-passport"></i>
-                    Passport
-                </a>
-            </li>
 
             <li class="menu-item">
-                <a href="{{ route('reject_passport_list') }}" class="menu-link">
-                    <i class="menu-icon fa fa-x"></i>
-                    Reject Passport
+                <a href="javascript:void(0)" class="menu-link menu-toggle">
+                    <i class="menu-icon fa-sharp fa-solid fa-gear"></i>
+                    Labour Manage
                 </a>
+                <ul class="menu-sub">
+                    <li class="menu-item">
+                        <a href="{{ route('passport.index') }}" class="menu-link">
+                            Labours
+                        </a>
+                    </li>
+
+                    <li class="menu-item">
+                        <a href="#" class="menu-link">
+                            Contract Labours
+                        </a>
+                    </li>
+
+                    <li class="menu-item">
+                        <a href="#" class="menu-link">
+                            Sending Labours
+                        </a>
+                    </li>
+
+                    <li class="menu-item">
+                        <a href="{{ route('reject_passport_list') }}" class="menu-link">
+                            Reject / Cancel / Failed
+                        </a>
+                    </li>
+
+                    <li class="menu-item">
+                        <a href="#" class="menu-link">
+                            Leave / Return
+                        </a>
+                    </li>
+
+                </ul>
             </li>
+
 
             <li class="menu-item">
                 <a href="{{ route('demand.index') }}" class="menu-link">

@@ -154,6 +154,13 @@
                                                     Edit
                                                 </a>
 
+                                                <form action="{{ route('sending.destroy', $sending->id) }}" method="POST">
+                                                    @csrf
+                                                    @method('DELETE')
+                                                    <button type="button" class="dropdown-item del_confirm"
+                                                        id="confirm-text" data-toggle="tooltip">Delete</button>
+                                                </form>
+
                                             </div>
                                         </div>
                                     </td>

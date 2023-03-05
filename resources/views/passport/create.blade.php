@@ -24,11 +24,27 @@
                 <div class="tab-content">
                     <div class="tab-pane fade show active" id="navs-top-home" role="tabpanel">
                         <h5 class="card-header mb-4">
-                            Add New Passport (Single entry)
+                            Add New Labour (Single entry)
                         </h5>
                         <form action="{{ route('passport.store') }}" method="POST" autocomplete="off" id="create-form"
                             role="form" enctype="multipart/form-data">
                             @csrf
+
+                            <div class="mb-3 row">
+                                <label for="html5-text-input" class="col-md-3 col-form-label">
+                                    Labour Code
+                                </label>
+                                <div class="col-md-9">
+                                    <input class="form-control @error('labour_code') is-invalid @enderror" type="text"
+                                        name="labour_code" value="{{ old('labour_code') }}" placeholder="Labour Code" />
+                                    @error('labour_code')
+                                        <div class="invalid-feedback">
+                                            {{ $message }}
+                                        </div>
+                                    @enderror
+                                </div>
+                            </div>
+
 
                             <div class="mb-3 row">
                                 <label for="html5-text-input" class="col-md-3 col-form-label">Name</label>
@@ -39,6 +55,19 @@
                                         <div class="invalid-feedback">
                                             {{ $message }}
                                         </div>
+                                    @enderror
+                                </div>
+                            </div>
+
+                            <div class="mb-3 row">
+                                <label for="html5-text-input" class="col-md-3 col-form-label">
+                                    Labour Photo
+                                </label>
+                                <div class="col-md-9">
+                                    <input class="form-control @error('photo') is-invalid @enderror" type="file"
+                                        name="photo" value="{{ old('photo') }}" />
+                                    @error('photo')
+                                        <div class="invalid-feedback"> {{ $message }} </div>
                                     @enderror
                                 </div>
                             </div>
@@ -63,7 +92,7 @@
 
                             <div class="mb-3 row">
                                 <label for="html5-text-input" class="col-md-3 col-form-label">
-                                    NRC
+                                    N.R.C No
                                 </label>
                                 <div class="col-md-9">
                                     <input type="text" class="form-control" name="nrc" placeholder="NRC">
@@ -74,6 +103,65 @@
                                     @enderror
                                 </div>
                             </div>
+
+                            <div class="mb-3 row">
+                                <label for="html5-text-input" class="col-md-3 col-form-label">
+                                    NRC Front Photo
+                                </label>
+                                <div class="col-md-9">
+                                    <input class="form-control @error('nrc_front') is-invalid @enderror" type="file"
+                                        name="nrc_front" value="{{ old('nrc_front') }}" />
+                                    @error('nrc_front')
+                                        <div class="invalid-feedback"> {{ $message }} </div>
+                                    @enderror
+                                </div>
+                            </div>
+
+
+                            <div class="mb-3 row">
+                                <label for="html5-text-input" class="col-md-3 col-form-label">
+                                    NRC Back Photo
+                                </label>
+                                <div class="col-md-9">
+                                    <input class="form-control @error('nrc_back') is-invalid @enderror" type="file"
+                                        name="nrc_back" value="{{ old('nrc_back') }}" />
+                                    @error('nrc_back')
+                                        <div class="invalid-feedback"> {{ $message }} </div>
+                                    @enderror
+                                </div>
+                            </div>
+
+
+                            <div class="mb-3 row">
+                                <label for="html5-text-input" class="col-md-3 col-form-label">
+                                    Father Name
+                                </label>
+                                <div class="col-md-9">
+                                    <input type="text" class="form-control" name="father_name"
+                                        placeholder="Father Name">
+                                    @error('father_name')
+                                        <div class="form-control-feedback">
+                                            {{ $message }}
+                                        </div>
+                                    @enderror
+                                </div>
+                            </div>
+
+                            <div class="mb-3 row">
+                                <label for="html5-text-input" class="col-md-3 col-form-label">
+                                    Qualification
+                                </label>
+                                <div class="col-md-9">
+                                    <input type="text" class="form-control" name="qualification"
+                                        placeholder="QUALIFICATION">
+                                    @error('qualification')
+                                        <div class="form-control-feedback">
+                                            {{ $message }}
+                                        </div>
+                                    @enderror
+                                </div>
+                            </div>
+
 
                             <div class="mb-3 row">
                                 <label for="html5-text-input" class="col-md-3 col-form-label">
@@ -91,28 +179,13 @@
                             </div>
 
 
-
                             <div class="mb-3 row">
                                 <label for="html5-text-input" class="col-md-3 col-form-label">
-                                    Father Name
+                                    Address in Myanmar
                                 </label>
                                 <div class="col-md-9">
-                                    <input type="text" class="form-control" name="father_name" placeholder="Father Name">
-                                    @error('father_name')
-                                        <div class="form-control-feedback">
-                                            {{ $message }}
-                                        </div>
-                                    @enderror
-                                </div>
-                            </div>
-
-                            <div class="mb-3 row">
-                                <label for="html5-text-input" class="col-md-3 col-form-label">
-                                    Mother Name
-                                </label>
-                                <div class="col-md-9">
-                                    <input type="text" class="form-control" name="mother_name" placeholder="Mother Name">
-                                    @error('mother_name')
+                                    <input type="text" class="form-control" name="address" placeholder="Address">
+                                    @error('address')
                                         <div class="form-control-feedback">
                                             {{ $message }}
                                         </div>
@@ -123,7 +196,7 @@
 
                             <div class="mb-3 row">
                                 <label for="html5-text-input" class="col-md-3 col-form-label">
-                                    Passport
+                                    Passport No
                                 </label>
                                 <div class="col-md-9">
                                     <input type="text" class="form-control" name="passport" placeholder="Passport">
@@ -137,13 +210,30 @@
 
                             <div class="mb-3 row">
                                 <label for="html5-text-input" class="col-md-3 col-form-label">
-                                    Date of Passport
+                                    Passport Issue Date
                                 </label>
                                 <div class="col-md-9">
                                     <input type="text" class="form-control" name="passport_date"
                                         placeholder="Date of Passport">
                                     @error('passport_date')
                                         <div class="form-control-feedback"> {{ $message }}
+                                        </div>
+                                    @enderror
+                                </div>
+                            </div>
+
+
+
+                            <div class="mb-3 row">
+                                <label for="html5-text-input" class="col-md-3 col-form-label">
+                                    Passport Expiry Date
+                                </label>
+                                <div class="col-md-9">
+                                    <input type="text" class="form-control" name="passport_expiry_date"
+                                        placeholder="Passport Expiry Date">
+                                    @error('passport_expiry_date')
+                                        <div class="form-control-feedback">
+                                            {{ $message }}
                                         </div>
                                     @enderror
                                 </div>
@@ -168,8 +258,220 @@
 
 
                             <div class="mb-3 row">
+                                <label for="html5-text-input" class="col-md-3 col-form-label">Age</label>
+                                <div class="col-md-9">
+                                    <input class="form-control @error('age') is-invalid @enderror" type="text"
+                                        name="age" value="{{ old('age') }}" placeholder="Age" />
+                                    @error('age')
+                                        <div class="invalid-feedback">
+                                            {{ $message }}
+                                        </div>
+                                    @enderror
+                                </div>
+                            </div>
+
+
+
+                            <div class="mb-3 row">
+                                <label for="html5-text-input" class="col-md-3 col-form-label">
+                                    Weight
+                                </label>
+                                <div class="col-md-9">
+                                    <input type="text" class="form-control" name="weight" placeholder="Weight">
+                                    @error('weight')
+                                        <div class="form-control-feedback">
+                                            {{ $message }}
+                                        </div>
+                                    @enderror
+                                </div>
+                            </div>
+
+                            <div class="mb-3 row">
+                                <label for="html5-text-input" class="col-md-3 col-form-label">
+                                    Height
+                                </label>
+                                <div class="col-md-9">
+                                    <input type="text" class="form-control" name="height" placeholder="Height">
+                                    @error('height')
+                                        <div class="form-control-feedback">
+                                            {{ $message }}
+                                        </div>
+                                    @enderror
+                                </div>
+                            </div>
+
+
+                            <div class="mb-3 row">
+                                <label for="html5-text-input" class="col-md-3 col-form-label">
+                                    Tatto (တတ်တူးရှိ/မရှိ)
+                                </label>
+                                <div class="col-md-9">
+                                    <select name="tatto" class="form-control">
+                                        <option value="No">
+                                            No
+                                        </option>
+                                        <option value="Yes">
+                                            Yes
+                                        </option>
+                                    </select>
+                                    @error('tatto')
+                                        <div class="form-control-feedback">
+                                            {{ $message }}
+                                        </div>
+                                    @enderror
+                                </div>
+                            </div>
+
+
+                            <div class="mb-3 row">
+                                <label for="html5-text-input" class="col-md-3 col-form-label">
+                                    Smoking(ဆေးလိပ်သောက်/မသောက်)
+                                </label>
+                                <div class="col-md-9">
+                                    <select name="smoking" class="form-control">
+                                        <option value="No">
+                                            No
+                                        </option>
+                                        <option value="Yes">
+                                            Yes
+                                        </option>
+                                    </select>
+                                    @error('smoking')
+                                        <div class="form-control-feedback">
+                                            {{ $message }}
+                                        </div>
+                                    @enderror
+                                </div>
+                            </div>
+
+
+                            <div class="mb-3 row">
+                                <label for="html5-text-input" class="col-md-3 col-form-label">
+                                    Alcohol(အရက်သောက်/မသောက်)
+                                </label>
+                                <div class="col-md-9">
+                                    <select name="alcohol" class="form-control">
+                                        <option value="No">
+                                            No
+                                        </option>
+                                        <option value="Yes">
+                                            Yes
+                                        </option>
+                                    </select>
+                                    @error('alcohol')
+                                        <div class="form-control-feedback">
+                                            {{ $message }}
+                                        </div>
+                                    @enderror
+                                </div>
+                            </div>
+
+
+
+                            <div class="mb-3 row">
+                                <label for="html5-text-input" class="col-md-3 col-form-label">
+                                    Marital Status
+                                    (အိမ်ထောင်ရေးအခြေအနေ)
+                                </label>
+                                <div class="col-md-9">
+                                    <select name="marital_status" class="form-control">
+                                        <option value="Single">
+                                            Single
+                                        </option>
+                                        <option value="Married">
+                                            Married
+                                        </option>
+                                        <option value="Divorced">
+                                            Divorced
+                                        </option>
+                                        <option value="Widowed">
+                                            Widowed
+                                        </option>
+                                    </select>
+                                    @error('marital_status')
+                                        <div class="form-control-feedback">
+                                            {{ $message }}
+                                        </div>
+                                    @enderror
+                                </div>
+                            </div>
+
+
+
+                            <div class="mb-3 row">
+                                <label for="html5-text-input" class="col-md-3 col-form-label text-end">
+                                    သား
+                                </label>
+                                <div class="col-md-3">
+                                    <input type="text" class="form-control" name="son">
+                                    @error('son')
+                                        <div class="form-control-feedback">
+                                            {{ $message }}
+                                        </div>
+                                    @enderror
+                                </div>
+
+                                <label for="html5-text-input" class="col-md-3 col-form-label text-end">
+                                    အသက်
+                                </label>
+                                <div class="col-md-3">
+                                    <input type="text" class="form-control" name="son_age">
+                                    @error('son_age')
+                                        <div class="form-control-feedback">
+                                            {{ $message }}
+                                        </div>
+                                    @enderror
+                                </div>
+                            </div>
+
+
+                            <div class="mb-3 row">
+                                <label for="html5-text-input" class="col-md-3 col-form-label text-end">
+                                    သမီး
+                                </label>
+                                <div class="col-md-3">
+                                    <input type="text" class="form-control" name="daughter">
+                                    @error('daughter')
+                                        <div class="form-control-feedback">
+                                            {{ $message }}
+                                        </div>
+                                    @enderror
+                                </div>
+
+                                <label for="html5-text-input" class="col-md-3 col-form-label text-end">
+                                    အသက်
+                                </label>
+                                <div class="col-md-3">
+                                    <input type="text" class="form-control" name="daughter_age">
+                                    @error('daughter_age')
+                                        <div class="form-control-feedback">
+                                            {{ $message }}
+                                        </div>
+                                    @enderror
+                                </div>
+                            </div>
+
+
+                            <div class="mb-3 row">
+                                <label for="html5-text-input" class="col-md-3 col-form-label">
+                                    Mother Name
+                                </label>
+                                <div class="col-md-9">
+                                    <input type="text" class="form-control" name="mother_name"
+                                        placeholder="Mother Name">
+                                    @error('mother_name')
+                                        <div class="form-control-feedback">
+                                            {{ $message }}
+                                        </div>
+                                    @enderror
+                                </div>
+                            </div>
+
+
+                            <div class="mb-3 row">
                                 <label for="html5-text-input" class="col-md-3 col-form-label">
                                     Nation / Religion
+                                    (လူမျိုး/ဘာသာ)
                                 </label>
                                 <div class="col-md-9">
                                     <input type="text" class="form-control" name="nation_religion"
@@ -185,11 +487,42 @@
 
                             <div class="mb-3 row">
                                 <label for="html5-text-input" class="col-md-3 col-form-label">
+                                    A prominent sign
+                                    (ထင်ရှားသော အမှတ်အသား)
+                                </label>
+                                <div class="col-md-9">
+                                    <input type="text" class="form-control" name="prominent_sign">
+                                    @error('prominent_sign')
+                                        <div class="form-control-feedback">
+                                            {{ $message }}
+                                        </div>
+                                    @enderror
+                                </div>
+                            </div>
+
+                            <div class="mb-3 row">
+                                <label for="html5-text-input" class="col-md-3 col-form-label">
+                                    Working Experience
+                                </label>
+                                <div class="col-md-9">
+                                    <input type="text" class="form-control" name="working_experience">
+                                    @error('working_experience')
+                                        <div class="form-control-feedback">
+                                            {{ $message }}
+                                        </div>
+                                    @enderror
+                                </div>
+                            </div>
+
+
+
+                            <div class="mb-3 row">
+                                <label for="html5-text-input" class="col-md-3 col-form-label">
                                     Address
                                 </label>
                                 <div class="col-md-9">
-                                    <input type="text" class="form-control" name="address" placeholder="Address">
-                                    @error('address')
+                                    <input type="text" class="form-control" name="address_line_one">
+                                    @error('address_line_one')
                                         <div class="form-control-feedback">
                                             {{ $message }}
                                         </div>
@@ -199,6 +532,171 @@
 
 
                             <div class="mb-3 row">
+                                <label for="html5-text-input" class="col-md-3 col-form-label">
+                                    Contact No (Own)
+                                </label>
+                                <div class="col-md-9">
+                                    <input type="text" class="form-control" name="phone" placeholder="Phone">
+                                    @error('phone')
+                                        <div class="form-control-feedback">
+                                            {{ $message }}
+                                        </div>
+                                    @enderror
+                                </div>
+                            </div>
+
+
+
+                            <div class="mb-3 row">
+                                <label for="html5-text-input" class="col-md-3 col-form-label">
+                                    Contact No (Family)
+                                </label>
+                                <div class="col-md-9">
+                                    <input type="text" class="form-control" name="phone_family">
+                                    @error('phone_family')
+                                        <div class="form-control-feedback">
+                                            {{ $message }}
+                                        </div>
+                                    @enderror
+                                </div>
+                            </div>
+
+
+                            <div class="mb-3 row">
+                                <label for="html5-text-input" class="col-md-3 col-form-label">
+                                    အမွေစားအမွေခံ အမည်
+                                </label>
+                                <div class="col-md-9">
+                                    <input type="text" class="form-control" name="name_of_heir">
+                                    @error('name_of_heir')
+                                        <div class="form-control-feedback">
+                                            {{ $message }}
+                                        </div>
+                                    @enderror
+                                </div>
+                            </div>
+
+
+                            <div class="mb-3 row">
+                                <label for="html5-text-input" class="col-md-3 col-form-label">
+                                    တော်စပ်ပုံ
+                                </label>
+                                <div class="col-md-9">
+                                    <input type="text" class="form-control" name="relative">
+                                    @error('relative')
+                                        <div class="form-control-feedback">
+                                            {{ $message }}
+                                        </div>
+                                    @enderror
+                                </div>
+                            </div>
+
+
+                            <div class="mb-3 row">
+                                <label for="html5-text-input" class="col-md-3 col-form-label">
+                                    အမွေစားအမွေခံ၏ မှတ်ပုံတင်နံပါတ်
+                                </label>
+                                <div class="col-md-9">
+                                    <input type="text" class="form-control" name="nrc_of_heir">
+                                    @error('nrc_of_heir')
+                                        <div class="form-control-feedback">
+                                            {{ $message }}
+                                        </div>
+                                    @enderror
+                                </div>
+                            </div>
+
+                            <div class="mb-3 row">
+                                <label for="html5-text-input" class="col-md-3 col-form-label">
+                                    Passport ကုန်ကျစရိတ်
+                                </label>
+                                <div class="col-md-9">
+                                    <input type="text" class="form-control" name="passport_cost">
+                                    @error('passport_cost')
+                                        <div class="form-control-feedback">
+                                            {{ $message }}
+                                        </div>
+                                    @enderror
+                                </div>
+                            </div>
+
+                            <div class="mb-3 row">
+                                <label for="html5-text-input" class="col-md-3 col-form-label">
+                                    ကားခ
+                                </label>
+                                <div class="col-md-9">
+                                    <input type="text" class="form-control" name="car_charges">
+                                    @error('car_charges')
+                                        <div class="form-control-feedback">
+                                            {{ $message }}
+                                        </div>
+                                    @enderror
+                                </div>
+                            </div>
+
+
+                            <div class="mb-3 row">
+                                <label for="html5-text-input" class="col-md-3 col-form-label">
+                                    Passport လျောက်/အပ်
+                                </label>
+                                <div class="col-md-9">
+                                    <input type="text" class="form-control" name="passport_register_status">
+                                    @error('passport_register_status')
+                                        <div class="form-control-feedback">
+                                            {{ $message }}
+                                        </div>
+                                    @enderror
+                                </div>
+                            </div>
+
+
+                            <div class="mb-3 row">
+                                <label for="html5-text-input" class="col-md-3 col-form-label">
+                                    Leader
+                                </label>
+                                <div class="col-md-9">
+                                    <input type="text" class="form-control" name="leader">
+                                    @error('leader')
+                                        <div class="form-control-feedback">
+                                            {{ $message }}
+                                        </div>
+                                    @enderror
+                                </div>
+                            </div>
+
+
+                            <div class="mb-3 row">
+                                <label for="html5-text-input" class="col-md-3 col-form-label">
+                                    စရံငွေ
+                                </label>
+                                <div class="col-md-9">
+                                    <input type="text" class="form-control" name="deposit">
+                                    @error('deposit')
+                                        <div class="form-control-feedback">
+                                            {{ $message }}
+                                        </div>
+                                    @enderror
+                                </div>
+                            </div>
+
+
+                            <div class="mb-3 row">
+                                <label for="html5-text-input" class="col-md-3 col-form-label">
+                                    စရံငွေ ဘောက်ချာ
+                                </label>
+                                <div class="col-md-9">
+                                    <input type="file" class="form-control" name="deposit_vouchers">
+                                    @error('deposit_vouchers')
+                                        <div class="form-control-feedback">
+                                            {{ $message }}
+                                        </div>
+                                    @enderror
+                                </div>
+                            </div>
+
+
+
+                            <div class="mb-3 row" hidden>
                                 <label for="html5-text-input" class="col-md-3 col-form-label">
                                     Region / State
                                 </label>
@@ -214,13 +712,86 @@
                             </div>
 
 
-                            <div class="mb-3 row">
+
+                            <div class="mb-3 row" hidden>
                                 <label for="html5-text-input" class="col-md-3 col-form-label">
-                                    Phone
+                                    သွားရောက်လိုသည့်နေ့ရက်
                                 </label>
                                 <div class="col-md-9">
-                                    <input type="text" class="form-control" name="phone" placeholder="Phone">
-                                    @error('phone')
+                                    <input type="text" class="form-control" name="go_date">
+                                    @error('go_date')
+                                        <div class="form-control-feedback">
+                                            {{ $message }}
+                                        </div>
+                                    @enderror
+                                </div>
+                            </div>
+
+
+                            <div class="mb-3 row">
+                                <label for="html5-text-input" class="col-md-3 col-form-label">
+                                    သွားရောက်လိုသည်နိုင်ငံ
+                                </label>
+                                <div class="col-md-9">
+                                    <input type="text" class="form-control" name="selected_country">
+                                    @error('selected_country')
+                                        <div class="form-control-feedback">
+                                            {{ $message }}
+                                        </div>
+                                    @enderror
+                                </div>
+                            </div>
+
+
+                            <div class="mb-3 row">
+                                <label for="html5-text-input" class="col-md-3 col-form-label">
+                                    Reason
+                                    (သွားရောက်လိုသည့်အကြောင်းအရာ)
+                                </label>
+                                <div class="col-md-9">
+                                    <input type="text" class="form-control" name="go_reason" placeholder="For Job">
+                                    @error('go_reason')
+                                        <div class="form-control-feedback">
+                                            {{ $message }}
+                                        </div>
+                                    @enderror
+                                </div>
+                            </div>
+
+
+                            <hr>
+                            <p style="font-weight: bold;">
+                                If you have an Labour Card No & Date, you can add it.
+                            </p>
+
+                            <div class="mb-3 row">
+                                <label for="html5-text-input" class="col-md-3 col-form-label">
+                                    Labour Card No
+                                </label>
+                                <div class="col-md-9">
+                                    <input type="text"
+                                        class="form-control @error('labour_card_no') form-control-danger @enderror"
+                                        name="labour_card_no" value="{{ old('labour_card_no') }}"
+                                        placeholder="Labour Card No">
+                                    @error('labour_card_no')
+                                        <div class="form-control-feedback">
+                                            {{ $message }}
+                                        </div>
+                                    @enderror
+                                </div>
+                            </div>
+
+
+                            <div class="mb-3 row">
+                                <label for="html5-text-input" class="col-md-3 col-form-label">
+                                    Issue of Labour Date
+                                </label>
+                                <div class="col-md-9">
+                                    <input type="text"
+                                        class="form-control @error('issue_of_labour_date') form-control-danger @enderror"
+                                        name="issue_of_labour_date" value="{{ old('issue_of_labour_date') }}"
+                                        placeholder="Issue of Labour Date">
+                                    @error('issue_of_labour_date')
                                         <div class="form-control-feedback">
                                             {{ $message }}
                                         </div>
@@ -263,47 +834,15 @@
                                 </div>
                             </div>
 
-
-
                             <hr>
-                            <div class="mb-3 row">
-                                <label for="html5-text-input" class="col-md-3 col-form-label">
-                                    Go Date
-                                    (သွားရောက်လိုသည့်နေ့ရက်)
-                                </label>
-                                <div class="col-md-9">
-                                    <input type="text" class="form-control" name="go_date">
-                                    @error('go_date')
-                                        <div class="form-control-feedback">
-                                            {{ $message }}
-                                        </div>
-                                    @enderror
-                                </div>
-                            </div>
 
 
                             <div class="mb-3 row">
                                 <label for="html5-text-input" class="col-md-3 col-form-label">
-                                    Reason
-                                    (သွားရောက်လိုသည့်အကြောင်းအရာ)
+                                    Submit Date
                                 </label>
                                 <div class="col-md-9">
-                                    <input type="text" class="form-control" name="go_reason">
-                                    @error('go_reason')
-                                        <div class="form-control-feedback">
-                                            {{ $message }}
-                                        </div>
-                                    @enderror
-                                </div>
-                            </div>
-
-
-                            <div class="mb-3 row">
-                                <label for="html5-text-input" class="col-md-3 col-form-label">
-                                    Date
-                                </label>
-                                <div class="col-md-9">
-                                    <input type="date" class="form-control" name="entry_date"
+                                    <input type="date" class="form-control date_picker" name="entry_date"
                                         value="{{ date('Y-m-d') }}">
                                     @error('entry_date')
                                         <div class="form-control-feedback">
@@ -318,7 +857,7 @@
                                     Agents
                                 </label>
                                 <div class="col-md-9">
-                                    <select class="form-control form-select" name="agent_list_id">
+                                    <select class="form-control form-select select2" name="agent_list_id">
                                         <option value="">--Select Agent--</option>
                                         @foreach ($agent_lists as $agent_list)
                                             <option value="{{ $agent_list->id }}">

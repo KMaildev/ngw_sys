@@ -6,7 +6,7 @@
                 <div class="card-body">
                     <div class="card-title header-elements">
                         <h5 class="m-0 me-2">
-                            Passport Lists
+                            Labour Lists
                         </h5>
                         <div class="card-title-elements ms-auto">
 
@@ -24,7 +24,7 @@
                                 <form action="{{ route('passport.index') }}" method="get" autocomplete="off">
                                     <div class="input-group">
                                         <select name="agent_list_id" id="" class="form-control select2">
-                                            <option value="">
+                                            <option value="0">
                                                 --Select Agent--
                                             </option>
                                             @foreach ($agent_lists as $agent_list)
