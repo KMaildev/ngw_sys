@@ -173,6 +173,11 @@
                                                     Contract Labours
                                                 </a>
 
+                                                <a class="dropdown-item"
+                                                    href="{{ route('file_upload_view_contract', $contract->id) }}">
+                                                    Files
+                                                </a>
+
                                                 @if ($contract->sending_table)
                                                 @else
                                                     <a class="dropdown-item"

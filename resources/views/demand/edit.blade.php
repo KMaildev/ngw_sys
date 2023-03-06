@@ -74,6 +74,36 @@
 
                         <div class="mb-3 row">
                             <label for="html5-text-input" class="col-md-3 col-form-label">
+                                Job
+                            </label>
+                            <div class="col-md-9">
+                                <input type="text" class="form-control @error('job') form-control-danger @enderror"
+                                    name="job" value="{{ $demand->job ?? '' }}">
+                                @error('job')
+                                    <div class="form-control-feedback" style="color: red;">
+                                        {{ $message }}
+                                    </div>
+                                @enderror
+                            </div>
+                        </div>
+
+                        <div class="mb-3 row">
+                            <label for="html5-text-input" class="col-md-3 col-form-label">
+                                Salary
+                            </label>
+                            <div class="col-md-9">
+                                <input type="text" class="form-control @error('salary') form-control-danger @enderror"
+                                    name="salary" value="{{ $demand->salary ?? '' }}">
+                                @error('salary')
+                                    <div class="form-control-feedback" style="color: red;">
+                                        {{ $message }}
+                                    </div>
+                                @enderror
+                            </div>
+                        </div>
+
+                        <div class="mb-3 row">
+                            <label for="html5-text-input" class="col-md-3 col-form-label">
                                 Male
                             </label>
                             <div class="col-md-9">
@@ -127,7 +157,8 @@
                             <div class="col-md-9">
                                 <input type="text"
                                     class="form-control @error('demand_date') form-control-danger @enderror"
-                                    name="demand_date" placeholder="Demand Date" value="{{ $demand->demand_date ?? '' }}">
+                                    name="demand_date" placeholder="Demand Date"
+                                    value="{{ $demand->demand_date ?? '' }}">
                                 @error('demand_date')
                                     <div class="form-control-feedback" style="color: red;">
                                         {{ $message }}

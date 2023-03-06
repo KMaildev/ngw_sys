@@ -63,6 +63,10 @@ class DemandController extends Controller
         $demand->issue_date = $request->issue_date;
         $demand->issue_number = $request->issue_number;
         $demand->demand_number = $request->demand_number;
+
+        $demand->job = $request->job;
+        $demand->salary = $request->salary;
+
         $demand->save();
         return redirect()->back()->with('success', 'Process is completed.');
     }
@@ -95,6 +99,9 @@ class DemandController extends Controller
         $demand->issue_date = $request->issue_date;
         $demand->issue_number = $request->issue_number;
         $demand->demand_number = $request->demand_number;
+        $demand->job = $request->job;
+        $demand->salary = $request->salary;
+
         $demand->update();
         return redirect()->back()->with('success', 'Process is completed.');
     }

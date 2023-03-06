@@ -154,6 +154,11 @@
                                                     Edit
                                                 </a>
 
+                                                <a class="dropdown-item"
+                                                    href="{{ route('file_upload_view_sending', $sending->id) }}">
+                                                    Files
+                                                </a>
+
                                                 <form action="{{ route('sending.destroy', $sending->id) }}" method="POST">
                                                     @csrf
                                                     @method('DELETE')

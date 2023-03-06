@@ -94,6 +94,14 @@
                                 </th>
 
                                 <th class="text-center text-white" style="background-color: #296166;">
+                                    Job
+                                </th>
+
+                                <th class="text-center text-white" style="background-color: #296166;">
+                                    Salary
+                                </th>
+
+                                <th class="text-center text-white" style="background-color: #296166;">
                                     Date
                                 </th>
 
@@ -146,6 +154,14 @@
                                     </td>
 
                                     <td style="text-align: center;">
+                                        {{ $demand->job ?? '' }}
+                                    </td>
+
+                                    <td style="text-align: center;">
+                                        {{ $demand->salary ?? '' }}
+                                    </td>
+
+                                    <td style="text-align: center;">
                                         {{ $demand->demand_date }}
                                     </td>
 
@@ -188,6 +204,11 @@
                                                     Edit
                                                 </a>
 
+                                                <a class="dropdown-item"
+                                                    href="{{ route('file_upload_view_demand', $demand->id) }}">
+                                                    Files
+                                                </a>
+
                                                 <form action="{{ route('demand.destroy', $demand->id) }}" method="POST">
                                                     @csrf
                                                     @method('DELETE')
@@ -207,7 +228,7 @@
                                 @endphp
                                 @foreach ($demand->contract_list_table as $contract_list)
                                     <tr style="background-color: #eaedef;">
-                                        <td colspan="3" style="text-align: right;">
+                                        <td colspan="5" style="text-align: right;">
                                             Contract Information
                                         </td>
 
@@ -278,7 +299,7 @@
                                 {{-- Sending Info  --}}
                                 @foreach ($demand->sendings_list_table as $sendings_list)
                                     <tr style="background-color: #eaedef;">
-                                        <td colspan="3" style="text-align: right;">
+                                        <td colspan="5" style="text-align: right;">
                                             Sending Information
                                         </td>
 

@@ -304,6 +304,10 @@
                                 </th>
 
                                 <th class="text-center text-white" style="background-color: #296166;">
+                                    Deposit
+                                </th>
+
+                                <th class="text-center text-white" style="background-color: #296166;">
                                     Action
                                 </th>
                             </tr>
@@ -526,6 +530,10 @@
 
                                     <td class="text-center">
                                         {{ $passport->remark ?? '' }}
+                                    </td>
+
+                                    <td style="text-align: right">
+                                        {{ number_format($passport->passport_payments_table->sum('deposit'), 2) }}
                                     </td>
 
                                     <td style="text-align: center">

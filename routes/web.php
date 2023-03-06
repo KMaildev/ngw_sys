@@ -4,6 +4,7 @@ use App\Http\Controllers\AgentListController;
 use App\Http\Controllers\ContractController;
 use App\Http\Controllers\CountryController;
 use App\Http\Controllers\DemandController;
+use App\Http\Controllers\FileManagementController;
 use App\Http\Controllers\LabourManagementController;
 use App\Http\Controllers\MembersListsController;
 use App\Http\Controllers\OverseasAgentController;
@@ -21,7 +22,9 @@ Auth::routes(['register' => false]);
 
 Route::middleware('auth')->group(function () {
 
-    Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+    // Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+    Route::get('/home', [AgentListController::class, 'index'])->name('home');
     Route::resource('users', UserController::class);
     Route::resource('country', CountryController::class);
     Route::resource('agent_list', AgentListController::class);
@@ -53,4 +56,10 @@ Route::middleware('auth')->group(function () {
     Route::resource('township', TownshipController::class);
     Route::get('get_by_region_id/{id}', [TownshipController::class, 'getByRegionId'])->name('get_by_region_id');
     Route::resource('members_list', MembersListsController::class);
+
+
+    Route::resource('file_management', FileManagementController::class);
+    Route::get('file_upload_view_demand/{id}', [FileManagementController::class, 'fileUploadViewDemand'])->name('file_upload_view_demand');
+    Route::get('file_upload_view_contract/{id}', [FileManagementController::class, 'fileUploadViewContract'])->name('file_upload_view_contract');
+    Route::get('file_upload_view_sending/{id}', [FileManagementController::class, 'fileUploadViewSending'])->name('file_upload_view_sending');
 });

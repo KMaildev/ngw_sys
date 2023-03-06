@@ -21,7 +21,7 @@ class ImportLabourManagement implements ToCollection, WithHeadingRow
     public function collection(Collection $rows)
     {
         Validator::make($rows->toArray(), [
-            '*.name' => 'required',
+            // '*.name' => 'required',
             '*.passport' => 'required',
         ])->validate();
 

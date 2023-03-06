@@ -88,7 +88,6 @@ class LabourManagementController extends Controller
 
 
 
-
     public function sendingLabourPassportExport($id)
     {
         $passports = Passport::where('reject_status', NULL)

@@ -90,4 +90,9 @@ class Passport extends Model
     {
         return $this->belongsTo(LabourManagement::class, 'passport', 'passport');
     }
+
+    public function passport_payments_table()
+    {
+        return $this->hasMany(PassportPayment::class, 'passport_id', 'id');
+    }
 }
