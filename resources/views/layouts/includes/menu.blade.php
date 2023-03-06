@@ -53,27 +53,10 @@
                         </a>
                     </li>
 
-                    <li class="menu-item">
-                        <a href="#" class="menu-link">
-                            Contract Labours
-                        </a>
-                    </li>
-
-                    <li class="menu-item">
-                        <a href="#" class="menu-link">
-                            Sending Labours
-                        </a>
-                    </li>
 
                     <li class="menu-item">
                         <a href="{{ route('reject_passport_list') }}" class="menu-link">
-                            Reject / Cancel / Failed
-                        </a>
-                    </li>
-
-                    <li class="menu-item">
-                        <a href="#" class="menu-link">
-                            Leave / Return
+                            Reject
                         </a>
                     </li>
 

@@ -71,6 +71,8 @@ class Passport extends Model
         'car_charges',
         'passport_register_status',
         'user_id',
+        'marital_status',
+        'leader',
 
     ];
 

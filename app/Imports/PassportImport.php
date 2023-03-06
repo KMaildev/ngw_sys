@@ -30,6 +30,7 @@ class PassportImport implements ToCollection, WithHeadingRow
                 'passport'  => strval($row['passport_no'] ?? null),
                 'passport_date'  => strval($row['date_of_passport'] ?? null),
                 'place_of_passport'  => strval($row['place_of_passport'] ?? null),
+                'passport_expiry_date'  => strval($row['passport_expiry_date'] ?? null),
                 'age'  => strval($row['age'] ?? null),
                 'weight'  => strval($row['weight'] ?? null),
                 'height'  => strval($row['height'] ?? null),
@@ -54,9 +55,9 @@ class PassportImport implements ToCollection, WithHeadingRow
                 'nrc_of_heir'  => strval($row['nrc_of_heir'] ?? null),
                 'passport_cost'  => strval($row['passport_cost'] ?? null),
                 'car_charges'  => strval($row['car_charges'] ?? null),
-                'passport_register'  => strval($row['passport_register'] ?? null),
+                'passport_register_status'  => strval($row['passport_register'] ?? null),
                 'leader'  => strval($row['leader'] ?? null),
-                'labour_card_No'  => strval($row['labour_card_No'] ?? null),
+                'labour_card_No'  => strval($row['labour_card_no'] ?? null),
                 'issue_of_labour_date'  => strval($row['issue_of_labour_date'] ?? null),
                 'owic'  => strval($row['owic'] ?? null),
                 'owic_date'  => strval($row['owic_date'] ?? null),
@@ -66,7 +67,6 @@ class PassportImport implements ToCollection, WithHeadingRow
                 'entry_date'  => strval($row['submit_date'] ?? null),
                 'remark'  => strval($row['remark'] ?? null),
 
-
                 'go_date'  => strval($row['go_date'] ?? null),
                 'go_reason'  => strval($row['reason'] ?? null),
                 'nation_religion'  => strval($row['nation_religion'] ?? null),
@@ -75,6 +75,7 @@ class PassportImport implements ToCollection, WithHeadingRow
                 'created_at'  => now(),
                 'updated_at'  => now(),
                 'join_date'  => date("Y-m-d"),
+                'user_id'  => auth()->user()->id,
 
                 'agent_list_id'  => null,
                 'reject_status'  => null,

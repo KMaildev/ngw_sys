@@ -120,6 +120,7 @@ class PassportController extends Controller
         $Passport->tatto = $request->tatto;
         $Passport->smoking = $request->smoking;
         $Passport->alcohol = $request->alcohol;
+        $Passport->marital_status = $request->marital_status;
         $Passport->prominent_sign = $request->prominent_sign;
         $Passport->working_experience = $request->working_experience;
         $Passport->selected_country = $request->selected_country;
@@ -145,6 +146,7 @@ class PassportController extends Controller
         $Passport->passport_cost = $request->passport_cost;
         $Passport->car_charges = $request->car_charges;
         $Passport->passport_register_status = $request->passport_register_status;
+        $Passport->leader = $request->leader;
         $Passport->user_id = auth()->user()->id;
         $Passport->save();
 

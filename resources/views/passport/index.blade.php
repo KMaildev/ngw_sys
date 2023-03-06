@@ -96,6 +96,18 @@
                                 </th>
 
                                 <th class="text-center text-white" style="background-color: #296166;">
+                                    Photo
+                                </th>
+
+                                <th class="text-center text-white" style="background-color: #296166;">
+                                    Labour Card No
+                                </th>
+
+                                <th class="text-center text-white" style="background-color: #296166;">
+                                    Issue of Labour Date
+                                </th>
+
+                                <th class="text-center text-white" style="background-color: #296166;">
                                     Name
                                 </th>
 
@@ -107,18 +119,28 @@
                                     NRC
                                 </th>
 
+                                <th class="text-center text-white" style="background-color: #296166;">
+                                    Father's Name
+                                </th>
+
+                                <th class="text-center text-white" style="background-color: #296166;">
+                                    Qualification
+                                </th>
 
                                 <th class="text-center text-white" style="background-color: #296166;">
                                     Date of Birth
                                 </th>
 
-
                                 <th class="text-center text-white" style="background-color: #296166;">
-                                    Father Name
+                                    Address in Myanmar
                                 </th>
 
                                 <th class="text-center text-white" style="background-color: #296166;">
-                                    Mother Name
+                                    Job
+                                </th>
+
+                                <th class="text-center text-white" style="background-color: #296166;">
+                                    Factory's Address
                                 </th>
 
                                 <th class="text-center text-white" style="background-color: #296166;">
@@ -126,32 +148,123 @@
                                 </th>
 
                                 <th class="text-center text-white" style="background-color: #296166;">
-                                    Date of Passport
+                                    Issue Date of Passport
+                                </th>
+
+                                <th class="text-center text-white" style="background-color: #296166;">
+                                    Identification Card
+                                </th>
+
+                                <th class="text-center text-white" style="background-color: #296166;">
+                                    Issue Date of ID Card
                                 </th>
 
                                 <th class="text-center text-white" style="background-color: #296166;">
                                     Place of Passport
                                 </th>
 
-
                                 <th class="text-center text-white" style="background-color: #296166;">
-                                    Nation / Religion
+                                    Salary
                                 </th>
 
                                 <th class="text-center text-white" style="background-color: #296166;">
-                                    Address
+                                    Age
                                 </th>
 
                                 <th class="text-center text-white" style="background-color: #296166;">
-                                    Region / State
+                                    Weight
                                 </th>
 
                                 <th class="text-center text-white" style="background-color: #296166;">
-                                    Overseas Company
+                                    Height
                                 </th>
 
                                 <th class="text-center text-white" style="background-color: #296166;">
-                                    Contract Date
+                                    Tattoo
+                                </th>
+
+                                <th class="text-center text-white" style="background-color: #296166;">
+                                    Smoking
+                                </th>
+
+                                <th class="text-center text-white" style="background-color: #296166;">
+                                    Alcohol
+                                </th>
+
+                                <th class="text-center text-white" style="background-color: #296166;">
+                                    Marital Status
+                                </th>
+
+                                <th class="text-center text-white" style="background-color: #296166;">
+                                    Son
+                                </th>
+
+                                <th class="text-center text-white" style="background-color: #296166;">
+                                    Son Age
+                                </th>
+
+                                <th class="text-center text-white" style="background-color: #296166;">
+                                    Daughter
+                                </th>
+
+                                <th class="text-center text-white" style="background-color: #296166;">
+                                    Daughter Age
+                                </th>
+
+                                <th class="text-center text-white" style="background-color: #296166;">
+                                    Mother Name
+                                </th>
+
+                                <th class="text-center text-white" style="background-color: #296166;">
+                                    Nation Religion
+                                </th>
+
+                                <th class="text-center text-white" style="background-color: #296166;">
+                                    Prominent Sign
+                                </th>
+
+                                <th class="text-center text-white" style="background-color: #296166;">
+                                    Working Experience
+                                </th>
+
+                                <th class="text-center text-white" style="background-color: #296166;">
+                                    Address Line One
+                                </th>
+
+                                <th class="text-center text-white" style="background-color: #296166;">
+                                    Phone
+                                </th>
+
+                                <th class="text-center text-white" style="background-color: #296166;">
+                                    Family Phone
+                                </th>
+
+                                <th class="text-center text-white" style="background-color: #296166;">
+                                    Name Of Heir
+                                </th>
+
+                                <th class="text-center text-white" style="background-color: #296166;">
+                                    Relative
+                                </th>
+
+                                <th class="text-center text-white" style="background-color: #296166;">
+                                    NRC Of Heir
+                                </th>
+
+                                <th class="text-center text-white" style="background-color: #296166;">
+                                    Passport Cost
+                                </th>
+
+                                <th class="text-center text-white" style="background-color: #296166;">
+                                    Car Charges
+                                </th>
+
+                                <th class="text-center text-white" style="background-color: #296166;">
+                                    Passport Register
+                                </th>
+
+                                <th class="text-center text-white" style="background-color: #296166;">
+                                    Leader
                                 </th>
 
                                 <th class="text-center text-white" style="background-color: #296166;">
@@ -159,15 +272,31 @@
                                 </th>
 
                                 <th class="text-center text-white" style="background-color: #296166;">
-                                    Sending Date
+                                    OWIC Date
                                 </th>
 
                                 <th class="text-center text-white" style="background-color: #296166;">
-                                    Phone No
+                                    Identification Card
+                                </th>
+
+                                <th class="text-center text-white" style="background-color: #296166;">
+                                    Issue Date of ID Card
                                 </th>
 
                                 <th class="text-center text-white" style="background-color: #296166;">
                                     Agent Name
+                                </th>
+
+                                <th class="text-center text-white" style="background-color: #296166;">
+                                    Submit Date
+                                </th>
+
+                                <th class="text-center text-white" style="background-color: #296166;">
+                                    Contract Date
+                                </th>
+
+                                <th class="text-center text-white" style="background-color: #296166;">
+                                    Sending Date
                                 </th>
 
                                 <th class="text-center text-white" style="background-color: #296166;">
@@ -186,6 +315,21 @@
                                         {{ $key + 1 }}
                                     </td>
 
+                                    <td style="text-align: center;">
+                                        @if ($passport->photo)
+                                            <img src="{{ Storage::url($passport->photo) }}" alt=""
+                                                style="width: 50px; height: 50px; background-position: center; background-size: cover;">
+                                        @endif
+                                    </td>
+
+                                    <td class="text-center">
+                                        {{ $passport->labour_card_no ?? '' }}
+                                    </td>
+
+                                    <td class="text-center">
+                                        {{ $passport->issue_of_labour_date ?? '' }}
+                                    </td>
+
                                     <td class="text-center">
                                         {{ $passport->name ?? '' }}
                                     </td>
@@ -199,15 +343,27 @@
                                     </td>
 
                                     <td class="text-center">
-                                        {{ $passport->date_of_birth ?? '' }}
-                                    </td>
-
-                                    <td class="text-center">
                                         {{ $passport->father_name ?? '' }}
                                     </td>
 
                                     <td class="text-center">
-                                        {{ $passport->mother_name ?? '' }}
+                                        {{ $passport->qualification ?? '' }}
+                                    </td>
+
+                                    <td class="text-center">
+                                        {{ $passport->date_of_birth ?? '' }}
+                                    </td>
+
+                                    <td class="text-center">
+                                        {{ $passport->address ?? '' }}
+                                    </td>
+
+                                    <td>
+                                        Job
+                                    </td>
+
+                                    <td class="text-center">
+                                        {{ $passport->labour_management_table->overseas_agency_table->company_name ?? '' }}
                                     </td>
 
                                     <td class="text-center">
@@ -219,7 +375,68 @@
                                     </td>
 
                                     <td class="text-center">
+                                        {{ $passport->identification_card ?? '' }}
+                                    </td>
+
+                                    <td class="text-center">
+                                        {{ $passport->issue_date_of_id_card ?? '' }}
+                                    </td>
+
+                                    <td class="text-center">
                                         {{ $passport->place_of_passport ?? '' }}
+                                    </td>
+
+                                    <td class="text-center">
+                                        331
+                                    </td>
+
+                                    <td class="text-center">
+                                        {{ $passport->age ?? '' }}
+                                    </td>
+
+                                    <td class="text-center">
+                                        {{ $passport->weight ?? '' }}
+                                    </td>
+
+
+                                    <td class="text-center">
+                                        {{ $passport->height ?? '' }}
+                                    </td>
+
+                                    <td class="text-center">
+                                        {{ $passport->tatto ?? '' }}
+                                    </td>
+
+                                    <td class="text-center">
+                                        {{ $passport->smoking ?? '' }}
+                                    </td>
+
+                                    <td class="text-center">
+                                        {{ $passport->alcohol ?? '' }}
+                                    </td>
+
+                                    <td class="text-center">
+                                        {{ $passport->marital_status ?? '' }}
+                                    </td>
+
+                                    <td class="text-center">
+                                        {{ $passport->son ?? '' }}
+                                    </td>
+
+                                    <td class="text-center">
+                                        {{ $passport->son_age ?? '' }}
+                                    </td>
+
+                                    <td class="text-center">
+                                        {{ $passport->daughter ?? '' }}
+                                    </td>
+
+                                    <td class="text-center">
+                                        {{ $passport->daughter_age ?? '' }}
+                                    </td>
+
+                                    <td class="text-center">
+                                        {{ $passport->mother_name ?? '' }}
                                     </td>
 
                                     <td class="text-center">
@@ -227,37 +444,84 @@
                                     </td>
 
                                     <td class="text-center">
-                                        {{ $passport->address ?? '' }}
+                                        {{ $passport->prominent_sign ?? '' }}
                                     </td>
 
                                     <td class="text-center">
-                                        {{ $passport->region_state ?? '' }}
+                                        {{ $passport->working_experience ?? '' }}
                                     </td>
 
                                     <td class="text-center">
-                                        {{ $passport->labour_management_table->overseas_agency_table->company_name ?? '' }}
+                                        {{ $passport->address_line_one ?? '' }}
                                     </td>
-
-                                    <td class="text-center">
-                                        {{ $passport->labour_management_table->contract_table->contract_date ?? '' }}
-                                    </td>
-
-
-                                    <td class="text-center">
-                                        {{ $passport->owic ?? '' }}
-                                    </td>
-
-                                    <td class="text-center">
-                                        {{ $passport->labour_management_table->sending_table->sending_date ?? '' }}
-                                    </td>
-
 
                                     <td class="text-center">
                                         {{ $passport->phone ?? '' }}
                                     </td>
 
                                     <td class="text-center">
+                                        {{ $passport->phone_family ?? '' }}
+                                    </td>
+
+                                    <td class="text-center">
+                                        {{ $passport->name_of_heir ?? '' }}
+                                    </td>
+
+                                    <td class="text-center">
+                                        {{ $passport->relative ?? '' }}
+                                    </td>
+
+                                    <td class="text-center">
+                                        {{ $passport->nrc_of_heir ?? '' }}
+                                    </td>
+
+                                    <td class="text-center">
+                                        {{ $passport->passport_cost ?? '' }}
+                                    </td>
+
+
+                                    <td class="text-center">
+                                        {{ $passport->car_charges ?? '' }}
+                                    </td>
+
+                                    <td class="text-center">
+                                        {{ $passport->passport_register_status ?? '' }}
+                                    </td>
+
+                                    <td class="text-center">
+                                        {{ $passport->leader ?? '' }}
+                                    </td>
+
+                                    <td class="text-center">
+                                        {{ $passport->owic ?? '' }}
+                                    </td>
+
+                                    <td class="text-center">
+                                        {{ $passport->owic_date ?? '' }}
+                                    </td>
+
+                                    <td class="text-center">
+                                        {{ $passport->identification_card ?? '' }}
+                                    </td>
+
+                                    <td class="text-center">
+                                        {{ $passport->issue_date_of_id_card ?? '' }}
+                                    </td>
+
+                                    <td class="text-center">
                                         {{ strtoupper($passport->agent_list_table->name ?? $passport->local_agent_name) }}
+                                    </td>
+
+                                    <td class="text-center">
+                                        {{ $passport->entry_date ?? '' }}
+                                    </td>
+
+                                    <td class="text-center">
+                                        {{ $passport->labour_management_table->contract_table->contract_date ?? '' }}
+                                    </td>
+
+                                    <td class="text-center">
+                                        {{ $passport->labour_management_table->sending_table->sending_date ?? '' }}
                                     </td>
 
                                     <td class="text-center">
