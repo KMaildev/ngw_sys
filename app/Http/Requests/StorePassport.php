@@ -29,6 +29,8 @@ class StorePassport extends FormRequest
             'address' => 'required',
             'phone' => 'required',
             'agent_list_id' => 'required',
+
+            'deposit' => 'numeric',
         ];
     }
 }

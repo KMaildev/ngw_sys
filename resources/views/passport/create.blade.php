@@ -685,7 +685,7 @@
                                     စရံငွေ ဘောက်ချာ
                                 </label>
                                 <div class="col-md-9">
-                                    <input type="file" class="form-control" name="deposit_vouchers">
+                                    <input type="file" class="form-control" name="deposit_vouchers[]" multiple>
                                     @error('deposit_vouchers')
                                         <div class="form-control-feedback">
                                             {{ $message }}
@@ -761,7 +761,11 @@
 
                             <hr>
                             <p style="font-weight: bold;">
-                                If you have an Labour Card No & Date, you can add it.
+                                If you have a Labour Card No & Date, you can add it.
+                                <br>
+                                <small style="color: red;">
+                                    Labour Card No & Date ရှိပါက ထည့်သွင်းနိုင်ပါသည်
+                                </small>
                             </p>
 
                             <div class="mb-3 row">
@@ -803,6 +807,10 @@
                             <hr>
                             <p style="font-weight: bold;">
                                 If you have an OWIC, you can add it.
+                                <br>
+                                <small style="color: red;">
+                                    OWIC & Date ရှိပါက ထည့်သွင်းနိုင်ပါသည်
+                                </small>
                             </p>
                             <div class="mb-3 row">
                                 <label for="html5-text-input" class="col-md-3 col-form-label">
@@ -837,12 +845,53 @@
                             <hr>
 
 
+                            <hr>
+                            <p style="font-weight: bold;">
+                                If you have a Identification Card, you can add it.
+                                <br>
+                                <small style="color: red;">
+                                    Identification Card & Date ရှိပါက ထည့်သွင်းနိုင်ပါသည်
+                                </small>
+                            </p>
+                            <div class="mb-3 row">
+                                <label for="html5-text-input" class="col-md-3 col-form-label">
+                                    Identification Card
+                                </label>
+                                <div class="col-md-9">
+                                    <input type="text"
+                                        class="form-control @error('identification_card') form-control-danger @enderror"
+                                        name="identification_card" value="{{ old('identification_card') }}">
+                                    @error('identification_card')
+                                        <div class="form-control-feedback">
+                                            {{ $message }}
+                                        </div>
+                                    @enderror
+                                </div>
+                            </div>
+
+                            <div class="mb-3 row">
+                                <label for="html5-text-input" class="col-md-3 col-form-label">
+                                    Issue Date of ID Card
+                                </label>
+                                <div class="col-md-9">
+                                    <input type="text"
+                                        class="form-control @error('issue_date_of_id_card') form-control-danger @enderror"
+                                        name="issue_date_of_id_card" value="{{ old('issue_date_of_id_card') }}">
+                                    @error('issue_date_of_id_card')
+                                        <div class="form-control-feedback"> {{ $message }} </div>
+                                    @enderror
+                                </div>
+                            </div>
+
+                            <hr>
+
+
                             <div class="mb-3 row">
                                 <label for="html5-text-input" class="col-md-3 col-form-label">
                                     Submit Date
                                 </label>
                                 <div class="col-md-9">
-                                    <input type="date" class="form-control date_picker" name="entry_date"
+                                    <input type="text" class="form-control date_picker" name="entry_date"
                                         value="{{ date('Y-m-d') }}">
                                     @error('entry_date')
                                         <div class="form-control-feedback">

@@ -10,6 +10,8 @@ use App\Imports\PassportImport;
 use App\Models\AgentList;
 use App\Models\Contract;
 use App\Models\Passport;
+use App\Models\PassportPayment;
+use App\Models\PassportPaymentFile;
 use Illuminate\Http\Request;
 use Maatwebsite\Excel\Facades\Excel;
 
@@ -70,17 +72,17 @@ class PassportController extends Controller
 
         if ($request->hasFile('photo')) {
             $photo = $request->file('photo');
-            $photo_path = $photo->store('public/agents');
+            $photo_path = $photo->store('public/labour');
         }
 
         if ($request->hasFile('nrc_front')) {
             $nrc_front = $request->file('nrc_front');
-            $nrc_front_path = $nrc_front->store('public/agents');
+            $nrc_front_path = $nrc_front->store('public/labour');
         }
 
         if ($request->hasFile('nrc_back')) {
             $nrc_back = $request->file('nrc_back');
-            $nrc_back_path = $nrc_back->store('public/agents');
+            $nrc_back_path = $nrc_back->store('public/labour');
         }
 
         $Passport = new Passport();
@@ -128,7 +130,55 @@ class PassportController extends Controller
         $Passport->nrc_front = $nrc_front_path ?? '';
         $Passport->nrc_back = $nrc_back_path ?? '';
 
+
+        $Passport->identification_card = $request->identification_card;
+        $Passport->issue_date_of_id_card = $request->issue_date_of_id_card;
+        $Passport->son = $request->son;
+        $Passport->son_age = $request->son_age;
+        $Passport->daughter = $request->daughter;
+        $Passport->daughter_age = $request->daughter_age;
+        $Passport->address_line_one = $request->address_line_one;
+        $Passport->phone_family = $request->phone_family;
+        $Passport->name_of_heir = $request->name_of_heir;
+        $Passport->relative = $request->relative;
+        $Passport->nrc_of_heir = $request->nrc_of_heir;
+        $Passport->passport_cost = $request->passport_cost;
+        $Passport->car_charges = $request->car_charges;
+        $Passport->passport_register_status = $request->passport_register_status;
+        $Passport->user_id = auth()->user()->id;
         $Passport->save();
+
+        $passport_id = $Passport->id;
+        if ($request->has('deposit')) {
+            $passport_payment = new PassportPayment();
+            $passport_payment->deposit = $request->deposit;
+            $passport_payment->deposit_date = date('Y-m-d');
+            $passport_payment->passport_id = $passport_id;
+            $passport_payment->user_id = auth()->user()->id;
+            $passport_payment->save();
+
+            $passport_payment_id = $passport_payment->id;
+
+            if ($request->hasFile('deposit_vouchers')) {
+                foreach ($request->file('deposit_vouchers') as $key => $file) {
+                    $path = $file->store('public/deposit_vouchers');
+                    $deposit_file_name = $file->getClientOriginalName();
+
+                    $insert[$key]['deposit_file_path'] = $path;
+                    $insert[$key]['deposit_file_name'] = $deposit_file_name;
+
+                    $insert[$key]['passport_payment_id'] = $passport_payment_id;
+                    $insert[$key]['passport_id'] = $passport_id;
+                    $insert[$key]['user_id'] = auth()->user()->id;
+                    $insert[$key]['created_at'] =  date('Y-m-d H:i:s');
+                    $insert[$key]['updated_at'] =  date('Y-m-d H:i:s');
+                }
+                PassportPaymentFile::insert($insert);
+            }
+        }
+
+
+
         return redirect()->back()->with('success', 'Created successfully.');
     }
 

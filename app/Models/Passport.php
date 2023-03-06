@@ -37,7 +37,7 @@ class Passport extends Model
         'entry_date',
         'nation_religion',
         'region_state',
-        
+
         'labour_code',
         'age',
         'photo',
@@ -55,6 +55,23 @@ class Passport extends Model
         'selected_country',
         'labour_card_no',
         'issue_of_labour_date',
+
+        'identification_card',
+        'issue_date_of_id_card',
+        'son',
+        'son_age',
+        'daughter',
+        'daughter_age',
+        'address_line_one',
+        'phone_family',
+        'name_of_heir',
+        'relative',
+        'nrc_of_heir',
+        'passport_cost',
+        'car_charges',
+        'passport_register_status',
+        'user_id',
+
     ];
 
     public function agent_list_table()
