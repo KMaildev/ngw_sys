@@ -95,7 +95,8 @@
                                     N.R.C No
                                 </label>
                                 <div class="col-md-9">
-                                    <input type="text" class="form-control" name="nrc" placeholder="NRC">
+                                    <input type="text" class="form-control" name="nrc" placeholder="NRC"
+                                        value="{{ old('nrc') }}">
                                     @error('nrc')
                                         <div class="form-control-feedback">
                                             {{ $message }}
@@ -138,7 +139,7 @@
                                 </label>
                                 <div class="col-md-9">
                                     <input type="text" class="form-control" name="father_name"
-                                        placeholder="Father Name">
+                                        placeholder="Father Name" value="{{ old('father_name') }}">
                                     @error('father_name')
                                         <div class="form-control-feedback">
                                             {{ $message }}
@@ -153,7 +154,7 @@
                                 </label>
                                 <div class="col-md-9">
                                     <input type="text" class="form-control" name="qualification"
-                                        placeholder="QUALIFICATION">
+                                        placeholder="QUALIFICATION" value="{{ old('qualification') }}">
                                     @error('qualification')
                                         <div class="form-control-feedback">
                                             {{ $message }}
@@ -169,7 +170,7 @@
                                 </label>
                                 <div class="col-md-9">
                                     <input type="text" class="form-control" name="date_of_birth"
-                                        placeholder="Date of Birth">
+                                        placeholder="Date of Birth" value="{{ old('date_of_birth') }}">
                                     @error('date_of_birth')
                                         <div class="form-control-feedback">
                                             {{ $message }}
@@ -184,7 +185,8 @@
                                     Address in Myanmar
                                 </label>
                                 <div class="col-md-9">
-                                    <input type="text" class="form-control" name="address" placeholder="Address">
+                                    <input type="text" class="form-control" name="address" placeholder="Address"
+                                        value="{{ old('address') }}">
                                     @error('address')
                                         <div class="form-control-feedback">
                                             {{ $message }}
@@ -199,7 +201,8 @@
                                     Passport No
                                 </label>
                                 <div class="col-md-9">
-                                    <input type="text" class="form-control" name="passport" placeholder="Passport">
+                                    <input type="text" class="form-control" name="passport" placeholder="Passport"
+                                        value="{{ old('passport') }}">
                                     @error('passport')
                                         <div class="form-control-feedback">
                                             {{ $message }}
@@ -214,7 +217,7 @@
                                 </label>
                                 <div class="col-md-9">
                                     <input type="text" class="form-control" name="passport_date"
-                                        placeholder="Date of Passport">
+                                        placeholder="Date of Passport" value="{{ old('passport_date') }}">
                                     @error('passport_date')
                                         <div class="form-control-feedback"> {{ $message }}
                                         </div>
@@ -230,7 +233,7 @@
                                 </label>
                                 <div class="col-md-9">
                                     <input type="text" class="form-control" name="passport_expiry_date"
-                                        placeholder="Passport Expiry Date">
+                                        placeholder="Passport Expiry Date" value="{{ old('passport_expiry_date') }}">
                                     @error('passport_expiry_date')
                                         <div class="form-control-feedback">
                                             {{ $message }}
@@ -246,7 +249,7 @@
                                 </label>
                                 <div class="col-md-9">
                                     <input type="text" class="form-control" name="place_of_passport"
-                                        placeholder="Place of Passport">
+                                        placeholder="Place of Passport" value="{{ old('place_of_passport') }}">
                                     @error('place_of_passport')
                                         <div class="form-control-feedback">
                                             {{ $message }}
@@ -277,7 +280,8 @@
                                     Weight
                                 </label>
                                 <div class="col-md-9">
-                                    <input type="text" class="form-control" name="weight" placeholder="Weight">
+                                    <input type="text" class="form-control" name="weight"
+                                        value="{{ old('weight') }}" placeholder="145cm">
                                     @error('weight')
                                         <div class="form-control-feedback">
                                             {{ $message }}
@@ -291,7 +295,8 @@
                                     Height
                                 </label>
                                 <div class="col-md-9">
-                                    <input type="text" class="form-control" name="height" placeholder="Height">
+                                    <input type="text" class="form-control" name="height" placeholder="50kg"
+                                        value="{{ old('height') }}">
                                     @error('height')
                                         <div class="form-control-feedback">
                                             {{ $message }}
@@ -303,7 +308,7 @@
 
                             <div class="mb-3 row">
                                 <label for="html5-text-input" class="col-md-3 col-form-label">
-                                    Tatto (တတ်တူးရှိ/မရှိ)
+                                    Tattoo (တတ်တူးရှိ/မရှိ)
                                 </label>
                                 <div class="col-md-9">
                                     <select name="tatto" class="form-control">
@@ -403,7 +408,8 @@
                                     သား
                                 </label>
                                 <div class="col-md-3">
-                                    <input type="text" class="form-control" name="son">
+                                    <input type="text" class="form-control" name="son"
+                                        value="{{ old('son') }}">
                                     @error('son')
                                         <div class="form-control-feedback">
                                             {{ $message }}
@@ -415,7 +421,8 @@
                                     အသက်
                                 </label>
                                 <div class="col-md-3">
-                                    <input type="text" class="form-control" name="son_age">
+                                    <input type="text" class="form-control" name="son_age"
+                                        value="{{ old('son_age') }}">
                                     @error('son_age')
                                         <div class="form-control-feedback">
                                             {{ $message }}
@@ -430,7 +437,8 @@
                                     သမီး
                                 </label>
                                 <div class="col-md-3">
-                                    <input type="text" class="form-control" name="daughter">
+                                    <input type="text" class="form-control" name="daughter"
+                                        value="{{ old('daughter') }}">
                                     @error('daughter')
                                         <div class="form-control-feedback">
                                             {{ $message }}
@@ -442,7 +450,8 @@
                                     အသက်
                                 </label>
                                 <div class="col-md-3">
-                                    <input type="text" class="form-control" name="daughter_age">
+                                    <input type="text" class="form-control" name="daughter_age"
+                                        value="{{ old('daughter_age') }}">
                                     @error('daughter_age')
                                         <div class="form-control-feedback">
                                             {{ $message }}
@@ -458,7 +467,7 @@
                                 </label>
                                 <div class="col-md-9">
                                     <input type="text" class="form-control" name="mother_name"
-                                        placeholder="Mother Name">
+                                        placeholder="Mother Name" value="{{ old('mother_name') }}">
                                     @error('mother_name')
                                         <div class="form-control-feedback">
                                             {{ $message }}
@@ -475,7 +484,7 @@
                                 </label>
                                 <div class="col-md-9">
                                     <input type="text" class="form-control" name="nation_religion"
-                                        placeholder="Nation / Religion">
+                                        placeholder="Nation / Religion" value="{{ old('nation_religion') }}">
                                     @error('nation_religion')
                                         <div class="form-control-feedback">
                                             {{ $message }}
@@ -491,7 +500,8 @@
                                     (ထင်ရှားသော အမှတ်အသား)
                                 </label>
                                 <div class="col-md-9">
-                                    <input type="text" class="form-control" name="prominent_sign">
+                                    <input type="text" class="form-control" name="prominent_sign"
+                                        value="{{ old('prominent_sign') }}">
                                     @error('prominent_sign')
                                         <div class="form-control-feedback">
                                             {{ $message }}
@@ -505,7 +515,8 @@
                                     Working Experience
                                 </label>
                                 <div class="col-md-9">
-                                    <input type="text" class="form-control" name="working_experience">
+                                    <input type="text" class="form-control" name="working_experience"
+                                        value="{{ old('working_experience') }}">
                                     @error('working_experience')
                                         <div class="form-control-feedback">
                                             {{ $message }}
@@ -521,7 +532,8 @@
                                     Address
                                 </label>
                                 <div class="col-md-9">
-                                    <input type="text" class="form-control" name="address_line_one">
+                                    <input type="text" class="form-control" name="address_line_one"
+                                        value="{{ old('address_line_one') }}">
                                     @error('address_line_one')
                                         <div class="form-control-feedback">
                                             {{ $message }}
@@ -536,7 +548,8 @@
                                     Contact No (Own)
                                 </label>
                                 <div class="col-md-9">
-                                    <input type="text" class="form-control" name="phone" placeholder="Phone">
+                                    <input type="text" class="form-control" name="phone" placeholder="Phone"
+                                        value="{{ old('phone') }}">
                                     @error('phone')
                                         <div class="form-control-feedback">
                                             {{ $message }}
@@ -552,7 +565,8 @@
                                     Contact No (Family)
                                 </label>
                                 <div class="col-md-9">
-                                    <input type="text" class="form-control" name="phone_family">
+                                    <input type="text" class="form-control" name="phone_family"
+                                        value="{{ old('phone_family') }}">
                                     @error('phone_family')
                                         <div class="form-control-feedback">
                                             {{ $message }}
@@ -567,7 +581,8 @@
                                     အမွေစားအမွေခံ အမည်
                                 </label>
                                 <div class="col-md-9">
-                                    <input type="text" class="form-control" name="name_of_heir">
+                                    <input type="text" class="form-control" name="name_of_heir"
+                                        value="{{ old('name_of_heir') }}">
                                     @error('name_of_heir')
                                         <div class="form-control-feedback">
                                             {{ $message }}
@@ -582,7 +597,8 @@
                                     တော်စပ်ပုံ
                                 </label>
                                 <div class="col-md-9">
-                                    <input type="text" class="form-control" name="relative">
+                                    <input type="text" class="form-control" name="relative"
+                                        value="{{ old('relative') }}">
                                     @error('relative')
                                         <div class="form-control-feedback">
                                             {{ $message }}
@@ -597,7 +613,8 @@
                                     အမွေစားအမွေခံ၏ မှတ်ပုံတင်နံပါတ်
                                 </label>
                                 <div class="col-md-9">
-                                    <input type="text" class="form-control" name="nrc_of_heir">
+                                    <input type="text" class="form-control" name="nrc_of_heir"
+                                        value="{{ old('nrc_of_heir') }}">
                                     @error('nrc_of_heir')
                                         <div class="form-control-feedback">
                                             {{ $message }}
@@ -611,7 +628,8 @@
                                     Passport ကုန်ကျစရိတ်
                                 </label>
                                 <div class="col-md-9">
-                                    <input type="text" class="form-control" name="passport_cost">
+                                    <input type="text" class="form-control" name="passport_cost"
+                                        value="{{ old('passport_cost') }}">
                                     @error('passport_cost')
                                         <div class="form-control-feedback">
                                             {{ $message }}
@@ -625,7 +643,8 @@
                                     ကားခ
                                 </label>
                                 <div class="col-md-9">
-                                    <input type="text" class="form-control" name="car_charges">
+                                    <input type="text" class="form-control" name="car_charges"
+                                        value="{{ old('car_charges') }}">
                                     @error('car_charges')
                                         <div class="form-control-feedback">
                                             {{ $message }}
@@ -640,7 +659,8 @@
                                     Passport လျောက်/အပ်
                                 </label>
                                 <div class="col-md-9">
-                                    <input type="text" class="form-control" name="passport_register_status">
+                                    <input type="text" class="form-control" name="passport_register_status"
+                                        value="{{ old('passport_register_status') }}">
                                     @error('passport_register_status')
                                         <div class="form-control-feedback">
                                             {{ $message }}
@@ -655,7 +675,8 @@
                                     Leader
                                 </label>
                                 <div class="col-md-9">
-                                    <input type="text" class="form-control" name="leader">
+                                    <input type="text" class="form-control" name="leader"
+                                        value="{{ old('leader') }}">
                                     @error('leader')
                                         <div class="form-control-feedback">
                                             {{ $message }}
@@ -670,7 +691,8 @@
                                     စရံငွေ
                                 </label>
                                 <div class="col-md-9">
-                                    <input type="text" class="form-control" name="deposit">
+                                    <input type="text" class="form-control" name="deposit"
+                                        value="{{ old('deposit') }}">
                                     @error('deposit')
                                         <div class="form-control-feedback">
                                             {{ $message }}
@@ -733,7 +755,8 @@
                                     သွားရောက်လိုသည်နိုင်ငံ
                                 </label>
                                 <div class="col-md-9">
-                                    <input type="text" class="form-control" name="selected_country">
+                                    <input type="text" class="form-control" name="selected_country"
+                                        value="{{ old('selected_country') }}">
                                     @error('selected_country')
                                         <div class="form-control-feedback">
                                             {{ $message }}
@@ -749,7 +772,8 @@
                                     (သွားရောက်လိုသည့်အကြောင်းအရာ)
                                 </label>
                                 <div class="col-md-9">
-                                    <input type="text" class="form-control" name="go_reason" placeholder="For Job">
+                                    <input type="text" class="form-control" name="go_reason" placeholder="For Job"
+                                        value="{{ old('go_reason') }}">
                                     @error('go_reason')
                                         <div class="form-control-feedback">
                                             {{ $message }}
@@ -928,7 +952,7 @@
                                     Remark
                                 </label>
                                 <div class="col-md-9">
-                                    <textarea class="form-control" name="remark" id="" cols="30" rows="5"></textarea>
+                                    <textarea class="form-control" name="remark" id="" cols="30" rows="5">{{ old('remark') }}</textarea>
                                     @error('remark')
                                         <div class="form-control-feedback">
                                             {{ $message }}
