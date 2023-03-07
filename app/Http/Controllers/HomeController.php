@@ -25,7 +25,7 @@ class HomeController extends Controller
     public function index()
     {
         $chart_options = [
-            'chart_title' => 'Customers by months',
+            'chart_title' => 'Daily Labour',
             'report_type' => 'group_by_date',
             'model' => 'App\Models\Passport',
             'group_by_field' => 'created_at',
