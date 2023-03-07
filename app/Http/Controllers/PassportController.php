@@ -308,4 +308,10 @@ class PassportController extends Controller
         Excel::import(new PassportImport, request()->file('file'));
         return redirect()->back()->with('success', 'Your processing has been completed.');
     }
+
+    public function findPassportAjax($id)
+    {
+        $passport = Passport::findOrFail($id);
+        return json_encode($passport);
+    }
 }

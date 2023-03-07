@@ -5,7 +5,9 @@ use App\Http\Controllers\ContractController;
 use App\Http\Controllers\CountryController;
 use App\Http\Controllers\DemandController;
 use App\Http\Controllers\FileManagementController;
+use App\Http\Controllers\LabourDocsController;
 use App\Http\Controllers\LabourManagementController;
+use App\Http\Controllers\LabourPaymentController;
 use App\Http\Controllers\MembersListsController;
 use App\Http\Controllers\OverseasAgentController;
 use App\Http\Controllers\PassportController;
@@ -31,7 +33,7 @@ Route::middleware('auth')->group(function () {
     Route::resource('overseas_agent', OverseasAgentController::class);
     Route::get('overseas_agent_ajax/{id}', [OverseasAgentController::class, 'dependentAjax'])->name('overseas_agent_ajax');
     Route::resource('passport', PassportController::class);
-
+    Route::get('find_passport_ajax/{id}', [PassportController::class, 'findPassportAjax'])->name('find_passport_ajax');
     Route::post('/passport_import', [PassportController::class, 'passportImport'])->name('passport_import');
 
     Route::get('/reject_passport/{id}', [PassportController::class, 'rejectPassport'])->name('reject_passport');
@@ -62,4 +64,14 @@ Route::middleware('auth')->group(function () {
     Route::get('file_upload_view_demand/{id}', [FileManagementController::class, 'fileUploadViewDemand'])->name('file_upload_view_demand');
     Route::get('file_upload_view_contract/{id}', [FileManagementController::class, 'fileUploadViewContract'])->name('file_upload_view_contract');
     Route::get('file_upload_view_sending/{id}', [FileManagementController::class, 'fileUploadViewSending'])->name('file_upload_view_sending');
+
+
+    Route::resource('labour_docs', LabourDocsController::class);
+    Route::get('labour_docs_management/{id}', [LabourDocsController::class, 'labourDocsManagement'])->name('labour_docs_management');
+
+
+    Route::resource('labour_payment', LabourPaymentController::class);
+    Route::get('labour_payment_files/{id}', [LabourPaymentController::class, 'labourPaymentFiles'])->name('labour_payment_files');
+    Route::post('labour_payment_file_upload', [LabourPaymentController::class, 'labourPaymentFileUpload'])->name('labour_payment_file_upload');
+
 });

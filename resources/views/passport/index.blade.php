@@ -549,6 +549,11 @@
                                                 </a>
 
                                                 <a class="dropdown-item"
+                                                    href="{{ route('labour_docs_management', $passport->id) }}">
+                                                    Manage Docs
+                                                </a>
+
+                                                <a class="dropdown-item"
                                                     href="{{ route('reject_passport', $passport->id) }}">
                                                     Reject
                                                 </a>

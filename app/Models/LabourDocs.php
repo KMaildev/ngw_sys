@@ -5,12 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class PassportPaymentFile extends Model
+class LabourDocs extends Model
 {
     use HasFactory;
-
-    public function user_table()
-    {
-        return $this->belongsTo(User::class, 'user_id', 'id');
-    }
 }

@@ -65,6 +65,14 @@
 
 
             <li class="menu-item">
+                <a href="{{ route('labour_payment.index') }}" class="menu-link">
+                    <i class="menu-icon fa fa-credit-card"></i>
+                    Labour Payment
+                </a>
+            </li>
+
+
+            <li class="menu-item">
                 <a href="{{ route('demand.index') }}" class="menu-link">
                     <i class="menu-icon fa fa-file"></i>
                     Demand
