@@ -2632,6 +2632,8 @@ return array(
     'Intervention\\Image\\Response' => $vendorDir . '/intervention/image/src/Intervention/Image/Response.php',
     'Intervention\\Image\\Size' => $vendorDir . '/intervention/image/src/Intervention/Image/Size.php',
     'JsonException' => $vendorDir . '/symfony/polyfill-php73/Resources/stubs/JsonException.php',
+    'LaravelDaily\\LaravelCharts\\Classes\\LaravelChart' => $vendorDir . '/laraveldaily/laravel-charts/src/Classes/LaravelChart.php',
+    'LaravelDaily\\LaravelCharts\\LaravelChartsServiceProvider' => $vendorDir . '/laraveldaily/laravel-charts/src/LaravelChartsServiceProvider.php',
     'Laravel\\Sail\\Console\\InstallCommand' => $vendorDir . '/laravel/sail/src/Console/InstallCommand.php',
     'Laravel\\Sail\\Console\\PublishCommand' => $vendorDir . '/laravel/sail/src/Console/PublishCommand.php',
     'Laravel\\Sail\\SailServiceProvider' => $vendorDir . '/laravel/sail/src/SailServiceProvider.php',

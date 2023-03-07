@@ -2,33 +2,26 @@
 @section('content')
     <div class="container-xxl flex-grow-1 container-p-y">
         <div class="row">
-            <h1 style="color: red;">
-                Under construction
-            </h1>
-            <h5>
-                Data Analysis Report
-            </h5>
-            <div class="col-lg-12 col-md-12 mb-4">
+
+
+            <div class="col-12 py-5">
                 <div class="card">
-                    <div class="card-header d-flex justify-content-between align-items-center">
-                        <h5 class="card-title mb-0">Analytics</h5>
-                        <div class="dropdown">
-                            <button class="btn p-0" type="button" id="analyticsOptions" data-bs-toggle="dropdown"
-                                aria-haspopup="true" aria-expanded="false">
-                                <i class="bx bx-dots-vertical-rounded"></i>
-                            </button>
-                            <div class="dropdown-menu dropdown-menu-end" aria-labelledby="analyticsOptions">
-                                <a class="dropdown-item" href="javascript:void(0);">Select All</a>
-                                <a class="dropdown-item" href="javascript:void(0);">Refresh</a>
-                                <a class="dropdown-item" href="javascript:void(0);">Share</a>
-                            </div>
+                    <div class="card-body py-5">
+                        <div style="height: 300px; width: 100%;">
+                            <h6>{{ $passports_report->options['chart_title'] }}</h6>
+                            {!! $passports_report->renderHtml() !!}
                         </div>
-                    </div>
-                    <div class="card-body pb-2">
-                        <div id="analyticsBarChart"></div>
                     </div>
                 </div>
             </div>
+
         </div>
     </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script type="text/javascript">
+        {!! $passports_report->renderChartJsLibrary() !!}
+        {!! $passports_report->renderJs() !!}
+    </script>
 @endsection

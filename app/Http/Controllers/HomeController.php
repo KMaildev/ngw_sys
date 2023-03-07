@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use LaravelDaily\LaravelCharts\Classes\LaravelChart;
 
 class HomeController extends Controller
 {
@@ -23,6 +24,19 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('home');
+        $chart_options = [
+            'chart_title' => 'Customers by months',
+            'report_type' => 'group_by_date',
+            'model' => 'App\Models\Passport',
+            'group_by_field' => 'created_at',
+            'group_by_period' => 'day',
+            'chart_type' => 'bar',
+            'filter_field' => 'created_at',
+            // 'filter_days' => 30, 
+        ];
+
+        $passports_report = new LaravelChart($chart_options);
+
+        return view('home', compact('passports_report'));
     }
 }

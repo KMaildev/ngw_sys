@@ -26,9 +26,8 @@ Auth::routes(['register' => false]);
 
 Route::middleware('auth')->group(function () {
 
-    // Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+    Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
-    Route::get('/home', [AgentListController::class, 'index'])->name('home');
     Route::resource('users', UserController::class);
     Route::resource('country', CountryController::class);
     Route::resource('agent_list', AgentListController::class);

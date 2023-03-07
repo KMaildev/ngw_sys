@@ -2,7 +2,7 @@
     <div class="container-xxl d-flex h-100">
 
         <ul class="menu-inner">
-            <li class="menu-item" hidden>
+            <li class="menu-item">
                 <a href="{{ route('home') }}" class="menu-link">
                     <i class="menu-icon fa fa-home"></i>
                     Dashboards
