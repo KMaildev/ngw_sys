@@ -3,7 +3,7 @@
         'name' => 'laravel/laravel',
         'pretty_version' => 'dev-main',
         'version' => 'dev-main',
-        'reference' => 'c93cd9c7a1bb642bae6d69b98d0aee2ea1203e27',
+        'reference' => 'd616bfb5c70786b9f129c95e4e93d9c5e179165b',
         'type' => 'project',
         'install_path' => __DIR__ . '/../../',
         'aliases' => array(),
@@ -442,7 +442,7 @@
         'laravel/laravel' => array(
             'pretty_version' => 'dev-main',
             'version' => 'dev-main',
-            'reference' => 'c93cd9c7a1bb642bae6d69b98d0aee2ea1203e27',
+            'reference' => 'd616bfb5c70786b9f129c95e4e93d9c5e179165b',
             'type' => 'project',
             'install_path' => __DIR__ . '/../../',
             'aliases' => array(),
@@ -1069,6 +1069,15 @@
             'install_path' => __DIR__ . '/../sebastian/version',
             'aliases' => array(),
             'dev_requirement' => true,
+        ),
+        'spatie/laravel-permission' => array(
+            'pretty_version' => '5.9.1',
+            'version' => '5.9.1.0',
+            'reference' => 'a88ed98c8937442737e0c50163682e832d608f13',
+            'type' => 'library',
+            'install_path' => __DIR__ . '/../spatie/laravel-permission',
+            'aliases' => array(),
+            'dev_requirement' => false,
         ),
         'studio-42/elfinder' => array(
             'pretty_version' => '2.1.61',

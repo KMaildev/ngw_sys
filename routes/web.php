@@ -11,6 +11,8 @@ use App\Http\Controllers\LabourPaymentController;
 use App\Http\Controllers\MembersListsController;
 use App\Http\Controllers\OverseasAgentController;
 use App\Http\Controllers\PassportController;
+use App\Http\Controllers\PermissionController;
+use App\Http\Controllers\RoleController;
 use App\Http\Controllers\SendingController;
 use App\Http\Controllers\TownshipController;
 use App\Http\Controllers\UserController;
@@ -74,4 +76,6 @@ Route::middleware('auth')->group(function () {
     Route::get('labour_payment_files/{id}', [LabourPaymentController::class, 'labourPaymentFiles'])->name('labour_payment_files');
     Route::post('labour_payment_file_upload', [LabourPaymentController::class, 'labourPaymentFileUpload'])->name('labour_payment_file_upload');
 
+    Route::resource('role', RoleController::class);
+    Route::resource('permission', PermissionController::class);
 });

@@ -25,7 +25,7 @@ class LabourPaymentController extends Controller
         }
 
         if (request('search')) {
-            $users = PassportPayment::whereHas('passport_table', function ($query) {
+            $payments = PassportPayment::whereHas('passport_table', function ($query) {
                 $query->where('name', 'Like', '%' . request('search') . '%');
                 $query->orWhere('father_name', 'Like', '%' . request('search') . '%');
                 $query->orWhere('nrc', 'Like', '%' . request('search') . '%');
@@ -67,6 +67,11 @@ class LabourPaymentController extends Controller
         $passport_payment->deposit = $deposit_amount;
         $passport_payment->deposit_date = $deposit_date;
         $passport_payment->passport_id = $passport_id;
+
+        $passport_payment->remark = $request->remark;
+        $passport_payment->payment_reason = $request->payment_reason;
+
+
         $passport_payment->user_id = auth()->user()->id;
         $passport_payment->save();
         $passport_payment_id = $passport_payment->id;

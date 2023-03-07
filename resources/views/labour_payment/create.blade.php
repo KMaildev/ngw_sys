@@ -99,6 +99,25 @@
                         </div>
 
                         <div class="mb-3 row">
+                            <label for="html5-text-input" class="col-md-3 col-form-label">
+                                payment_reason
+                            </label>
+                            <div class="col-md-9">
+                                <input type="text" class="form-control" name="payment_reason"
+                                    value="{{ old('payment_reason') }}">
+                            </div>
+                        </div>
+
+                        <div class="mb-3 row">
+                            <label for="html5-text-input" class="col-md-3 col-form-label">
+                                Remark
+                            </label>
+                            <div class="col-md-9">
+                                <input type="text" class="form-control" name="remark" value="{{ old('remark') }}">
+                            </div>
+                        </div>
+
+                        <div class="mb-3 row">
                             <label for="html5-search-input" class="col-md-3 col-form-label"></label>
                             <div class="col-md-9">
                                 <button type="submit" class="btn btn-primary">Save</button>

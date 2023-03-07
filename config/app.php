@@ -175,7 +175,8 @@ return [
         App\Providers\EventServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
         Maatwebsite\Excel\ExcelServiceProvider::class,
-        Barryvdh\Elfinder\ElfinderServiceProvider::class
+        Barryvdh\Elfinder\ElfinderServiceProvider::class,
+        Spatie\Permission\PermissionServiceProvider::class,
 
     ],
 

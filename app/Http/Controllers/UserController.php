@@ -7,6 +7,7 @@ use App\Http\Requests\UpdateUser;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
+use Spatie\Permission\Models\Role;
 
 class UserController extends Controller
 {
@@ -34,7 +35,8 @@ class UserController extends Controller
      */
     public function create()
     {
-        return view('user.create');
+        $roles = Role::all();
+        return view('user.create', compact('roles'));
     }
 
     /**
@@ -62,6 +64,7 @@ class UserController extends Controller
         $employee->join_date = $request->join_date;
         $employee->passport_photo = $path ?? '';
         $employee->save();
+        $employee->syncRoles($request->roles);
         return redirect()->back()->with('success', 'Employee is successfully created.');
     }
 
@@ -85,7 +88,10 @@ class UserController extends Controller
     public function edit($id)
     {
         $employee = User::findOrFail($id);
-        return view('user.edit', compact('employee'));
+        $old_roles = $employee->roles->pluck('id')->toArray();
+        $roles = Role::all();
+
+        return view('user.edit', compact('employee', 'old_roles', 'roles'));
     }
 
     /**
@@ -114,6 +120,7 @@ class UserController extends Controller
         $employee->join_date = $request->join_date;
         $employee->passport_photo = $path ?? $employee->passport_photo;
         $employee->update();
+        $employee->syncRoles($request->roles);
         return redirect()->back()->with('success', 'Employee is successfully updated.');
     }
 
