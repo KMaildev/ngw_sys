@@ -99,7 +99,7 @@
 
 
             <li class="menu-item">
-                <a href="{{ route('labour_payment.index') }}" class="menu-link">
+                <a href="{{ route('medical_test.index') }}" class="menu-link">
                     <i class="menu-icon fa fa-credit-card"></i>
                     Medical Test
                 </a>

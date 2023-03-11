@@ -9,10 +9,12 @@ use App\Http\Controllers\HospitalController;
 use App\Http\Controllers\LabourDocsController;
 use App\Http\Controllers\LabourManagementController;
 use App\Http\Controllers\LabourPaymentController;
+use App\Http\Controllers\MedicalTestController;
 use App\Http\Controllers\MembersListsController;
 use App\Http\Controllers\NrcController;
 use App\Http\Controllers\OverseasAgentController;
 use App\Http\Controllers\PassportController;
+use App\Http\Controllers\PassportDatatableController;
 use App\Http\Controllers\PermissionController;
 use App\Http\Controllers\RoleController;
 use App\Http\Controllers\SendingController;
@@ -81,6 +83,10 @@ Route::middleware('auth')->group(function () {
     Route::resource('permission', PermissionController::class);
     Route::resource('nrc', NrcController::class);
     Route::get('get_nrc_by_code/{id}', [NrcController::class, 'getByNrcCode'])->name('get_nrc_by_code');
-
     Route::resource('hospital', HospitalController::class);
+    Route::resource('medical_test', MedicalTestController::class);
+
+
+    Route::resource('passport_datatable', PassportDatatableController::class);
+    Route::get('get_passport_datatable', [PassportDatatableController::class, 'index'])->name('get_passport_datatable');
 });

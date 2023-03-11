@@ -43,7 +43,7 @@
 
     <link rel="stylesheet" href="{{ asset('assets/vendor/libs/select2/select2.css') }}" />
     <link rel="stylesheet" href="{{ asset('assets/datetime/jquery.datetimepicker.css') }}">
-
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.12.1/css/jquery.dataTables.css">
 </head>
 <style>
     .tbbg {
@@ -92,6 +92,8 @@
 
     <script src="{{ asset('assets/datetime/jquery.datetimepicker.js') }}"></script>
     <script src="{{ asset('assets/custom/custom.js') }}"></script>
+
+    <script type="text/javascript" src="{{ asset('assets/vendor/libs/datatables/jquery.dataTables.js') }}"></script>
 
     @yield('script')
     <script>

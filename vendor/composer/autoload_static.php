@@ -38,6 +38,7 @@ class ComposerStaticInit255bff90faa8e45e478e27bc880e200a
         '58571171fd5812e6e447dce228f52f4d' => __DIR__ . '/..' . '/laravel/framework/src/Illuminate/Support/helpers.php',
         'ec07570ca5a812141189b1fa81503674' => __DIR__ . '/..' . '/phpunit/phpunit/src/Framework/Assert/Functions.php',
         '377b22b161c09ed6e5152de788ca020a' => __DIR__ . '/..' . '/spatie/laravel-permission/src/helpers.php',
+        '0b47d6d4a00ca9112ba3953b49e7c9a4' => __DIR__ . '/..' . '/yajra/laravel-datatables-oracle/src/helper.php',
     );
 
     public static $prefixLengthsPsr4 = array (
@@ -48,6 +49,10 @@ class ComposerStaticInit255bff90faa8e45e478e27bc880e200a
         'Z' => 
         array (
             'ZipStream\\' => 10,
+        ),
+        'Y' => 
+        array (
+            'Yajra\\DataTables\\' => 17,
         ),
         'W' => 
         array (
@@ -203,6 +208,10 @@ class ComposerStaticInit255bff90faa8e45e478e27bc880e200a
         'ZipStream\\' => 
         array (
             0 => __DIR__ . '/..' . '/maennchen/zipstream-php/src',
+        ),
+        'Yajra\\DataTables\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/yajra/laravel-datatables-oracle/src',
         ),
         'Whoops\\' => 
         array (
@@ -618,6 +627,7 @@ class ComposerStaticInit255bff90faa8e45e478e27bc880e200a
         'App\\Http\\Controllers\\LabourDocsController' => __DIR__ . '/../..' . '/app/Http/Controllers/LabourDocsController.php',
         'App\\Http\\Controllers\\LabourManagementController' => __DIR__ . '/../..' . '/app/Http/Controllers/LabourManagementController.php',
         'App\\Http\\Controllers\\LabourPaymentController' => __DIR__ . '/../..' . '/app/Http/Controllers/LabourPaymentController.php',
+        'App\\Http\\Controllers\\MedicalTestController' => __DIR__ . '/../..' . '/app/Http/Controllers/MedicalTestController.php',
         'App\\Http\\Controllers\\MembersListsController' => __DIR__ . '/../..' . '/app/Http/Controllers/MembersListsController.php',
         'App\\Http\\Controllers\\NrcController' => __DIR__ . '/../..' . '/app/Http/Controllers/NrcController.php',
         'App\\Http\\Controllers\\OverseasAgentController' => __DIR__ . '/../..' . '/app/Http/Controllers/OverseasAgentController.php',
@@ -642,6 +652,7 @@ class ComposerStaticInit255bff90faa8e45e478e27bc880e200a
         'App\\Http\\Requests\\StoreContracts' => __DIR__ . '/../..' . '/app/Http/Requests/StoreContracts.php',
         'App\\Http\\Requests\\StoreCountry' => __DIR__ . '/../..' . '/app/Http/Requests/StoreCountry.php',
         'App\\Http\\Requests\\StoreDemand' => __DIR__ . '/../..' . '/app/Http/Requests/StoreDemand.php',
+        'App\\Http\\Requests\\StoreHospital' => __DIR__ . '/../..' . '/app/Http/Requests/StoreHospital.php',
         'App\\Http\\Requests\\StoreLabourManagement' => __DIR__ . '/../..' . '/app/Http/Requests/StoreLabourManagement.php',
         'App\\Http\\Requests\\StoreLabourPayment' => __DIR__ . '/../..' . '/app/Http/Requests/StoreLabourPayment.php',
         'App\\Http\\Requests\\StoreOverseaAgency' => __DIR__ . '/../..' . '/app/Http/Requests/StoreOverseaAgency.php',
@@ -654,6 +665,7 @@ class ComposerStaticInit255bff90faa8e45e478e27bc880e200a
         'App\\Http\\Requests\\UpdateContracts' => __DIR__ . '/../..' . '/app/Http/Requests/UpdateContracts.php',
         'App\\Http\\Requests\\UpdateCountry' => __DIR__ . '/../..' . '/app/Http/Requests/UpdateCountry.php',
         'App\\Http\\Requests\\UpdateDemand' => __DIR__ . '/../..' . '/app/Http/Requests/UpdateDemand.php',
+        'App\\Http\\Requests\\UpdateHospital' => __DIR__ . '/../..' . '/app/Http/Requests/UpdateHospital.php',
         'App\\Http\\Requests\\UpdateOverseaAgency' => __DIR__ . '/../..' . '/app/Http/Requests/UpdateOverseaAgency.php',
         'App\\Http\\Requests\\UpdatePassport' => __DIR__ . '/../..' . '/app/Http/Requests/UpdatePassport.php',
         'App\\Http\\Requests\\UpdatePermission' => __DIR__ . '/../..' . '/app/Http/Requests/UpdatePermission.php',
@@ -6709,6 +6721,22 @@ class ComposerStaticInit255bff90faa8e45e478e27bc880e200a
         'Whoops\\Util\\Misc' => __DIR__ . '/..' . '/filp/whoops/src/Whoops/Util/Misc.php',
         'Whoops\\Util\\SystemFacade' => __DIR__ . '/..' . '/filp/whoops/src/Whoops/Util/SystemFacade.php',
         'Whoops\\Util\\TemplateHelper' => __DIR__ . '/..' . '/filp/whoops/src/Whoops/Util/TemplateHelper.php',
+        'Yajra\\DataTables\\ApiResourceDataTable' => __DIR__ . '/..' . '/yajra/laravel-datatables-oracle/src/ApiResourceDataTable.php',
+        'Yajra\\DataTables\\CollectionDataTable' => __DIR__ . '/..' . '/yajra/laravel-datatables-oracle/src/CollectionDataTable.php',
+        'Yajra\\DataTables\\Contracts\\DataTable' => __DIR__ . '/..' . '/yajra/laravel-datatables-oracle/src/Contracts/DataTable.php',
+        'Yajra\\DataTables\\Contracts\\Formatter' => __DIR__ . '/..' . '/yajra/laravel-datatables-oracle/src/Contracts/Formatter.php',
+        'Yajra\\DataTables\\DataTableAbstract' => __DIR__ . '/..' . '/yajra/laravel-datatables-oracle/src/DataTableAbstract.php',
+        'Yajra\\DataTables\\DataTables' => __DIR__ . '/..' . '/yajra/laravel-datatables-oracle/src/DataTables.php',
+        'Yajra\\DataTables\\DataTablesServiceProvider' => __DIR__ . '/..' . '/yajra/laravel-datatables-oracle/src/DataTablesServiceProvider.php',
+        'Yajra\\DataTables\\EloquentDataTable' => __DIR__ . '/..' . '/yajra/laravel-datatables-oracle/src/EloquentDataTable.php',
+        'Yajra\\DataTables\\Exceptions\\Exception' => __DIR__ . '/..' . '/yajra/laravel-datatables-oracle/src/Exceptions/Exception.php',
+        'Yajra\\DataTables\\Facades\\DataTables' => __DIR__ . '/..' . '/yajra/laravel-datatables-oracle/src/Facades/DataTables.php',
+        'Yajra\\DataTables\\Processors\\DataProcessor' => __DIR__ . '/..' . '/yajra/laravel-datatables-oracle/src/Processors/DataProcessor.php',
+        'Yajra\\DataTables\\Processors\\RowProcessor' => __DIR__ . '/..' . '/yajra/laravel-datatables-oracle/src/Processors/RowProcessor.php',
+        'Yajra\\DataTables\\QueryDataTable' => __DIR__ . '/..' . '/yajra/laravel-datatables-oracle/src/QueryDataTable.php',
+        'Yajra\\DataTables\\Utilities\\Config' => __DIR__ . '/..' . '/yajra/laravel-datatables-oracle/src/Utilities/Config.php',
+        'Yajra\\DataTables\\Utilities\\Helper' => __DIR__ . '/..' . '/yajra/laravel-datatables-oracle/src/Utilities/Helper.php',
+        'Yajra\\DataTables\\Utilities\\Request' => __DIR__ . '/..' . '/yajra/laravel-datatables-oracle/src/Utilities/Request.php',
         'ZipStream\\Bigint' => __DIR__ . '/..' . '/maennchen/zipstream-php/src/Bigint.php',
         'ZipStream\\DeflateStream' => __DIR__ . '/..' . '/maennchen/zipstream-php/src/DeflateStream.php',
         'ZipStream\\Exception' => __DIR__ . '/..' . '/maennchen/zipstream-php/src/Exception.php',
