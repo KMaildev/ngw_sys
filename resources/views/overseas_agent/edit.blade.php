@@ -113,6 +113,17 @@
                         </div>
 
                         <div class="mb-3 row">
+                            <label for="html5-text-input" class="col-md-3 col-form-label">Remark</label>
+                            <div class="col-md-9">
+                                <textarea class="form-control @error('remark') is-invalid @enderror" name="remark" id="" cols="20"
+                                    rows="5">{{ $overseas_agency->remark ?? '' }}</textarea>
+                                @error('remark')
+                                    <div class="invalid-feedback"> {{ $message }} </div>
+                                @enderror
+                            </div>
+                        </div>
+
+                        <div class="mb-3 row">
                             <label for="html5-search-input" class="col-md-3 col-form-label"></label>
                             <div class="col-md-9">
                                 <button type="submit" class="btn btn-primary">Save</button>

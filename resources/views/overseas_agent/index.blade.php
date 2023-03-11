@@ -57,6 +57,9 @@
                                     Country
                                 </th>
                                 <th class="text-center text-white" style="background-color: #296166;">
+                                    Remark
+                                </th>
+                                <th class="text-center text-white" style="background-color: #296166;">
                                     Action
                                 </th>
                             </tr>
@@ -81,11 +84,15 @@
                                     </td>
 
                                     <td>
-                                        {{ $overseas_agency->company_phone }}
+                                        <a href="tel:{{ $overseas_agency->company_phone }}">
+                                            {{ $overseas_agency->company_phone }}
+                                        </a>
                                     </td>
 
                                     <td>
-                                        {{ $overseas_agency->company_email }}
+                                        <a href="mailto:{{ $overseas_agency->company_email }}">
+                                            {{ $overseas_agency->company_email }}
+                                        </a>
                                     </td>
 
                                     <td>
@@ -94,6 +101,10 @@
 
                                     <td>
                                         {{ $overseas_agency->countries_table->title ?? '' }}
+                                    </td>
+
+                                    <td>
+                                        {{ $overseas_agency->remark ?? '' }}
                                     </td>
 
                                     <td>

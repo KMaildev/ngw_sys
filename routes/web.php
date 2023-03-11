@@ -9,6 +9,7 @@ use App\Http\Controllers\LabourDocsController;
 use App\Http\Controllers\LabourManagementController;
 use App\Http\Controllers\LabourPaymentController;
 use App\Http\Controllers\MembersListsController;
+use App\Http\Controllers\NrcController;
 use App\Http\Controllers\OverseasAgentController;
 use App\Http\Controllers\PassportController;
 use App\Http\Controllers\PermissionController;
@@ -77,4 +78,6 @@ Route::middleware('auth')->group(function () {
 
     Route::resource('role', RoleController::class);
     Route::resource('permission', PermissionController::class);
+    Route::resource('nrc', NrcController::class);
+    Route::get('get_nrc_by_code/{id}', [NrcController::class, 'getByNrcCode'])->name('get_nrc_by_code');
 });

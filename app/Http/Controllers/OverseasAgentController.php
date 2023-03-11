@@ -23,6 +23,7 @@ class OverseasAgentController extends Controller
             ->orWhere('company_phone', 'LIKE', "%{$search}%")
             ->orWhere('company_email', 'LIKE', "%{$search}%")
             ->orWhere('company_address', 'LIKE', "%{$search}%")
+            ->orWhere('remark', 'LIKE', "%{$search}%")
             ->get();
         return view('overseas_agent.index', compact('overseas_agencies'));
     }
@@ -54,6 +55,7 @@ class OverseasAgentController extends Controller
         $oversea->company_address = $request->company_address;
         $oversea->countrie_id = $request->countrie_id;
         $oversea->contact = $request->contact;
+        $oversea->remark = $request->remark;
         $oversea->save();
         return redirect()->back()->with('success', 'Process is completed.');
     }
@@ -99,6 +101,7 @@ class OverseasAgentController extends Controller
         $oversea->company_address = $request->company_address;
         $oversea->countrie_id = $request->countrie_id;
         $oversea->contact = $request->contact;
+        $oversea->remark = $request->remark;
         $oversea->update();
         return redirect()->back()->with('success', 'Process is completed.');
     }

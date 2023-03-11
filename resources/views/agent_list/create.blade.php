@@ -40,19 +40,123 @@
                             </div>
                         </div>
 
-
                         <div class="mb-3 row">
                             <label for="html5-text-input" class="col-md-3 col-form-label">
-                                NRC
+                                NRC No
                             </label>
-                            <div class="col-md-9">
-                                <input class="form-control @error('nrc') is-invalid @enderror" type="text" name="nrc"
-                                    value="{{ old('nrc') }}" />
-                                @error('nrc')
-                                    <div class="invalid-feedback"> {{ $message }} </div>
-                                @enderror
+
+                            <div class="col-md-5">
+                                <div id="nrcOption" class="py-1">
+                                    <div class="input-group">
+                                        <select name="nrcCode" id="nrcCode" class="form-control">
+                                            <option value="">
+                                                ---
+                                            </option>
+
+                                            <option value="1">
+                                                1/
+                                            </option>
+
+                                            <option value="2">
+                                                2/
+                                            </option>
+
+                                            <option value="3">
+                                                3/
+                                            </option>
+
+                                            <option value="4">
+                                                4/
+                                            </option>
+
+                                            <option value="5">
+                                                5/
+                                            </option>
+
+                                            <option value="6">
+                                                6/
+                                            </option>
+
+                                            <option value="7">
+                                                7/
+                                            </option>
+
+                                            <option value="8">
+                                                8/
+                                            </option>
+
+                                            <option value="9">
+                                                9/
+                                            </option>
+
+                                            <option value="10">
+                                                10/
+                                            </option>
+
+                                            <option value="11">
+                                                11/
+                                            </option>
+
+                                            <option value="12">
+                                                12/
+                                            </option>
+
+                                            <option value="13">
+                                                13/
+                                            </option>
+
+                                            <option value="14">
+                                                14/
+                                            </option>
+
+                                        </select>
+
+                                        <select name="nrcName" id="nrcName" class="form-control">
+                                        </select>
+
+                                        <select name="nrcType" id="nrcType" class="form-control">
+                                            <option value="(N)">
+                                                (N)
+                                            </option>
+                                            <option value="(A)">
+                                                (A)
+                                            </option>
+                                            <option value="(P)">
+                                                (P)
+                                            </option>
+                                            <option value="(Y)">
+                                                (Y)
+                                            </option>
+                                            <option value="(S)">
+                                                (S)
+                                            </option>
+                                            <option value="(T)">
+                                                (T)
+                                            </option>
+                                        </select>
+
+                                        <input type="text" class="form-control" name="nrcFieldCode" id="nrcFieldCode"
+                                            oninput="setNrcField()">
+                                    </div>
+                                </div>
+
+                                <div id="nrcEntry" class="py-2">
+                                    <input id="nrcNo" class="form-control @error('nrc') is-invalid @enderror"
+                                        type="text" name="nrc" value="{{ old('nrc') }}"
+                                        placeholder="Enter NRC No" />
+                                </div>
+                            </div>
+
+                            <div class="col-md-2">
+                                <span class="badge bg-primary" id="NRCSelect">
+                                    NRC
+                                </span>
+                                <span class="badge bg-secondary" id="NRCEnter">
+                                    NRC Enter
+                                </span>
                             </div>
                         </div>
+
 
                         <div class="mb-3 row">
                             <label for="html5-text-input" class="col-md-3 col-form-label">
@@ -101,8 +205,9 @@
                                 Household Members List
                             </label>
                             <div class="col-md-9">
-                                <input class="form-control @error('members_list_files') is-invalid @enderror" type="file"
-                                    name="members_list_files[]" value="{{ old('members_list_files') }}" multiple />
+                                <input class="form-control @error('members_list_files') is-invalid @enderror"
+                                    type="file" name="members_list_files[]" value="{{ old('members_list_files') }}"
+                                    multiple />
                                 @error('members_list_files')
                                     <div class="invalid-feedback"> {{ $message }} </div>
                                 @enderror
@@ -248,5 +353,69 @@
                 });
             }
         });
+
+        var nrcFieldCodeNo = '';
+        $('select[id="nrcCode"]').on("change", function() {
+            var nrc_code = $(this).val();
+            nrcFieldCodeNo = nrc_code;
+            setNrcField();
+            if (nrc_code) {
+                $.ajax({
+                    url: `/get_nrc_by_code/${nrc_code}`,
+                    type: "GET",
+                    dataType: "json",
+                    success: function(data) {
+                        $('select[name="nrcName"]').empty();
+                        $.each(data, function(key, value) {
+                            $('select[name="nrcName"]').append(
+                                '<option value="' + value.name_en + '">' +
+                                value.name_en +
+                                "</option>"
+                            );
+                        });
+                    },
+                });
+            }
+        });
+
+        var nrcFieldName = '';
+        $('select[name="nrcName"]').on("change", function() {
+            nrcFieldName = $(this).val();
+            setNrcField();
+        });
+
+        var nrcFieldType = '';
+        $('select[name="nrcType"]').on("change", function() {
+            nrcFieldType = $(this).val();
+            setNrcField();
+        });
+
+
+        // NRC INput 
+        function setNrcField() {
+            var nrcFieldCode = document.getElementById("nrcFieldCode").value;
+            console.log(nrcFieldCodeNo);
+            console.log(nrcFieldName);
+            console.log(nrcFieldType);
+            console.log(nrcFieldCode);
+            var nrc = nrcFieldCodeNo + '/' + nrcFieldName + nrcFieldType + nrcFieldCode;
+            document.getElementById("nrcNo").value = nrc;
+        }
+
+
+
+        $("#NRCSelect").click(function() {
+            $("#nrcOption").show();
+            $("#nrcEntry").hide();
+        });
+
+
+        $("#NRCEnter").click(function() {
+            $("#nrcOption").hide();
+            $("#nrcEntry").show();
+        });
+
+        $("#nrcOption").show();
+        $("#nrcEntry").hide();
     </script>
 @endsection
