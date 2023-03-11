@@ -5,6 +5,7 @@ use App\Http\Controllers\ContractController;
 use App\Http\Controllers\CountryController;
 use App\Http\Controllers\DemandController;
 use App\Http\Controllers\FileManagementController;
+use App\Http\Controllers\HospitalController;
 use App\Http\Controllers\LabourDocsController;
 use App\Http\Controllers\LabourManagementController;
 use App\Http\Controllers\LabourPaymentController;
@@ -80,4 +81,6 @@ Route::middleware('auth')->group(function () {
     Route::resource('permission', PermissionController::class);
     Route::resource('nrc', NrcController::class);
     Route::get('get_nrc_by_code/{id}', [NrcController::class, 'getByNrcCode'])->name('get_nrc_by_code');
+
+    Route::resource('hospital', HospitalController::class);
 });

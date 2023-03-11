@@ -48,7 +48,7 @@
                             <div class="col-md-5">
                                 <div id="nrcOption" class="py-1">
                                     <div class="input-group">
-                                        <select name="nrcCode" id="nrcCode" class="form-control">
+                                        <select name="nrcCode" id="nrcCode" class="form-control" required>
                                             <option value="">
                                                 ---
                                             </option>
@@ -111,10 +111,10 @@
 
                                         </select>
 
-                                        <select name="nrcName" id="nrcName" class="form-control">
+                                        <select name="nrcName" id="nrcName" class="form-control" required>
                                         </select>
 
-                                        <select name="nrcType" id="nrcType" class="form-control">
+                                        <select name="nrcType" id="nrcType" class="form-control" required>
                                             <option value="(N)">
                                                 (N)
                                             </option>
@@ -136,18 +136,18 @@
                                         </select>
 
                                         <input type="text" class="form-control" name="nrcFieldCode" id="nrcFieldCode"
-                                            oninput="setNrcField()">
+                                            oninput="setNrcField()" required>
                                     </div>
                                 </div>
 
-                                <div id="nrcEntry" class="py-2">
+                                <div id="nrcEntry" class="py-2" hidden>
                                     <input id="nrcNo" class="form-control @error('nrc') is-invalid @enderror"
                                         type="text" name="nrc" value="{{ old('nrc') }}"
                                         placeholder="Enter NRC No" />
                                 </div>
                             </div>
 
-                            <div class="col-md-2">
+                            <div class="col-md-2" hidden>
                                 <span class="badge bg-primary" id="NRCSelect">
                                     NRC
                                 </span>

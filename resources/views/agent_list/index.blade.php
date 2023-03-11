@@ -96,11 +96,15 @@
                                     </td>
 
                                     <td>
-                                        {{ $agent_list->phone }}
+                                        <a href="tel:{{ $agent_list->phone }}">
+                                            {{ $agent_list->phone }}
+                                        </a>
                                     </td>
 
                                     <td>
-                                        {{ $agent_list->email }}
+                                        <a href="mailto:{{ $agent_list->email }}">
+                                            {{ $agent_list->email }}
+                                        </a>
                                     </td>
 
                                     <td>

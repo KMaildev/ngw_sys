@@ -22,6 +22,12 @@
                     </li>
 
                     <li class="menu-item">
+                        <a href="{{ route('hospital.index') }}" class="menu-link">
+                            Hospital
+                        </a>
+                    </li>
+
+                    <li class="menu-item">
                         <a href="{{ route('users.index') }}" class="menu-link">
                             Users
                         </a>
@@ -42,24 +48,30 @@
                 </ul>
             </li>
 
+            <li class="menu-item">
+                <a href="javascript:void(0)" class="menu-link menu-toggle">
+                    <i class="menu-icon fa-sharp fa-solid fa-users"></i>
+                    Agent & Agency
+                </a>
+                <ul class="menu-sub">
+                    @can('overseas_agent')
+                        <li class="menu-item">
+                            <a href="{{ route('overseas_agent.index') }}" class="menu-link">
+                                Overseas Company
+                            </a>
+                        </li>
+                    @endcan
 
-            @can('overseas_agent')
-                <li class="menu-item">
-                    <a href="{{ route('overseas_agent.index') }}" class="menu-link">
-                        <i class="menu-icon fa fa-users"></i>
-                        Overseas Agent
-                    </a>
-                </li>
-            @endcan
+                    @can('agent_lists')
+                        <li class="menu-item">
+                            <a href="{{ route('agent_list.index') }}" class="menu-link">
+                                Local Sub Agent
+                            </a>
+                        </li>
+                    @endcan
+                </ul>
+            </li>
 
-            @can('agent_lists')
-                <li class="menu-item">
-                    <a href="{{ route('agent_list.index') }}" class="menu-link">
-                        <i class="menu-icon fa fa-user"></i>
-                        Agent Lists
-                    </a>
-                </li>
-            @endcan
 
 
             @can('labour_manage')
@@ -75,7 +87,6 @@
                             </a>
                         </li>
 
-
                         <li class="menu-item">
                             <a href="{{ route('reject_passport_list') }}" class="menu-link">
                                 Reject
@@ -87,8 +98,15 @@
             @endcan
 
 
+            <li class="menu-item">
+                <a href="{{ route('labour_payment.index') }}" class="menu-link">
+                    <i class="menu-icon fa fa-credit-card"></i>
+                    Medical Test
+                </a>
+            </li>
+
             @can('labour_payment')
-                <li class="menu-item">
+                <li class="menu-item" hidden>
                     <a href="{{ route('labour_payment.index') }}" class="menu-link">
                         <i class="menu-icon fa fa-credit-card"></i>
                         Labour Payment
