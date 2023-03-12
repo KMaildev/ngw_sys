@@ -84,8 +84,9 @@ Route::middleware('auth')->group(function () {
     Route::resource('nrc', NrcController::class);
     Route::get('get_nrc_by_code/{id}', [NrcController::class, 'getByNrcCode'])->name('get_nrc_by_code');
     Route::resource('hospital', HospitalController::class);
-    Route::resource('medical_test', MedicalTestController::class);
 
+    Route::resource('medical_test', MedicalTestController::class);
+    Route::get('add_medical_test_temp_list', [MedicalTestController::class, 'addMedicalTestTempList'])->name('add_medical_test_temp_list');
 
     Route::resource('passport_datatable', PassportDatatableController::class);
     Route::get('get_passport_datatable', [PassportDatatableController::class, 'index'])->name('get_passport_datatable');

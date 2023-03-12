@@ -1,14 +1,5 @@
 @extends('layouts.main')
 @section('content')
-    <style>
-        .dataTables_filter {
-            display: none;
-        }
-
-        tfoot {
-            display: table-header-group !important;
-        }
-    </style>
     <div class="row">
         <div class="col-md-6 col-sm-6 col-lg-6">
             <div class="card">
@@ -22,32 +13,7 @@
 
                 <div class="table-responsive text-nowrap" style="padding: 20px;">
                     <table id="datatable" class="table table-bordered table-sm yajra-datatable">
-                        <thead>
-                            <tr class="tbbg">
-                                <th class="text-center text-white" style="width: 1%;">#</th>
-                                <th class="text-center text-white">Name</th>
-                                <th class="text-center text-white">Passport</th>
-                                <th class="text-center text-white">NRC</th>
-                            </tr>
-                        </thead>
-                        <tfoot>
-                            <th>
-                                <input type="text" data-colum="0" hidden>
-                            </th>
-
-                            <th>
-                                <input type="text" style="width: 100%;" data-colum="1" placeholder="Name">
-                            </th>
-
-                            <th>
-                                <input type="text" style="width: 100%;" data-colum="2" placeholder="Passport">
-                            </th>
-
-                            <th>
-                                <input type="text" style="width: 100%;" data-colum="3" placeholder="NRC">
-                            </th>
-
-                        </tfoot>
+                        @include('medical_test.table_shared.thead_tfooter')
                     </table>
                 </div>
             </div>
@@ -67,7 +33,7 @@
                 scrollY: 500,
                 scrollX: true,
                 language: {
-                    "processing": "<img src='/public/loading.gif' style='width:50px'/><p class='my-3'>... Loading ...</p>",
+                    "processing": "<img src='/loading.gif' style='width:50px'/><p class='my-3'>... Loading ...</p>",
                 },
                 ajax: {
                     url: "{{ route('get_passport_datatable') }}",
@@ -81,6 +47,10 @@
                         name: 'DT_RowIndex',
                     },
                     {
+                        data: 'agent_name',
+                        name: 'agent_name',
+                    },
+                    {
                         data: 'name',
                         name: 'name',
                     },
@@ -91,6 +61,10 @@
                     {
                         data: 'nrc',
                         name: 'nrc',
+                    },
+                    {
+                        data: 'action',
+                        name: 'action',
                     },
                 ],
             });
@@ -108,6 +82,23 @@
                             .search(this.value)
                             .draw();
                     });
+                });
+            });
+
+
+            $('body').on('click', '#addToMedicalTest', function(e) {
+                e.preventDefault();
+                passportId = $(this).data('id');
+                var url = '{{ url('add_medical_test_temp_list') }}';
+                $.ajax({
+                    url: url,
+                    data: {
+                        id: passportId,
+                    },
+                    method: 'GET',
+                    success: function(result) {
+                        console.log(result);
+                    }
                 });
             });
         });
