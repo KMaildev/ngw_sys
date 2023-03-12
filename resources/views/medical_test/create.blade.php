@@ -1,7 +1,7 @@
 @extends('layouts.main')
 @section('content')
     <div class="row">
-        <div class="col-md-6 col-sm-6 col-lg-6">
+        <div class="col-md-6 col-sm-12 col-lg-6">
             <div class="card">
                 <div class="card-body">
                     <div class="card-title header-elements">
@@ -11,10 +11,88 @@
                     </div>
                 </div>
 
-                <div class="table-responsive text-nowrap" style="padding: 20px;">
+                <div class="table-responsive text-nowrap">
                     <table id="datatable" class="table table-bordered table-sm yajra-datatable">
                         @include('medical_test.table_shared.thead_tfooter')
                     </table>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-6 col-sm-12 col-lg-6">
+            <div class="col-xxl">
+                <div class="card mb-4">
+                    <h5 class="card-header">
+                        Medical Test
+                    </h5>
+
+                    <form class="card-body" autocomplete="off" action="{{ route('medical_test.store') }}" method="POST"
+                        id="create-form">
+                        @csrf
+                        <div class="row">
+                            <div class="col-md-6">
+                                <label class="form-label">
+                                    Medical Test Date
+                                </label>
+                                <input type="text" class="form-control date_picker" placeholder="Month DD, YYYY"
+                                    name="medical_test_date" />
+                                @error('medical_test_date')
+                                    <div class="invalid-feedback"> {{ $message }} </div>
+                                @enderror
+                            </div>
+
+                            <div class="col-md-6">
+                                <label class="form-label">
+                                    Hospital
+                                </label>
+                                <select name="hospital_id" class="form-control select2">
+                                    <option value="" selected>--Select Hospital--</option>
+                                    @foreach ($hospitals as $hospital)
+                                        <option value="{{ $hospital->id }}">
+                                            {{ $hospital->name ?? '' }}
+                                        </option>
+                                    @endforeach
+                                </select>
+                                @error('hospital_id')
+                                    <div class="invalid-feedback">
+                                        {{ $message }}
+                                    </div>
+                                @enderror
+                            </div>
+
+                            <div class="col-md-12 py-2">
+                                <div class="table-responsive text-nowrap">
+                                    <table class="table table-bordered table-sm" id="addRemoveTable">
+                                        <thead class="tbbg">
+                                            <tr>
+                                                <th style="color: white; text-align: center; width: 1%;">
+                                                    #
+                                                </th>
+                                                <th style="color: white; text-align: center; width: 17%;">
+                                                    AGENT NAME
+                                                </th>
+                                                <th style="color: white; text-align: center; width: 7%;">
+                                                    NAME
+                                                </th>
+                                                <th style="color: white; text-align: center; width: 7%;">
+                                                    PASSPORT
+                                                </th>
+                                                <th style="color: white; text-align: center; width: 7%;">
+                                                    NRC
+                                                </th>
+                                                <th style="color: white; text-align: center; width: 5%;">
+                                                    Action
+                                                </th>
+                                            </tr>
+                                        </thead>
+                                        <tbody id="medicalTestTempLists"></tbody>
+                                    </table>
+                                </div>
+                                <br>
+                                <input type="submit" value="Confirm" class="btn btn-primary float-end">
+                            </div>
+                        </div>
+                    </form>
                 </div>
             </div>
         </div>
@@ -22,6 +100,7 @@
 @endsection
 
 @section('script')
+    {!! JsValidator::formRequest('App\Http\Requests\StoreMedicalTest', '#create-form') !!}
     <script>
         $(function() {
             var table = $('#datatable').DataTable({
@@ -85,7 +164,6 @@
                 });
             });
 
-
             $('body').on('click', '#addToMedicalTest', function(e) {
                 e.preventDefault();
                 passportId = $(this).data('id');
@@ -97,7 +175,70 @@
                     },
                     method: 'GET',
                     success: function(result) {
-                        console.log(result);
+                        toastr.remove()
+                        toastr.success("Your processing has been completed.");
+                        getMedicalTestTempList();
+                    }
+                });
+            });
+
+
+            function getMedicalTestTempList() {
+                var url = '{{ url('get_medical_test_temp_list') }}';
+                $.ajax({
+                    url: url,
+                    method: "GET",
+                    success: function(data) {
+                        let temp_table = '';
+                        $.each(JSON.parse(data), function(key, value) {
+                            let k = key + 1;
+
+                            temp_table += '<tr>';
+                            temp_table += '<td>' + k + '</td>' //Sr.No	
+
+                            // AGENT NAME 
+                            temp_table += '<td>'
+                            temp_table += value.agent_name;
+                            temp_table += '</td>'
+
+                            // Name 
+                            temp_table += '<td>'
+                            temp_table += value.name;
+                            temp_table += '</td>'
+
+                            // Passport 
+                            temp_table += '<td>'
+                            temp_table += value.passport;
+                            temp_table += '</td>'
+
+                            // Passport 
+                            temp_table += '<td>'
+                            temp_table += value.nrc;
+                            temp_table += '</td>'
+
+                            // Action
+                            temp_table += '<td>'
+                            temp_table +=
+                                '<a href="javascript:void(0);" class="remove_item btn btn-danger btn-xs" data-id="' +
+                                value.id + '"> Remove</a>'
+                            temp_table += '</td>'
+                            temp_table += '</tr>';
+                        });
+                        $('#medicalTestTempLists').html(temp_table);
+                    }
+                });
+            }
+            getMedicalTestTempList();
+
+            $(document).on("click", ".remove_item", function() {
+                var id = $(this).data('id');
+                $.ajax({
+                    url: `/remove_get_medical_test_temp_list/${id}`,
+                    method: "GET",
+                    success: function(data) {
+                        toastr.remove()
+                        toastr.success("Your processing has been completed.");
+                        getMedicalTestTempList();
                     }
                 });
             });

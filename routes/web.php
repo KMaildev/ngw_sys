@@ -87,6 +87,9 @@ Route::middleware('auth')->group(function () {
 
     Route::resource('medical_test', MedicalTestController::class);
     Route::get('add_medical_test_temp_list', [MedicalTestController::class, 'addMedicalTestTempList'])->name('add_medical_test_temp_list');
+    Route::get('get_medical_test_temp_list', [MedicalTestController::class, 'getMedicalTestTempList'])->name('get_medical_test_temp_list');
+    Route::get('remove_get_medical_test_temp_list/{id}', [MedicalTestController::class, 'removeMedicalTestTempList'])->name('remove_get_medical_test_temp_list');
+    Route::get('update_pass_failed', [MedicalTestController::class, 'updatePassFailed'])->name('update_pass_failed');
 
     Route::resource('passport_datatable', PassportDatatableController::class);
     Route::get('get_passport_datatable', [PassportDatatableController::class, 'index'])->name('get_passport_datatable');

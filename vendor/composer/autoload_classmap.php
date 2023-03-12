@@ -83,6 +83,7 @@ return array(
     'App\\Models\\Hospital' => $baseDir . '/app/Models/Hospital.php',
     'App\\Models\\LabourDocs' => $baseDir . '/app/Models/LabourDocs.php',
     'App\\Models\\LabourManagement' => $baseDir . '/app/Models/LabourManagement.php',
+    'App\\Models\\MedicalTest' => $baseDir . '/app/Models/MedicalTest.php',
     'App\\Models\\MedicalTestTempList' => $baseDir . '/app/Models/MedicalTestTempList.php',
     'App\\Models\\MembersLists' => $baseDir . '/app/Models/MembersLists.php',
     'App\\Models\\Nrc' => $baseDir . '/app/Models/Nrc.php',

@@ -684,6 +684,7 @@ class ComposerStaticInit255bff90faa8e45e478e27bc880e200a
         'App\\Models\\Hospital' => __DIR__ . '/../..' . '/app/Models/Hospital.php',
         'App\\Models\\LabourDocs' => __DIR__ . '/../..' . '/app/Models/LabourDocs.php',
         'App\\Models\\LabourManagement' => __DIR__ . '/../..' . '/app/Models/LabourManagement.php',
+        'App\\Models\\MedicalTest' => __DIR__ . '/../..' . '/app/Models/MedicalTest.php',
         'App\\Models\\MedicalTestTempList' => __DIR__ . '/../..' . '/app/Models/MedicalTestTempList.php',
         'App\\Models\\MembersLists' => __DIR__ . '/../..' . '/app/Models/MembersLists.php',
         'App\\Models\\Nrc' => __DIR__ . '/../..' . '/app/Models/Nrc.php',
