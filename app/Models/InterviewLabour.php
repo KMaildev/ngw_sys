@@ -1,0 +1,26 @@
+<?php
+
+namespace App\Models;
+
+use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Model;
+
+class InterviewLabour extends Model
+{
+    use HasFactory;
+
+    protected $fillable = [
+        'demand_id',
+        'interview_id',
+        'passport_id',
+        'agent_list_id',
+        'user_id',
+        'created_at',
+        'updated_at',
+    ];
+
+    public function passport_table()
+    {
+        return $this->belongsTo(Passport::class, 'passport_id', 'id');
+    }
+}

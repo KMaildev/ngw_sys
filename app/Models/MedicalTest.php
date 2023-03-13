@@ -18,6 +18,7 @@ class MedicalTest extends Model
         'created_at',
         'updated_at',
         'agent_list_id',
+        'types',
     ];
 
     public function passport_table()

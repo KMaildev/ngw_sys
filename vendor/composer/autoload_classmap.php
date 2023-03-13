@@ -87,6 +87,7 @@ return array(
     'App\\Models\\FileManagement' => $baseDir . '/app/Models/FileManagement.php',
     'App\\Models\\Hospital' => $baseDir . '/app/Models/Hospital.php',
     'App\\Models\\Interview' => $baseDir . '/app/Models/Interview.php',
+    'App\\Models\\InterviewLabour' => $baseDir . '/app/Models/InterviewLabour.php',
     'App\\Models\\LabourDocs' => $baseDir . '/app/Models/LabourDocs.php',
     'App\\Models\\LabourManagement' => $baseDir . '/app/Models/LabourManagement.php',
     'App\\Models\\MedicalTest' => $baseDir . '/app/Models/MedicalTest.php',

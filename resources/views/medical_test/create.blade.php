@@ -172,6 +172,7 @@
                     url: url,
                     data: {
                         id: passportId,
+                        types: 'medical_test',
                     },
                     method: 'GET',
                     success: function(result) {

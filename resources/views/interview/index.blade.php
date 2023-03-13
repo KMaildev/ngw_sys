@@ -138,7 +138,12 @@
 
                                                 <a class="dropdown-item"
                                                     href="{{ route('add_interview_worker', $interview->id) }}">
-                                                    Interview Labours
+                                                    Add Interview Labours
+                                                </a>
+
+                                                <a class="dropdown-item"
+                                                    href="{{ route('interview.show', $interview->id) }}">
+                                                    View Interview Labours
                                                 </a>
 
                                                 <a class="dropdown-item"

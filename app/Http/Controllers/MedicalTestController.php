@@ -63,7 +63,6 @@ class MedicalTestController extends Controller
     }
 
 
-
     public function create()
     {
         $hospitals = Hospital::all();
@@ -91,7 +90,9 @@ class MedicalTestController extends Controller
                 ]);
             }
 
-            MedicalTestTempList::where('session_id', $session_id)->delete();
+            MedicalTestTempList::where('session_id', $session_id)
+                ->where('types', 'medical_test')
+                ->delete();
         }
         return redirect()->back()->with('success', 'Your processing has been completed.');
     }
@@ -139,6 +140,7 @@ class MedicalTestController extends Controller
                 'agent_list_id' => $passport->agent_list_id,
                 'session_id' => session()->getId(),
                 'user_id' => auth()->user()->id,
+                'types' => $request->types,
             ],
         );
 
@@ -150,9 +152,22 @@ class MedicalTestController extends Controller
     public function getMedicalTestTempList(Request $request)
     {
         $session_id = session()->getId();
-        $medical_test_temp_lists = MedicalTestTempList::where('session_id', $session_id)->get();
+        $medical_test_temp_lists = MedicalTestTempList::where('types', 'medical_test')
+            ->where('session_id', $session_id)
+            ->get();
         echo json_encode($medical_test_temp_lists);
     }
+
+
+    public function getMedicalTestTempListInterview(Request $request)
+    {
+        $session_id = session()->getId();
+        $medical_test_temp_lists = MedicalTestTempList::where('types', 'interview_labour')
+            ->where('session_id', $session_id)
+            ->get();
+        echo json_encode($medical_test_temp_lists);
+    }
+
 
     public function removeMedicalTestTempList($id)
     {

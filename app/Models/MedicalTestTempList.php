@@ -17,5 +17,6 @@ class MedicalTestTempList extends Model
         'session_id',
         'user_id',
         'agent_list_id',
+        'types',
     ];
 }

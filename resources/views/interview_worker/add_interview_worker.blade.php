@@ -26,9 +26,13 @@
                         Interview & Labour
                     </h5>
 
-                    <form class="card-body" autocomplete="off" action="{{ route('medical_test.store') }}" method="POST"
+                    <form class="card-body" autocomplete="off" action="{{ route('interview_labour.store') }}" method="POST"
                         id="create-form">
                         @csrf
+
+                        <input type="hidden" name="demand_id" value="{{ $interview->demand_id }}">
+                        <input type="hidden" name="interview_id" value="{{ $interview->id }}">
+
                         <div class="row">
 
                             <div class="col-md-12 mb-2">
@@ -107,6 +111,8 @@
                                         <tbody id="medicalTestTempLists"></tbody>
                                     </table>
                                 </div>
+                                <br>
+                                <input type="submit" value="Confirm" class="btn btn-primary float-end">
                             </div>
                         </div>
                     </form>
@@ -117,7 +123,7 @@
 @endsection
 
 @section('script')
-    {!! JsValidator::formRequest('App\Http\Requests\StoreMedicalTest', '#create-form') !!}
+    {!! JsValidator::formRequest('App\Http\Requests\StoreInterviewLabour', '#create-form') !!}
     <script>
         $(function() {
             var table = $('#datatable').DataTable({
@@ -189,6 +195,7 @@
                     url: url,
                     data: {
                         id: passportId,
+                        types: 'interview_labour',
                     },
                     method: 'GET',
                     success: function(result) {
@@ -201,7 +208,7 @@
 
 
             function getMedicalTestTempList() {
-                var url = '{{ url('get_medical_test_temp_list') }}';
+                var url = '{{ url('get_medical_test_temp_interview') }}';
                 $.ajax({
                     url: url,
                     method: "GET",

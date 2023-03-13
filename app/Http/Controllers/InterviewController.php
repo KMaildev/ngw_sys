@@ -6,6 +6,7 @@ use App\Http\Requests\StoreInterview;
 use App\Http\Requests\UpdateInterview;
 use App\Models\Demand;
 use App\Models\Interview;
+use App\Models\InterviewLabour;
 use App\Models\OverseasAgency;
 use Illuminate\Http\Request;
 
@@ -72,5 +73,13 @@ class InterviewController extends Controller
         $interview->demand_id = $request->demand_id;
         $interview->update();
         return redirect()->back()->with('success', 'Process is completed.');
+    }
+
+    public function show($id)
+    {
+        $interview = Interview::findOrFail($id);
+        $interview_labours = InterviewLabour::where('interview_id', $id)
+            ->get();
+        return view('interview.show', compact('interview', 'interview_labours'));
     }
 }
