@@ -45,10 +45,10 @@
                                 NRC No
                             </label>
 
-                            <div class="col-md-5">
+                            <div class="col-md-7">
                                 <div id="nrcOption" class="py-1">
                                     <div class="input-group">
-                                        <select name="nrcCode" id="nrcCode" class="form-control" required>
+                                        <select name="nrcCode" id="nrcCode" class="form-control select2" required>
                                             <option value="">
                                                 ---
                                             </option>
@@ -111,10 +111,10 @@
 
                                         </select>
 
-                                        <select name="nrcName" id="nrcName" class="form-control" required>
+                                        <select name="nrcName" id="nrcName" class="form-control select2" required>
                                         </select>
 
-                                        <select name="nrcType" id="nrcType" class="form-control" required>
+                                        <select name="nrcType" id="nrcType" class="form-control select2" required>
                                             <option value="(N)">
                                                 (N)
                                             </option>

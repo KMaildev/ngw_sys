@@ -6,6 +6,7 @@ use App\Exports\ExportPassport;
 use App\Http\Requests\StoreLabourManagement;
 use App\Imports\ImportLabourManagement;
 use App\Models\Contract;
+use App\Models\InterviewLabour;
 use App\Models\LabourManagement;
 use App\Models\Passport;
 use App\Models\Sending;
@@ -17,19 +18,15 @@ class LabourManagementController extends Controller
     public function createAndView($id)
     {
         $contract = Contract::findOrFail($id);
+        $demand_id = $contract->demand_id;
 
-        $passports = Passport::where('reject_status', NULL)
-            ->whereHas('labour_management_table', function ($q) use ($id) {
-                $q->where('contract_id', $id);
-            })->paginate(100);
+        $interview_labours = InterviewLabour::where('demand_id', $demand_id)
+            ->get();
 
-        $total_passports =  Passport::where('reject_status', NULL)
-            ->whereHas('labour_management_table', function ($q) use ($id) {
-                $q->where('contract_id', $id);
-            })->count();
-
-        return view('labour_management.create_View', compact('contract', 'passports', 'total_passports'));
+        return view('labour_management.create_View', compact('contract', 'interview_labours'));
     }
+
+
 
     public function store(StoreLabourManagement $request)
     {
@@ -42,12 +39,14 @@ class LabourManagementController extends Controller
     }
 
 
+
     public function destroy($id)
     {
         $passport = LabourManagement::findOrFail($id);
         $passport->delete();
         return redirect()->back()->with('success', 'Your processing has been completed.');
     }
+
 
 
     public function sendingLabour($id)
