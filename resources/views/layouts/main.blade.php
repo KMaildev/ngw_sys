@@ -33,6 +33,7 @@
     <link rel="stylesheet" href="{{ asset('assets/vendor/libs/typeahead-js/typeahead.css') }}" />
     <link rel="stylesheet" href="{{ asset('assets/vendor/libs/apex-charts/apex-charts.css') }}" />
 
+    <link rel="stylesheet" href="{{ asset('assets/datatable/css/select.dataTables.min.css') }}">
     <!-- Helpers -->
     <script src="{{ asset('assets/vendor/js/helpers.js') }}"></script>
     {{-- <script src="{{ asset('assets/vendor/js/template-customizer.js') }}"></script> --}}
@@ -95,7 +96,7 @@
     <script src="{{ asset('assets/custom/custom.js') }}"></script>
 
     <script type="text/javascript" src="{{ asset('assets/vendor/libs/datatables/jquery.dataTables.js') }}"></script>
-
+    <script src="{{ asset('assets/datatable/js/dataTables.select.min.js') }}"></script>
     <script src="{{ asset('assets/vendor/libs/toastr/toastr.js') }}"></script>
     <script src="{{ asset('assets/js/ui-toasts.js') }}"></script>
 

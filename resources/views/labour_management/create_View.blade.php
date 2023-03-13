@@ -1,7 +1,7 @@
 @extends('layouts.main')
 @section('content')
     <div class="row">
-        <div class="col-md-6 col-sm-12 col-lg-6">
+        <div class="col-md-12 col-sm-12 col-lg-12">
             <div class="card">
                 <div class="card-body">
                     <div class="card-title header-elements">
@@ -10,47 +10,38 @@
                         </h5>
                     </div>
                 </div>
-
-                <div class="table-responsive text-nowrap rowheaders table-scroll" role="region" aria-labelledby="HeadersCol"
-                    tabindex="0">
-                    <table class="table table-bordered main-table">
-                        <thead class="tbbg">
+                <form action="">
+                    <div id="events"></div>
+                    <table id="interview_labour" class="display" style="width:100%">
+                        <thead>
                             <tr>
-                                <th class="text-center text-white" style="width: 1%; background-color: #296166;">
-                                    #
+                                <th class="text-center text-white" style="background-color: #296166;">
                                 </th>
-
                                 <th class="text-center text-white" style="background-color: #296166;">
                                     Name
                                 </th>
-
                                 <th class="text-center text-white" style="background-color: #296166;">
                                     M/F
                                 </th>
-
                                 <th class="text-center text-white" style="background-color: #296166;">
                                     NRC
                                 </th>
-
                                 <th class="text-center text-white" style="background-color: #296166;">
-                                    Passport No
+                                    Passport
                                 </th>
-
                                 <th class="text-center text-white" style="background-color: #296166;">
                                     Phone
                                 </th>
-
                                 <th class="text-center text-white" style="background-color: #296166;">
                                     Agent
                                 </th>
-
                             </tr>
                         </thead>
-                        <tbody class="table-border-bottom-0">
+                        <tbody>
                             @foreach ($interview_labours as $key => $interview_labour)
-                                <tr>
-                                    <td class="text-center">
-                                        {{ $key + 1 }}
+                                <tr class="tableCheck">
+                                    <td>
+                                        {{ $interview_labour->passport_table->id ?? '' }}
                                     </td>
 
                                     <td class="text-center">
@@ -76,16 +67,47 @@
                                     <td class="text-center">
                                         {{ strtoupper($interview_labour->passport_table->agent_list_table->name ?? $interview_labour->passport_table->local_agent_name) }}
                                     </td>
-
                                 </tr>
                             @endforeach
                         </tbody>
                     </table>
-                </div>
+
+                    <button type="submit" class="btn btn-primary">
+                        <span class="fa fa-arrow-right"></span>&nbsp;
+                        Submit to Contract List
+                    </button>
+                </form>
             </div>
         </div>
     </div>
 @endsection
 @section('script')
-    {!! JsValidator::formRequest('App\Http\Requests\StoreLabourManagement', '#create-form') !!}
+    <script>
+        $(document).ready(function() {
+            var events = $('#events');
+            var table = $('#interview_labour').DataTable({
+                select: true
+            });
+
+            var data = table.rows({
+                selected: true
+            }).data();
+
+
+            var newarray = [];
+            table
+                .on('select', function(e, dt, type, indexes) {
+                    var rowData = table.rows(indexes).data().toArray();
+                    for (var i = 0; i < rowData.length; i++) {
+                        newarray.push(rowData[i][0]);
+                    }
+                    console.log(newarray);
+                    events.prepend(JSON.stringify(rowData));
+                })
+                .on('deselect', function(e, dt, type, indexes) {
+                    var rowData = table.rows(indexes).data().toArray();
+                    events.prepend(JSON.stringify());
+                });
+        });
+    </script>
 @endsection
