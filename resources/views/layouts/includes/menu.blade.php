@@ -33,6 +33,15 @@
                         </a>
                     </li>
 
+                    @can('file_manager')
+                        <li class="menu-item">
+                            <a href="{{ route('elfinder.index') }}" class="menu-link">
+                                <i class="menu-icon fa-solid fa-folder"></i>
+                                File Manager
+                            </a>
+                        </li>
+                    @endcan
+
                     <li class="menu-item">
                         <a href="{{ route('role.index') }}" class="menu-link">
                             Role
@@ -99,10 +108,24 @@
 
 
             <li class="menu-item">
-                <a href="{{ route('medical_test.index') }}" class="menu-link">
-                    <i class="menu-icon fa fa-credit-card"></i>
+                <a href="javascript:void(0)" class="menu-link menu-toggle">
+                    <i class="menu-icon fa fa-notes-medical"></i>
                     Medical Test
                 </a>
+                <ul class="menu-sub">
+                    <li class="menu-item">
+                        <a href="{{ route('medical_test.index') }}" class="menu-link">
+                            Medical Test
+                        </a>
+                    </li>
+
+                    <li class="menu-item">
+                        <a href="{{ route('medical_failed_labour') }}" class="menu-link">
+                            Failed Labour
+                        </a>
+                    </li>
+
+                </ul>
             </li>
 
             @can('labour_payment')
@@ -114,7 +137,6 @@
                 </li>
             @endcan
 
-
             @can('demand')
                 <li class="menu-item">
                     <a href="{{ route('demand.index') }}" class="menu-link">
@@ -123,6 +145,13 @@
                     </a>
                 </li>
             @endcan
+
+            <li class="menu-item">
+                <a href="{{ route('interview.index') }}" class="menu-link">
+                    <i class="menu-icon fa-solid fa-clipboard-question"></i>
+                    Interview
+                </a>
+            </li>
 
             @can('contract')
                 <li class="menu-item">
@@ -142,14 +171,7 @@
                 </li>
             @endcan
 
-            @can('file_manager')
-                <li class="menu-item">
-                    <a href="{{ route('elfinder.index') }}" class="menu-link">
-                        <i class="menu-icon fa-solid fa-folder"></i>
-                        File Manager
-                    </a>
-                </li>
-            @endcan
+
 
         </ul>
 

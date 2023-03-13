@@ -102,7 +102,7 @@
                                 </th>
 
                                 <th class="text-center text-white" style="background-color: #296166;">
-                                    Date
+                                    Demand Date
                                 </th>
 
                                 <th class="text-center text-white" style="background-color: #296166;">

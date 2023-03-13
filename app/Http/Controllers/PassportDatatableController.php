@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\MedicalTest;
 use App\Models\Passport;
 use Illuminate\Http\Request;
 use Yajra\Datatables\Datatables;
@@ -44,6 +45,81 @@ class PassportDatatableController extends Controller
                 $html = '';
                 $html .= $each->nrc;
                 return $html;
+            })
+
+            ->addColumn('action', function ($each) {
+                $actions =
+                    '
+                        <button class="btn btn-info btn-xs" type="button" 
+                            id="addToMedicalTest"
+                            data-id="' . $each->id . '"
+                        >
+                            Choose
+                        </button>
+                    ';
+                return $actions;
+            })
+
+            ->addIndexColumn()
+            ->rawColumns(['agent_name', 'name', 'passport', 'nrc', 'action'])
+            ->make(true);
+    }
+
+
+    public function medicalTestsPassLabour(Request $request)
+    {
+        $data = MedicalTest::with('passport_table', 'agent_lists_table')
+            ->where('failed_or_pass', 'Pass')
+            ->orderBy('id', 'DESC');
+
+
+        return DataTables::of($data)
+            ->addIndexColumn()
+
+            ->editColumn('agent_name', function ($each) {
+                return  $each->passport_table->agent_list_table ? $each->passport_table->agent_list_table->name : '-';
+            })
+
+            ->filterColumn('agent_name', function ($query, $keyword) {
+                $query->whereHas('agent_lists_table', function ($q1) use ($keyword) {
+                    $q1->where('name', 'like', '%' . $keyword . '%');
+                });
+            })
+
+            ->editColumn('name', function ($each) {
+                $html = '';
+                $html .= $each->passport_table->name;
+                return $html;
+            })
+
+            ->filterColumn('name', function ($query, $keyword) {
+                $query->whereHas('passport_table', function ($q1) use ($keyword) {
+                    $q1->where('name', 'like', '%' . $keyword . '%');
+                });
+            })
+
+            ->editColumn('passport', function ($each) {
+                $html = '';
+                $html .= $each->passport_table->passport;
+                return $html;
+            })
+
+            ->filterColumn('passport', function ($query, $keyword) {
+                $query->whereHas('passport_table', function ($q1) use ($keyword) {
+                    $q1->where('passport', 'like', '%' . $keyword . '%');
+                });
+            })
+
+            ->editColumn('nrc', function ($each) {
+                $html = '';
+                $html .= $each->passport_table->nrc;
+                return $html;
+            })
+
+            ->filterColumn('nrc', function ($query, $keyword) {
+                $query->whereHas('passport_table', function ($q1) use ($keyword) {
+                    $q1->where('nrc', 'like', '%' . $keyword . '%');
+                });
             })
 
             ->addColumn('action', function ($each) {

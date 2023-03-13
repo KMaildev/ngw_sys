@@ -16,5 +16,6 @@ class MedicalTestTempList extends Model
         'passport_id',
         'session_id',
         'user_id',
+        'agent_list_id',
     ];
 }

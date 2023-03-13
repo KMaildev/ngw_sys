@@ -13,17 +13,56 @@ class MedicalTestController extends Controller
 {
     public function index(Request $request)
     {
-        $passports = MedicalTest::paginate(100);
+        $hospitals = Hospital::all();
+        $passports = MedicalTest::where('failed_or_pass', 'Pass')
+            ->orWhere('failed_or_pass', NULL)
+            ->paginate(50);
 
         if (request('search')) {
-            $passports = MedicalTest::whereHas('passport_table', function ($query) {
-                $query->where('name', request('search'));
-                $query->orWhere('nrc', request('search'));
-                $query->orWhere('passport', request('search'));
-            })->get();
+            $passports = MedicalTest::where('failed_or_pass', 'Pass')
+                ->orWhere('failed_or_pass', NULL)
+                ->whereHas('passport_table', function ($query) {
+                    $query->where('name', request('search'));
+                    $query->orWhere('nrc', request('search'));
+                    $query->orWhere('passport', request('search'));
+                })->paginate(50);
         }
-        return view('medical_test.index', compact('passports'));
+
+        if (request('hospital_id')) {
+            $passports = MedicalTest::where('hospital_id', request('hospital_id'))
+                ->paginate(50);
+        }
+
+        return view('medical_test.index', compact('passports', 'hospitals'));
     }
+
+
+    public function medicalFailedLabour(Request $request)
+    {
+        $hospitals = Hospital::all();
+
+        $passports = MedicalTest::where('failed_or_pass', 'Failed')
+            ->paginate(50);
+
+        if (request('search')) {
+            $passports = MedicalTest::where('failed_or_pass', 'Failed')
+                ->whereHas('passport_table', function ($query) {
+                    $query->where('name', request('search'));
+                    $query->orWhere('nrc', request('search'));
+                    $query->orWhere('passport', request('search'));
+                })->paginate(50);
+        }
+
+        if (request('hospital_id')) {
+            $passports = MedicalTest::where('failed_or_pass', 'Failed')
+                ->where('hospital_id', request('hospital_id'))
+                ->paginate(50);
+        }
+
+        return view('medical_test.failed', compact('passports', 'hospitals'));
+    }
+
+
 
     public function create()
     {
@@ -45,6 +84,7 @@ class MedicalTestController extends Controller
                     'medical_test_date' => $request->medical_test_date,
                     'hospital_id' => $request->hospital_id,
                     'passport_id' => $medical_test_temp_list->passport_id,
+                    'agent_list_id' => $medical_test_temp_list->agent_list_id,
                     'user_id' => auth()->user()->id,
                     'created_at' => now(),
                     'updated_at' => now(),
@@ -96,6 +136,7 @@ class MedicalTestController extends Controller
                 'passport' => $passport->passport ?? '',
                 'nrc' => $passport->nrc ?? '',
                 'passport_id' => $passport->id,
+                'agent_list_id' => $passport->agent_list_id,
                 'session_id' => session()->getId(),
                 'user_id' => auth()->user()->id,
             ],

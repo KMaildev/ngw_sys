@@ -17,6 +17,7 @@ class MedicalTest extends Model
         'user_id',
         'created_at',
         'updated_at',
+        'agent_list_id',
     ];
 
     public function passport_table()
@@ -27,5 +28,10 @@ class MedicalTest extends Model
     public function hospital_table()
     {
         return $this->belongsTo(Hospital::class, 'hospital_id', 'id');
+    }
+
+    public function agent_lists_table()
+    {
+        return $this->belongsTo(AgentList::class, 'agent_list_id', 'id');
     }
 }

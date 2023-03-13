@@ -6,6 +6,9 @@ use App\Http\Controllers\CountryController;
 use App\Http\Controllers\DemandController;
 use App\Http\Controllers\FileManagementController;
 use App\Http\Controllers\HospitalController;
+use App\Http\Controllers\InterviewController;
+use App\Http\Controllers\InterviewLabourController;
+use App\Http\Controllers\InterviewWorkerController;
 use App\Http\Controllers\LabourDocsController;
 use App\Http\Controllers\LabourManagementController;
 use App\Http\Controllers\LabourPaymentController;
@@ -86,6 +89,7 @@ Route::middleware('auth')->group(function () {
     Route::resource('hospital', HospitalController::class);
 
     Route::resource('medical_test', MedicalTestController::class);
+    Route::get('medical_failed_labour', [MedicalTestController::class, 'medicalFailedLabour'])->name('medical_failed_labour');
     Route::get('add_medical_test_temp_list', [MedicalTestController::class, 'addMedicalTestTempList'])->name('add_medical_test_temp_list');
     Route::get('get_medical_test_temp_list', [MedicalTestController::class, 'getMedicalTestTempList'])->name('get_medical_test_temp_list');
     Route::get('remove_get_medical_test_temp_list/{id}', [MedicalTestController::class, 'removeMedicalTestTempList'])->name('remove_get_medical_test_temp_list');
@@ -93,4 +97,10 @@ Route::middleware('auth')->group(function () {
 
     Route::resource('passport_datatable', PassportDatatableController::class);
     Route::get('get_passport_datatable', [PassportDatatableController::class, 'index'])->name('get_passport_datatable');
+    Route::get('get_medical_tests_pass_labour', [PassportDatatableController::class, 'medicalTestsPassLabour'])->name('get_medical_tests_pass_labour');
+
+    Route::resource('interview', InterviewController::class);
+
+    Route::resource('interview_labour', InterviewLabourController::class);
+    Route::get('add_interview_worker/{id}', [InterviewLabourController::class, 'addInterviewWorker'])->name('add_interview_worker');
 });

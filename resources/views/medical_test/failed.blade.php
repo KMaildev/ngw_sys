@@ -12,7 +12,7 @@
                         <div class="card-title-elements ms-auto">
 
                             <div class="card-header-elements ms-2">
-                                <form action="{{ route('medical_test.index') }}" method="get" autocomplete="off">
+                                <form action="{{ route('medical_failed_labour') }}" method="get" autocomplete="off">
                                     <div class="input-group">
                                         <select name="hospital_id" id=""
                                             class="form-control form-control-sm select2">
@@ -31,17 +31,10 @@
                             </div>
 
                             <div class="card-header-elements ms-2">
-                                <form action="{{ route('medical_test.index') }}" method="GET" autocomplete="off">
+                                <form action="{{ route('medical_failed_labour') }}" method="GET" autocomplete="off">
                                     <input type="text" class="form-control" placeholder="Search" name="search">
                                 </form>
                             </div>
-
-                            <a href="{{ route('medical_test.create') }}" class="dt-button create-new btn btn-primary">
-                                <span>
-                                    <i class="bx bx-plus me-sm-2"></i>
-                                    <span class="d-none d-sm-inline-block">Create</span>
-                                </span>
-                            </a>
 
                         </div>
                     </div>

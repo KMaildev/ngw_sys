@@ -4,11 +4,11 @@
         <div class="col-xl-8">
             <div class="card mb-4">
                 <h5 class="card-header">
-                    Add New Contract
+                    Add New Interview
                 </h5>
                 <div class="card-body">
 
-                    <form action="{{ route('contract.store') }}" method="POST" autocomplete="off" id="create-form"
+                    <form action="{{ route('interview.store') }}" method="POST" autocomplete="off" id="create-form"
                         role="form" enctype="multipart/form-data">
                         @csrf
 
@@ -106,19 +106,19 @@
 
 
                         <h6>
-                            2. Contract Information
+                            2. Interview Information
                         </h6>
                         <hr>
 
                         <div class="mb-3 row">
                             <label for="html5-text-input" class="col-md-3 col-form-label">
-                                Contract Date
+                                Interview Title
                             </label>
                             <div class="col-md-9">
                                 <input type="text"
-                                    class="form-control @error('contract_date') form-control-danger @enderror"
-                                    name="contract_date">
-                                @error('contract_date')
+                                    class="form-control @error('interview_title') form-control-danger @enderror"
+                                    name="interview_title" placeholder="First Interview">
+                                @error('interview_title')
                                     <div class="form-control-feedback" style="color: red;">
                                         {{ $message }} </div>
                                 @enderror
@@ -127,13 +127,13 @@
 
                         <div class="mb-3 row">
                             <label for="html5-text-input" class="col-md-3 col-form-label">
-                                Contract Male
+                                Interview Date
                             </label>
                             <div class="col-md-9">
                                 <input type="text"
-                                    class="form-control @error('contract_male') form-control-danger @enderror"
-                                    name="contract_male" oninput="MaleFemaleTotalCalc()" id="male" value="0">
-                                @error('contract_male')
+                                    class="form-control dob @error('interview_date') form-control-danger @enderror"
+                                    name="interview_date">
+                                @error('interview_date')
                                     <div class="form-control-feedback" style="color: red;">
                                         {{ $message }} </div>
                                 @enderror
@@ -142,13 +142,13 @@
 
                         <div class="mb-3 row">
                             <label for="html5-text-input" class="col-md-3 col-form-label">
-                                Contract Female
+                                Interview Male
                             </label>
                             <div class="col-md-9">
                                 <input type="text"
-                                    class="form-control @error('contract_female') form-control-danger @enderror"
-                                    name="contract_female" oninput="MaleFemaleTotalCalc()" id="female" value="0">
-                                @error('contract_female')
+                                    class="form-control @error('interview_male') form-control-danger @enderror"
+                                    name="interview_male" oninput="MaleFemaleTotalCalc()" id="male" value="0">
+                                @error('interview_male')
                                     <div class="form-control-feedback" style="color: red;">
                                         {{ $message }} </div>
                                 @enderror
@@ -157,7 +157,23 @@
 
                         <div class="mb-3 row">
                             <label for="html5-text-input" class="col-md-3 col-form-label">
-                                Contract Total
+                                Interview Female
+                            </label>
+                            <div class="col-md-9">
+                                <input type="text"
+                                    class="form-control @error('interview_female') form-control-danger @enderror"
+                                    name="interview_female" oninput="MaleFemaleTotalCalc()" id="female"
+                                    value="0">
+                                @error('interview_female')
+                                    <div class="form-control-feedback" style="color: red;">
+                                        {{ $message }} </div>
+                                @enderror
+                            </div>
+                        </div>
+
+                        <div class="mb-3 row">
+                            <label for="html5-text-input" class="col-md-3 col-form-label">
+                                Interview Total
                             </label>
                             <div class="col-md-9">
                                 <input type="text" class="form-control" id="total" readonly>
@@ -193,7 +209,7 @@
     </div>
 @endsection
 @section('script')
-    {!! JsValidator::formRequest('App\Http\Requests\StoreContracts', '#create-form') !!}
+    {!! JsValidator::formRequest('App\Http\Requests\StoreInterview', '#create-form') !!}
     <script>
         $('select[id="demandId"]').on("change", function() {
             var demand_id = $(this).val();

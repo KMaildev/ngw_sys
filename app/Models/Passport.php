@@ -95,4 +95,10 @@ class Passport extends Model
     {
         return $this->hasMany(PassportPayment::class, 'passport_id', 'id');
     }
+
+    public function medical_tests_table()
+    {
+        return $this->belongsTo(MedicalTest::class, 'passport_id', 'id');
+    }
+
 }

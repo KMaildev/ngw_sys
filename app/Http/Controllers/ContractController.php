@@ -26,7 +26,6 @@ class ContractController extends Controller
             })->paginate(100);
         }
 
-
         if (request('overseas_agencie_id')) {
             $overseas_agencie_id = request('overseas_agencie_id');
             $contracts = Contract::whereHas('demands_table', function ($q) use ($overseas_agencie_id) {
