@@ -220,6 +220,103 @@
                                     </td>
                                 </tr>
 
+
+                                {{-- Interview Info  --}}
+                                @php
+                                    $contract_male_total = [];
+                                    $contract_female_total = [];
+                                    $contact_male_female_total = [];
+                                @endphp
+                                @foreach ($demand->interview_table as $interview_list)
+                                    <tr style="background-color: #eaedef;">
+                                        <td colspan="5" style="text-align: right;">
+                                            Interview Information
+                                        </td>
+
+                                        <td style="text-align: center;">
+                                            {{ $interview_list->interview_date ?? '' }}
+                                        </td>
+
+                                        <td style="text-align: center;">
+                                            {{ $interview_list->interview_male ?? 0 }}
+                                        </td>
+
+                                        <td style="text-align: center;">
+                                            {{ $interview_list->interview_female ?? 0 }}
+                                        </td>
+
+                                        <td style="text-align: center;">
+                                            @php
+                                                $interview_male = $interview_list->interview_male ?? 0;
+                                                $interview_female = $interview_list->interview_female ?? 0;
+                                                $contact_total = $interview_male + $interview_female;
+                                                echo $contact_total;
+                                                $interview_male_total[] = $interview_male;
+                                                $interview_female_total[] = $interview_female;
+                                                $contact_male_female_total[] = $contact_total;
+                                            @endphp
+                                        </td>
+
+                                        {{-- Balance M --}}
+                                        <td style="text-align: center;">
+                                            @php
+                                                $interview_balance_male = $demand_male - $interview_male;
+                                                echo $interview_balance_male;
+                                            @endphp
+                                        </td>
+
+                                        {{-- Balance F --}}
+                                        <td style="text-align: center;">
+                                            @php
+                                                $interview_balance_female = $demand_female - $interview_female;
+                                                echo $interview_balance_female;
+                                            @endphp
+                                        </td>
+
+                                        <td style="text-align: center;">
+                                            @php
+                                                $interview_balance_total = $interview_balance_male + $interview_balance_female;
+                                                echo $interview_balance_total;
+                                            @endphp
+                                        </td>
+
+                                        <td style="text-align: center;">
+                                            <span style="font-size: 11px; color: red;">
+                                                {{ $interview_list->remark ?? '' }}
+                                            </span>
+                                        </td>
+
+                                        <td style="text-align: center;">
+                                            <div class="btn-group">
+                                                <button type="button" class="btn btn-primary btn-sm dropdown-toggle"
+                                                    data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                                    Action
+                                                </button>
+                                                <div class="dropdown-menu">
+
+                                                    <a class="dropdown-item"
+                                                        href="{{ route('add_interview_worker', $interview_list->id) }}">
+                                                        Add Interview Labours
+                                                    </a>
+
+                                                    <a class="dropdown-item"
+                                                        href="{{ route('interview.show', $interview_list->id) }}">
+                                                        View Interview Labours
+                                                    </a>
+
+                                                    <a class="dropdown-item"
+                                                        href="{{ route('interview.edit', $interview_list->id) }}">
+                                                        Edit
+                                                    </a>
+                                                </div>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                @endforeach
+
+
+
+
                                 {{-- Contact Info  --}}
                                 @php
                                     $contract_male_total = [];
@@ -286,11 +383,30 @@
                                         </td>
 
                                         <td style="text-align: center;">
-                                            <a class=""
-                                                href="{{ route('labour_create_view', $contract_list->id) }}">
-                                                <i class="fa fa-users"></i>
-                                                Contract Labours
-                                            </a>
+                                            <div class="btn-group">
+                                                <button type="button" class="btn btn-primary btn-sm dropdown-toggle"
+                                                    data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                                    Action
+                                                </button>
+                                                <div class="dropdown-menu">
+
+                                                    <a class="dropdown-item"
+                                                        href="{{ route('view_contract_labour', $contract_list->id) }}">
+                                                        Contract Labours
+                                                    </a>
+
+                                                    <a class="dropdown-item"
+                                                        href="{{ route('file_upload_view_contract', $contract_list->id) }}">
+                                                        Files
+                                                    </a>
+
+                                                    <a class="dropdown-item"
+                                                        href="{{ route('contract.edit', $contract_list->id) }}">
+                                                        Edit
+                                                    </a>
+
+                                                </div>
+                                            </div>
                                         </td>
                                     </tr>
                                 @endforeach
@@ -327,8 +443,7 @@
                                         {{-- Balance M --}}
                                         <td style="text-align: center;">
                                             @php
-                                                $contract_male_totals = array_sum($contract_male_total);
-                                                $sending_balance_male = $contract_male_totals - $sending_male;
+                                                $sending_balance_male = $demand_male - $sending_male;
                                                 echo $sending_balance_male;
                                             @endphp
                                         </td>
@@ -336,8 +451,7 @@
                                         {{-- Balance F --}}
                                         <td style="text-align: center;">
                                             @php
-                                                $contract_female_totals = array_sum($contract_female_total);
-                                                $sending_balance_female = $contract_female_totals - $sending_female;
+                                                $sending_balance_female = $demand_female - $sending_female;
                                                 echo $sending_balance_female;
                                             @endphp
                                         </td>
@@ -356,10 +470,30 @@
                                         </td>
 
                                         <td style="text-align: center;">
-                                            <a href="{{ route('sending_labour', $sendings_list->id) }}">
-                                                <i class="fa fa-users"></i>
-                                                Sending Labours
-                                            </a>
+                                            <div class="btn-group">
+                                                <button type="button" class="btn btn-primary btn-sm dropdown-toggle"
+                                                    data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                                    Action
+                                                </button>
+                                                <div class="dropdown-menu">
+
+                                                    <a class="dropdown-item"
+                                                        href="{{ route('sending_labour', $sendings_list->id) }}">
+                                                        Sending Labours
+                                                    </a>
+
+                                                    <a class="dropdown-item"
+                                                        href="{{ route('file_upload_view_sending', $sendings_list->id) }}">
+                                                        Files
+                                                    </a>
+
+                                                    <a class="dropdown-item"
+                                                        href="{{ route('sending.edit', $sendings_list->id) }}">
+                                                        Edit
+                                                    </a>
+
+                                                </div>
+                                            </div>
                                         </td>
                                     </tr>
                                 @endforeach

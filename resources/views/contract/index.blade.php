@@ -193,7 +193,7 @@
                                                 </a>
 
                                                 <form action="{{ route('contract.destroy', $contract->id) }}"
-                                                    method="POST">
+                                                    method="POST" hidden>
                                                     @csrf
                                                     @method('DELETE')
                                                     <button type="button" class="dropdown-item del_confirm"

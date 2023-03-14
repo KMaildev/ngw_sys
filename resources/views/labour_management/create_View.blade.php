@@ -1,150 +1,134 @@
 @extends('layouts.main')
 @section('content')
     <div class="row">
-        <div class="col-md-12 col-sm-12 col-lg-12">
-            <div class="card">
-                <div class="card-body">
+        @include('components.contact_information')
 
-                    <div
-                        class="d-flex justify-content-between flex-xl-row flex-md-column flex-sm-row flex-column p-sm-3 p-0">
-                        <div class="col-md-8 col-lg-8">
-                            <h4>
-                                {{ $interview->interview_title ?? '' }}
-                            </h4>
-                            <div class="mb-2">
-                                <span class="me-1">
-                                    Overseas Company Name:
-                                </span>
-                                <span class="fw-semibold">
-                                    {{ $contract->demands_table->overseas_agencies_table->company_name ?? '' }}
-                                </span>
-                            </div>
-                            <div class="mb-2">
-                                <span class="me-1">Contract Date:</span>
-                                <span class="fw-semibold">
-                                    {{ $contract->contract_date ?? '' }}
-                                </span>
-                            </div>
-                            <div class="mb-2">
-                                <span class="me-1">Contract Male:</span>
-                                <span class="fw-semibold">
-                                    {{ number_format($contract->contract_male) }}
-                                </span>
-                            </div>
-                            <div class="mb-2">
-                                <span class="me-1">Contract Female:</span>
-                                <span class="fw-semibold">
-                                    {{ number_format($contract->contract_female) }}
-                                </span>
-                            </div>
-                            <div class="mb-2">
-                                <span class="me-1">Contract Total:</span>
-                                <span class="fw-semibold">
-                                    {{ number_format($contract->contract_male + $contract->contract_female) }}
-                                </span>
-                            </div>
-                        </div>
-                    </div>
 
+        <div class="col-md-12 py-3">
+            <div class="card mb-3">
+                <div class="card-header border-bottom">
+                    <ul class="nav nav-tabs card-header-tabs" id="nav-tabs" role="tablist">
+                        <li class="nav-item">
+                            <a href="{{ route('labour_create_view', $contract->id) }}" class="nav-link active"
+                                aria-selected="true">
+                                Add Contract Labour
+                            </a>
+                        </li>
+
+                        <li class="nav-item">
+                            <a href="{{ route('view_contract_labour', $contract->id) }}" class="nav-link"
+                                aria-selected="true">
+                                View Contract Labour
+                            </a>
+                        </li>
+                    </ul>
                 </div>
 
-                <form action="" style="padding: 20px;">
-                    <table id="interview_labour" class="display" style="width:100%">
-                        <thead>
-                            <tr>
-                                <th class="text-center text-white" style="background-color: #296166;">
-                                </th>
-                                <th class="text-center text-white" style="background-color: #296166;">
-                                    Interview
-                                </th>
-                                <th class="text-center text-white" style="background-color: #296166;">
-                                    Interview Date
-                                </th>
-                                <th class="text-center text-white" style="background-color: #296166;">
-                                    Name
-                                </th>
-                                <th class="text-center text-white" style="background-color: #296166;">
-                                    M/F
-                                </th>
-                                <th class="text-center text-white" style="background-color: #296166;">
-                                    NRC
-                                </th>
-                                <th class="text-center text-white" style="background-color: #296166;">
-                                    Passport
-                                </th>
-                                <th class="text-center text-white" style="background-color: #296166;">
-                                    Phone
-                                </th>
-                                <th class="text-center text-white" style="background-color: #296166;">
-                                    Agent
-                                </th>
-                                <th class="text-center text-white" style="background-color: #296166;">
-                                    Contract Status
-                                </th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            @foreach ($interview_labours as $key => $interview_labour)
-                                <tr class="tableCheck">
-                                    <td>
-                                        <input type="hidden" name="passport_id[]"
-                                            value="{{ $interview_labour->passport_table->id ?? '' }}">
-                                        {{ $key + 1 }}
-                                    </td>
+                <div class="tab-content" id="myTabContent">
+                    <div class="tab-pane fade active show" id="ProcessingFile" role="tabpanel"
+                        aria-labelledby="ProcessingFile-tab">
+                        <div class="col-md-12 col-lg-12 col-xl-12 mb-6 order-0">
+                            <h4>Interview Labour</h4>
+                            <form action="">
+                                <table id="interview_labour" class="display" style="width:100%">
+                                    <thead>
+                                        <tr>
+                                            <th class="text-center text-white" style="background-color: #296166;">
+                                            </th>
+                                            <th class="text-center text-white" style="background-color: #296166;">
+                                                Interview
+                                            </th>
+                                            <th class="text-center text-white" style="background-color: #296166;">
+                                                Interview Date
+                                            </th>
+                                            <th class="text-center text-white" style="background-color: #296166;">
+                                                Name
+                                            </th>
+                                            <th class="text-center text-white" style="background-color: #296166;">
+                                                M/F
+                                            </th>
+                                            <th class="text-center text-white" style="background-color: #296166;">
+                                                NRC
+                                            </th>
+                                            <th class="text-center text-white" style="background-color: #296166;">
+                                                Passport
+                                            </th>
+                                            <th class="text-center text-white" style="background-color: #296166;">
+                                                Phone
+                                            </th>
+                                            <th class="text-center text-white" style="background-color: #296166;">
+                                                Agent
+                                            </th>
+                                            <th class="text-center text-white" style="background-color: #296166;">
+                                                Contract Status
+                                            </th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        @foreach ($interview_labours as $key => $interview_labour)
+                                            <tr class="tableCheck">
+                                                <td>
+                                                    <input type="hidden" name="passport_id[]"
+                                                        value="{{ $interview_labour->passport_table->id ?? '' }}">
+                                                    {{ $key + 1 }}
+                                                </td>
 
-                                    <td class="text-center">
-                                        {{ $interview_labour->interviews_table->interview_title ?? '' }}
-                                    </td>
+                                                <td class="text-center">
+                                                    {{ $interview_labour->interviews_table->interview_title ?? '' }}
+                                                </td>
 
-                                    <td class="text-center">
-                                        {{ $interview_labour->interviews_table->interview_date ?? '' }}
-                                    </td>
+                                                <td class="text-center">
+                                                    {{ $interview_labour->interviews_table->interview_date ?? '' }}
+                                                </td>
 
-                                    <td class="text-center">
-                                        {{ $interview_labour->passport_table->name ?? '' }}
-                                    </td>
+                                                <td class="text-center">
+                                                    {{ $interview_labour->passport_table->name ?? '' }}
+                                                </td>
 
-                                    <td class="text-center">
-                                        {{ ucfirst($interview_labour->passport_table->gender ?? '') }}
-                                    </td>
+                                                <td class="text-center">
+                                                    {{ ucfirst($interview_labour->passport_table->gender ?? '') }}
+                                                </td>
 
-                                    <td class="text-center">
-                                        {{ $interview_labour->passport_table->nrc ?? '' }}
-                                    </td>
+                                                <td class="text-center">
+                                                    {{ $interview_labour->passport_table->nrc ?? '' }}
+                                                </td>
 
-                                    <td class="text-center">
-                                        {{ $interview_labour->passport_table->passport ?? '' }}
-                                    </td>
+                                                <td class="text-center">
+                                                    {{ $interview_labour->passport_table->passport ?? '' }}
+                                                </td>
 
-                                    <td class="text-center">
-                                        {{ $interview_labour->passport_table->phone ?? '' }}
-                                    </td>
+                                                <td class="text-center">
+                                                    {{ $interview_labour->passport_table->phone ?? '' }}
+                                                </td>
 
-                                    <td class="text-center">
-                                        {{ $interview_labour->passport_table->agent_list_table->name ?? $interview_labour->passport_table->local_agent_name }}
-                                    </td>
+                                                <td class="text-center">
+                                                    {{ $interview_labour->passport_table->agent_list_table->name ?? $interview_labour->passport_table->local_agent_name }}
+                                                </td>
 
-                                    <td class="text-center">
-                                        @if ($interview_labour->labour_management_table->id ?? '')
-                                            <span class="badge bg-primary">
-                                                Contract
-                                            </span>
-                                        @else
-                                            <span class="badge bg-danger">
-                                                Pending
-                                            </span>
-                                        @endif
-                                    </td>
-                                </tr>
-                            @endforeach
-                        </tbody>
-                    </table>
+                                                <td class="text-center">
+                                                    @if ($interview_labour->labour_management_table->id ?? '')
+                                                        <span class="badge bg-primary">
+                                                            Contract
+                                                        </span>
+                                                    @else
+                                                        <span class="badge bg-danger">
+                                                            Pending
+                                                        </span>
+                                                    @endif
+                                                </td>
+                                            </tr>
+                                        @endforeach
+                                    </tbody>
+                                </table>
 
-                    <button id="submitToContract" type="submit" class="btn btn-primary">
-                        <span class="fa fa-arrow-right"></span>&nbsp;
-                        Submit to Contract List
-                    </button>
-                </form>
+                                <button id="submitToContract" type="submit" class="btn btn-primary">
+                                    <span class="fa fa-arrow-right"></span>&nbsp;
+                                    Submit to Contract List
+                                </button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </div>

@@ -79,6 +79,24 @@ class LabourManagementController extends Controller
     }
 
 
+    public function viewContractLabour($id)
+    {
+        $contract = Contract::findOrFail($id);
+
+        $passports = Passport::where('reject_status', NULL)
+            ->whereHas('labour_management_table', function ($q) use ($id) {
+                $q->where('contract_id', $id);
+            })->paginate(100);
+
+        $total_passports =  Passport::where('reject_status', NULL)
+            ->whereHas('labour_management_table', function ($q) use ($id) {
+                $q->where('contract_id', $id);
+            })->count();
+
+        return view('labour_management.contract_labour', compact('contract', 'passports', 'total_passports'));
+    }
+
+
 
     public function store(StoreLabourManagement $request)
     {

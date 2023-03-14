@@ -1,8 +1,6 @@
-
-
-<br><br>
+<br>
 <span style="margin: 2px; font-weight: bold;">
-    Total Passport: {{ $total_passports }}
+    Total: {{ $total_passports }}
     /
     Result: {{ count($passports) }}
 </span>

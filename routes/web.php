@@ -56,8 +56,8 @@ Route::middleware('auth')->group(function () {
     Route::resource('contract', ContractController::class);
     Route::resource('labour_management', LabourManagementController::class);
     Route::get('labour_create_view/{id}', [LabourManagementController::class, 'createAndView'])->name('labour_create_view');
+    Route::get('view_contract_labour/{id}', [LabourManagementController::class, 'viewContractLabour'])->name('view_contract_labour');
     Route::post('sbumit_to_contract', [LabourManagementController::class, 'submitToContract'])->name('sbumit_to_contract');
-
 
 
 

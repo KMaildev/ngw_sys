@@ -159,7 +159,7 @@
                                                     Files
                                                 </a>
 
-                                                <form action="{{ route('sending.destroy', $sending->id) }}" method="POST">
+                                                <form hidden action="{{ route('sending.destroy', $sending->id) }}" method="POST">
                                                     @csrf
                                                     @method('DELETE')
                                                     <button type="button" class="dropdown-item del_confirm"
