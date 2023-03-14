@@ -10,6 +10,7 @@
     <meta name="description" content="" />
     <meta name="keywords" content="">
     <link rel="canonical" href="">
+    <meta name="csrf-token" content="{{ csrf_token() }}">
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com/">
     <link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin>

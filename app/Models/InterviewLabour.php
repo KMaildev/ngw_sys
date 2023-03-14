@@ -23,4 +23,14 @@ class InterviewLabour extends Model
     {
         return $this->belongsTo(Passport::class, 'passport_id', 'id');
     }
+
+    public function labour_management_table()
+    {
+        return $this->belongsTo(LabourManagement::class, 'passport_id', 'passport_id');
+    }
+
+    public function interviews_table()
+    {
+        return $this->belongsTo(Interview::class, 'interview_id', 'id');
+    }
 }

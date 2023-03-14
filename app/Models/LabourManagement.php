@@ -28,6 +28,7 @@ class LabourManagement extends Model
         'owic_date',
         'created_at',
         'updated_at',
+        'passport_id',
     ];
 
     public function overseas_agency_table()

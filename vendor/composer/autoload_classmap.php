@@ -56,6 +56,7 @@ return array(
     'App\\Http\\Requests\\StoreDemand' => $baseDir . '/app/Http/Requests/StoreDemand.php',
     'App\\Http\\Requests\\StoreHospital' => $baseDir . '/app/Http/Requests/StoreHospital.php',
     'App\\Http\\Requests\\StoreInterview' => $baseDir . '/app/Http/Requests/StoreInterview.php',
+    'App\\Http\\Requests\\StoreInterviewLabour' => $baseDir . '/app/Http/Requests/StoreInterviewLabour.php',
     'App\\Http\\Requests\\StoreLabourManagement' => $baseDir . '/app/Http/Requests/StoreLabourManagement.php',
     'App\\Http\\Requests\\StoreLabourPayment' => $baseDir . '/app/Http/Requests/StoreLabourPayment.php',
     'App\\Http\\Requests\\StoreMedicalTest' => $baseDir . '/app/Http/Requests/StoreMedicalTest.php',

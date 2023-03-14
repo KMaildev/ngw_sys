@@ -49,9 +49,23 @@ Route::middleware('auth')->group(function () {
     Route::get('/cancel_reject_passport/{id}', [PassportController::class, 'cancelRejectPassport'])->name('cancel_reject_passport');
     Route::resource('demand', DemandController::class);
     Route::get('demand_ajax/{id}', [DemandController::class, 'demandAjax'])->name('demand_ajax');
+
+
+
+
     Route::resource('contract', ContractController::class);
     Route::resource('labour_management', LabourManagementController::class);
     Route::get('labour_create_view/{id}', [LabourManagementController::class, 'createAndView'])->name('labour_create_view');
+    Route::post('sbumit_to_contract', [LabourManagementController::class, 'submitToContract'])->name('sbumit_to_contract');
+
+
+
+
+
+
+
+
+
     Route::resource('sending', SendingController::class);
     Route::get('sending_create/{id}', [SendingController::class, 'create'])->name('sending_create');
     Route::get('sending_labour/{id}', [LabourManagementController::class, 'sendingLabour'])->name('sending_labour');

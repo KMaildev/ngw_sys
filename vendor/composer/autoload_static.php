@@ -657,6 +657,7 @@ class ComposerStaticInit255bff90faa8e45e478e27bc880e200a
         'App\\Http\\Requests\\StoreDemand' => __DIR__ . '/../..' . '/app/Http/Requests/StoreDemand.php',
         'App\\Http\\Requests\\StoreHospital' => __DIR__ . '/../..' . '/app/Http/Requests/StoreHospital.php',
         'App\\Http\\Requests\\StoreInterview' => __DIR__ . '/../..' . '/app/Http/Requests/StoreInterview.php',
+        'App\\Http\\Requests\\StoreInterviewLabour' => __DIR__ . '/../..' . '/app/Http/Requests/StoreInterviewLabour.php',
         'App\\Http\\Requests\\StoreLabourManagement' => __DIR__ . '/../..' . '/app/Http/Requests/StoreLabourManagement.php',
         'App\\Http\\Requests\\StoreLabourPayment' => __DIR__ . '/../..' . '/app/Http/Requests/StoreLabourPayment.php',
         'App\\Http\\Requests\\StoreMedicalTest' => __DIR__ . '/../..' . '/app/Http/Requests/StoreMedicalTest.php',
