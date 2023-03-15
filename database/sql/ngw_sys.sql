@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: Mar 12, 2023 at 06:21 PM
+-- Generation Time: Mar 14, 2023 at 07:52 AM
 -- Server version: 10.4.21-MariaDB
 -- PHP Version: 7.4.28
 
@@ -58,6 +58,36 @@ INSERT INTO `agent_lists` (`id`, `name`, `email`, `phone`, `address`, `created_a
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `authentication_log`
+--
+
+CREATE TABLE `authentication_log` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `authenticatable_type` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `authenticatable_id` bigint(20) UNSIGNED NOT NULL,
+  `ip_address` varchar(45) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `user_agent` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `login_at` timestamp NULL DEFAULT NULL,
+  `login_successful` tinyint(1) NOT NULL DEFAULT 0,
+  `logout_at` timestamp NULL DEFAULT NULL,
+  `cleared_by_user` tinyint(1) NOT NULL DEFAULT 0,
+  `location` longtext CHARACTER SET utf8mb4 COLLATE utf8mb4_bin DEFAULT NULL CHECK (json_valid(`location`))
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `authentication_log`
+--
+
+INSERT INTO `authentication_log` (`id`, `authenticatable_type`, `authenticatable_id`, `ip_address`, `user_agent`, `login_at`, `login_successful`, `logout_at`, `cleared_by_user`, `location`) VALUES
+(1, 'App\\Models\\User', 1, '127.0.0.1', 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/110.0.0.0 Safari/537.36', '2023-03-13 22:47:46', 1, '2023-03-13 22:48:26', 0, '{\"ip\":\"127.0.0.0\",\"iso_code\":\"US\",\"country\":\"United States\",\"city\":\"New Haven\",\"state\":\"CT\",\"state_name\":\"Connecticut\",\"postal_code\":\"06510\",\"lat\":41.31,\"lon\":-72.92,\"timezone\":\"America\\/New_York\",\"continent\":\"NA\",\"currency\":\"USD\",\"default\":true,\"cached\":false}'),
+(2, 'App\\Models\\User', 1, '127.0.0.1', 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/110.0.0.0 Safari/537.36', '2023-03-13 22:48:30', 1, NULL, 0, '{\"ip\":\"127.0.0.0\",\"iso_code\":\"US\",\"country\":\"United States\",\"city\":\"New Haven\",\"state\":\"CT\",\"state_name\":\"Connecticut\",\"postal_code\":\"06510\",\"lat\":41.31,\"lon\":-72.92,\"timezone\":\"America\\/New_York\",\"continent\":\"NA\",\"currency\":\"USD\",\"default\":true,\"cached\":false}'),
+(3, 'App\\Models\\User', 1, '127.0.0.1', 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/111.0.0.0 Safari/537.36', '2023-03-14 00:17:54', 1, '2023-03-14 00:20:46', 0, '{\"ip\":\"127.0.0.0\",\"iso_code\":\"US\",\"country\":\"United States\",\"city\":\"New Haven\",\"state\":\"CT\",\"state_name\":\"Connecticut\",\"postal_code\":\"06510\",\"lat\":41.31,\"lon\":-72.92,\"timezone\":\"America\\/New_York\",\"continent\":\"NA\",\"currency\":\"USD\",\"default\":true,\"cached\":false}'),
+(4, 'App\\Models\\User', 1, '127.0.0.1', 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/111.0.0.0 Safari/537.36', '2023-03-14 00:20:51', 1, '2023-03-14 00:21:20', 0, '{\"ip\":\"127.0.0.0\",\"iso_code\":\"US\",\"country\":\"United States\",\"city\":\"New Haven\",\"state\":\"CT\",\"state_name\":\"Connecticut\",\"postal_code\":\"06510\",\"lat\":41.31,\"lon\":-72.92,\"timezone\":\"America\\/New_York\",\"continent\":\"NA\",\"currency\":\"USD\",\"default\":true,\"cached\":false}'),
+(5, 'App\\Models\\User', 1, '127.0.0.1', 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/111.0.0.0 Safari/537.36', '2023-03-14 00:21:25', 1, NULL, 0, '{\"ip\":\"127.0.0.0\",\"iso_code\":\"US\",\"country\":\"United States\",\"city\":\"New Haven\",\"state\":\"CT\",\"state_name\":\"Connecticut\",\"postal_code\":\"06510\",\"lat\":41.31,\"lon\":-72.92,\"timezone\":\"America\\/New_York\",\"continent\":\"NA\",\"currency\":\"USD\",\"default\":true,\"cached\":false}');
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `contracts`
 --
 
@@ -71,6 +101,13 @@ CREATE TABLE `contracts` (
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `contracts`
+--
+
+INSERT INTO `contracts` (`id`, `contract_date`, `contract_male`, `contract_female`, `remark`, `demand_id`, `created_at`, `updated_at`) VALUES
+(1, '21.3.2022', 2, 2, 'Contract Remark', 1, '2023-03-13 01:38:37', '2023-03-13 21:19:11');
 
 -- --------------------------------------------------------
 
@@ -119,6 +156,14 @@ CREATE TABLE `demands` (
   `job` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `salary` text COLLATE utf8mb4_unicode_ci DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `demands`
+--
+
+INSERT INTO `demands` (`id`, `company_name`, `countrie_id`, `overseas_agencie_id`, `male`, `female`, `demand_date`, `cabinet_date`, `issue_date`, `issue_number`, `created_at`, `updated_at`, `demand_status`, `demand_id`, `demand_number`, `job`, `salary`) VALUES
+(1, '1', '1', '1', '100', '100', '21.3.2022', '6.4.2022', '30.5.2022', 'စာအမှတ်၊၃/၂၇/အလည(ရွှေ့ပြောင်း)၂၀၂၂(၁၃၁၀၉)', '2023-03-12 21:09:22', '2023-03-12 21:09:22', 'new_demand', NULL, 'DOE0001', 'Construction', '350'),
+(2, '1', '1', '1', '100', '20', '21.3.2022', '6.4.2022', '30.5.2022', 'စာအမှတ်၊၃/၂၇/အလည(ရွှေ့ပြောင်း)၂၀၂၂(၁၃၁10)', '2023-03-12 21:13:06', '2023-03-12 21:13:06', 'new_demand', NULL, 'DOE00002', 'Car Factory', '300');
 
 -- --------------------------------------------------------
 
@@ -183,6 +228,59 @@ INSERT INTO `hospitals` (`id`, `name`, `location`, `phone`, `created_at`, `updat
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `interviews`
+--
+
+CREATE TABLE `interviews` (
+  `id` int(10) UNSIGNED NOT NULL,
+  `interview_title` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `interview_date` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `interview_male` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `interview_female` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `remark` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `demand_id` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `interviews`
+--
+
+INSERT INTO `interviews` (`id`, `interview_title`, `interview_date`, `interview_male`, `interview_female`, `remark`, `demand_id`, `created_at`, `updated_at`) VALUES
+(1, 'First Interview', '2023-03-13', '50', '50', 'First Interview Edit', '1', '2023-03-12 22:18:38', '2023-03-12 22:34:36'),
+(2, 'First Interview', '2023-03-13', '100', '0', 'First Interview', '2', '2023-03-12 22:25:41', '2023-03-12 22:25:41');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `interview_labours`
+--
+
+CREATE TABLE `interview_labours` (
+  `id` int(10) UNSIGNED NOT NULL,
+  `demand_id` int(11) DEFAULT NULL,
+  `interview_id` int(11) DEFAULT NULL,
+  `passport_id` int(11) DEFAULT NULL,
+  `agent_list_id` int(11) DEFAULT NULL,
+  `user_id` int(11) DEFAULT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `interview_labours`
+--
+
+INSERT INTO `interview_labours` (`id`, `demand_id`, `interview_id`, `passport_id`, `agent_list_id`, `user_id`, `created_at`, `updated_at`) VALUES
+(1, 1, 1, 4, 2, 1, '2023-03-13 00:57:39', '2023-03-13 00:57:39'),
+(2, 1, 1, 3, 2, 1, '2023-03-13 00:57:39', '2023-03-13 00:57:39'),
+(3, 1, 1, 2, 2, 1, '2023-03-13 00:57:39', '2023-03-13 00:57:39'),
+(4, 1, 1, 1, 2, 1, '2023-03-13 00:57:39', '2023-03-13 00:57:39');
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `labour_docs`
 --
 
@@ -224,8 +322,18 @@ CREATE TABLE `labour_management` (
   `owic_date` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
-  `sending_id` text COLLATE utf8mb4_unicode_ci DEFAULT NULL
+  `sending_id` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `passport_id` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `labour_management`
+--
+
+INSERT INTO `labour_management` (`id`, `demand_id`, `contract_id`, `overseas_agencies_id`, `name`, `father_name`, `nrc`, `date_of_birth`, `passport`, `passport_date`, `phone`, `address`, `gender`, `remark`, `place_of_passport`, `owic`, `owic_date`, `created_at`, `updated_at`, `sending_id`, `passport_id`) VALUES
+(2, 1, 1, 1, 'MIN TIN', NULL, NULL, NULL, 'MG 786769', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2023-03-13 21:15:41', '2023-03-13 21:19:24', '1', 3),
+(3, 1, 1, 1, 'CHAN NYEIN AUNG', NULL, NULL, NULL, 'MG 784551', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2023-03-13 21:18:05', '2023-03-13 21:19:24', '1', 2),
+(4, 1, 1, 1, 'YU YA WINT CHAL', NULL, NULL, NULL, 'MG 108457', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2023-03-13 21:18:19', '2023-03-13 21:19:24', '1', 1);
 
 -- --------------------------------------------------------
 
@@ -241,17 +349,20 @@ CREATE TABLE `medical_tests` (
   `user_id` int(11) DEFAULT NULL,
   `failed_or_pass` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
-  `updated_at` timestamp NULL DEFAULT NULL
+  `updated_at` timestamp NULL DEFAULT NULL,
+  `agent_list_id` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- Dumping data for table `medical_tests`
 --
 
-INSERT INTO `medical_tests` (`id`, `medical_test_date`, `hospital_id`, `passport_id`, `user_id`, `failed_or_pass`, `created_at`, `updated_at`) VALUES
-(1, '2023-03-12 11:20 PM', 1, 5, 1, 'Pass', '2023-03-12 10:20:39', '2023-03-12 10:40:20'),
-(2, '2023-03-12 11:20 PM', 1, 4, 1, 'Failed', '2023-03-12 10:20:39', '2023-03-12 10:42:43'),
-(3, '2023-03-12 11:20 PM', 1, 3, 1, 'Pass', '2023-03-12 10:20:39', '2023-03-12 10:40:22');
+INSERT INTO `medical_tests` (`id`, `medical_test_date`, `hospital_id`, `passport_id`, `user_id`, `failed_or_pass`, `created_at`, `updated_at`, `agent_list_id`) VALUES
+(1, '2023-03-13 12:13 PM', 1, 112, 1, 'Pass', '2023-03-12 23:13:17', '2023-03-13 02:38:44', 1),
+(2, '2023-03-13 12:13 PM', 1, 111, 1, 'Pass', '2023-03-12 23:13:17', '2023-03-12 23:13:25', 2),
+(3, '2023-03-13 12:13 PM', 1, 110, 1, 'Pass', '2023-03-12 23:13:17', '2023-03-12 23:13:25', 1),
+(4, '2023-03-13 12:13 PM', 1, 107, 1, 'Pass', '2023-03-12 23:13:17', '2023-03-12 23:13:26', 1),
+(5, '2023-03-13 12:13 PM', 1, 106, 1, 'Failed', '2023-03-12 23:13:17', '2023-03-12 23:13:27', 1);
 
 -- --------------------------------------------------------
 
@@ -269,8 +380,25 @@ CREATE TABLE `medical_test_temp_lists` (
   `session_id` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `user_id` int(11) DEFAULT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
-  `updated_at` timestamp NULL DEFAULT NULL
+  `updated_at` timestamp NULL DEFAULT NULL,
+  `agent_list_id` int(11) DEFAULT NULL,
+  `types` text COLLATE utf8mb4_unicode_ci DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `medical_test_temp_lists`
+--
+
+INSERT INTO `medical_test_temp_lists` (`id`, `agent_name`, `name`, `passport`, `nrc`, `passport_id`, `session_id`, `user_id`, `created_at`, `updated_at`, `agent_list_id`, `types`) VALUES
+(5, 'KO KYAW KYAW', 'HTAY HTAY WIN', 'MG 150043', '10/KA HTA NA (N) 140423', 100, 'C6tBDy7qzDG8NZpia3zaQE2avKxVTF6gpzAipKm2', 1, '2023-03-13 00:43:18', '2023-03-13 00:43:18', 1, 'medical_test'),
+(6, 'KO KYAW KYAW', 'MYO MYINT NAING', 'MG 420019', '10/KA HTA NA (N) 178442', 99, 'C6tBDy7qzDG8NZpia3zaQE2avKxVTF6gpzAipKm2', 1, '2023-03-13 00:43:19', '2023-03-13 00:43:19', 1, 'medical_test'),
+(7, 'KO KYAW KYAW', 'ZIN MIN AUNG', 'MG 419760', '10/KA HTA NA (N) 187856', 98, 'C6tBDy7qzDG8NZpia3zaQE2avKxVTF6gpzAipKm2', 1, '2023-03-13 00:43:19', '2023-03-13 00:43:19', 1, 'medical_test'),
+(8, 'KO KYAW KYAW', 'NAING ZIN', 'MG 042018', '10/KA HTA NA (N) 196883', 97, 'C6tBDy7qzDG8NZpia3zaQE2avKxVTF6gpzAipKm2', 1, '2023-03-13 00:43:20', '2023-03-13 00:43:20', 1, 'medical_test'),
+(9, 'KO KYAW KYAW', 'THA PYAY AUNG', 'MG 038972', '10/KA HTA NA (N) 164751', 96, 'C6tBDy7qzDG8NZpia3zaQE2avKxVTF6gpzAipKm2', 1, '2023-03-13 00:43:20', '2023-03-13 00:43:20', 1, 'medical_test'),
+(18, 'Ko Aung Soe', 'HEIN THU AUNG', 'MG 496802', '', 4, 'C6tBDy7qzDG8NZpia3zaQE2avKxVTF6gpzAipKm2', 1, '2023-03-13 02:39:09', '2023-03-13 02:39:09', 2, 'interview_labour'),
+(19, 'Ko Aung Soe', 'MIN TIN', 'MG 786769', '', 3, 'C6tBDy7qzDG8NZpia3zaQE2avKxVTF6gpzAipKm2', 1, '2023-03-13 02:39:10', '2023-03-13 02:39:10', 2, 'interview_labour'),
+(20, 'Ko Aung Soe', 'CHAN NYEIN AUNG', 'MG 784551', '', 2, 'C6tBDy7qzDG8NZpia3zaQE2avKxVTF6gpzAipKm2', 1, '2023-03-13 02:39:10', '2023-03-13 02:39:10', 2, 'interview_labour'),
+(21, 'Ko Aung Soe', 'YU YA WINT CHAL', 'MG 108457', '14/NGA PA TA (N) 240503', 1, 'C6tBDy7qzDG8NZpia3zaQE2avKxVTF6gpzAipKm2', 1, '2023-03-13 02:39:11', '2023-03-13 02:39:11', 2, 'interview_labour');
 
 -- --------------------------------------------------------
 
@@ -353,7 +481,14 @@ INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES
 (41, '2023_03_11_084011_create_nrcs_table', 33),
 (42, '2023_03_11_171320_create_hospitals_table', 34),
 (44, '2023_03_12_143332_create_medical_test_temp_lists_table', 35),
-(45, '2023_03_12_162652_create_medical_tests_table', 36);
+(45, '2023_03_12_162652_create_medical_tests_table', 36),
+(46, '2023_03_13_044335_create_interviews_table', 37),
+(47, '2023_03_13_053937_add_agent_list_id_to_medical_tests_table', 38),
+(48, '2023_03_13_054121_add_agent_list_id_to_medical_test_temp_lists_table', 39),
+(49, '2023_03_13_070135_create_interview_labours_table', 40),
+(50, '2023_03_13_070715_add_types_to_medical_test_temp_lists_table', 41),
+(51, '2023_03_14_030313_add_passport_id_to_labour_management_table', 42),
+(52, '2023_03_14_050059_create_authentication_log_table', 43);
 
 -- --------------------------------------------------------
 
@@ -852,7 +987,7 @@ CREATE TABLE `offices` (
 --
 
 INSERT INTO `offices` (`id`, `name`, `location`, `created_at`, `updated_at`) VALUES
-(1, 'Golden Sea Myanmar Co.,Ltd', NULL, NULL, NULL);
+(1, 'New Golden Way Co.,Ltd', NULL, NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -958,7 +1093,7 @@ CREATE TABLE `passports` (
 
 INSERT INTO `passports` (`id`, `name`, `father_name`, `nrc`, `date_of_birth`, `passport`, `passport_date`, `local_agent_name`, `phone`, `address`, `gender`, `remark`, `created_at`, `updated_at`, `join_date`, `owic`, `owic_date`, `reject_status`, `reject_date`, `reject_reason`, `place_of_passport`, `agent_list_id`, `mother_name`, `go_date`, `go_reason`, `entry_date`, `nation_religion`, `region_state`, `labour_code`, `age`, `photo`, `nrc_front`, `nrc_back`, `passport_expiry_date`, `qualification`, `weight`, `height`, `tatto`, `smoking`, `alcohol`, `prominent_sign`, `working_experience`, `selected_country`, `labour_card_no`, `issue_of_labour_date`, `identification_card`, `issue_date_of_id_card`, `son`, `son_age`, `daughter`, `daughter_age`, `address_line_one`, `phone_family`, `name_of_heir`, `relative`, `nrc_of_heir`, `passport_cost`, `car_charges`, `passport_register_status`, `user_id`, `marital_status`, `leader`) VALUES
 (1, 'YU YA WINT CHAL', 'U WIN NAING', '14/NGA PA TA (N) 240503', '3.3.1999', 'MG 108457', '4.7.2022', NULL, '-', 'NGAPUTAW TSP', 'female', 'NEW', '2022-01-01 12:47:33', '2023-01-18 12:47:33', '2023-01-19', NULL, NULL, NULL, NULL, NULL, 'MYAWADDY', 2, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-(2, 'CHAN NYEIN AUNG', NULL, NULL, '30.9.1996', 'MG 784551', '5.11.2022', '', '-', 'KYAUNGKONE TSP', 'male', 'NEW', '2023-01-18 12:49:02', '2023-03-07 06:16:11', '2023-01-19', NULL, NULL, 'rejected', '1.1.2023', NULL, 'YANGON', 2, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(2, 'CHAN NYEIN AUNG', NULL, NULL, '30.9.1996', 'MG 784551', '5.11.2022', '', '-', 'KYAUNGKONE TSP', 'male', 'NEW', '2023-01-18 12:49:02', '2023-03-13 21:57:23', '2023-01-19', NULL, NULL, NULL, '', '', 'YANGON', 2, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
 (3, 'MIN TIN', NULL, NULL, '16.12.1999', 'MG 786769', '5.11.2022', NULL, '-', 'PATHEINGYEE TSP', 'male', 'NEW', '2023-01-18 12:51:00', '2023-01-18 12:52:59', '2023-01-19', NULL, NULL, NULL, NULL, NULL, 'YANGON', 2, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
 (4, 'HEIN THU AUNG', NULL, NULL, NULL, 'MG 496802', '14.9.2022', NULL, '-', 'KAWLIN TSP', 'male', 'NEW', '2023-02-02 12:55:14', '2023-01-18 12:55:14', '2023-01-19', NULL, NULL, NULL, NULL, NULL, 'YANGON', 2, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
 (5, 'SAW MYO LIN TUN', NULL, NULL, NULL, 'MG 784559', '5.11.2022', NULL, '-', 'SHWEGYIN TSP', 'male', 'NEW', '2023-01-18 12:58:03', '2023-01-18 12:58:03', '2023-01-19', NULL, NULL, NULL, NULL, NULL, 'YANGON', 2, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
@@ -1068,7 +1203,7 @@ INSERT INTO `passports` (`id`, `name`, `father_name`, `nrc`, `date_of_birth`, `p
 (108, 'AUNG NAING WIN', NULL, NULL, '14.4.1990', 'MG 447423', '9.9.2022', NULL, '-', 'KYAIKHTO TSP', 'male', 'NEW', '2023-01-19 15:21:02', '2023-01-19 15:21:02', '2023-01-20', NULL, NULL, NULL, NULL, NULL, 'YANGON', 1, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
 (109, 'THA PYAY AUNG', NULL, NULL, '11.7.2003', 'MG 038972', '15.6.2022', NULL, '-', 'KYAIKHTO TSP', 'male', 'NEW', '2023-01-19 15:26:13', '2023-01-19 15:26:13', '2023-01-20', NULL, NULL, NULL, NULL, NULL, 'YANGON', 1, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
 (110, 'NAING ZIN', 'U TUN NYUNT', '10/KA HTA NA (N) 196883', '11.10.1997', 'MG 042018', '16.6.2022', NULL, '-', 'KYAIKHTO TSP', 'male', 'NEW', '2023-01-19 15:27:48', '2023-01-19 15:27:48', '2023-01-20', NULL, NULL, NULL, NULL, NULL, 'YANGON', 1, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-(111, 'ZIN MIN AUNG', 'U AUNG NAING WIN', '10/KA HTA NA (N) 187856', '25.5.2003', 'MG 419760', 'YANGON', NULL, '-', 'KYAIKHTO TSP', 'male', 'NEW', '2023-01-19 15:29:33', '2023-01-19 15:29:33', '2023-01-20', NULL, NULL, NULL, NULL, NULL, 'YANGON', 1, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(111, 'ZIN MIN AUNG', 'U AUNG NAING WIN', '10/KA HTA NA (N) 187856', '25.5.2003', 'MG 419760', 'YANGON', NULL, '-', 'KYAIKHTO TSP', 'male', 'NEW', '2023-01-19 15:29:33', '2023-01-19 15:29:33', '2023-01-20', NULL, NULL, NULL, NULL, NULL, 'YANGON', 2, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
 (112, 'MYO MYINT NAING', 'U KYAW MIN NAING', '10/KA HTA NA (N) 178442', '27.12.2001', 'MG 420019', '2.9.2022', NULL, '-', 'KYAIKHTO TSP', 'male', 'NEW', '2023-01-19 15:30:58', '2023-01-19 15:30:58', '2023-01-20', NULL, NULL, NULL, NULL, NULL, 'YANGON', 1, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
 
 -- --------------------------------------------------------
@@ -1268,6 +1403,13 @@ CREATE TABLE `sendings` (
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `sendings`
+--
+
+INSERT INTO `sendings` (`id`, `sending_date`, `sending_male`, `sending_female`, `remark`, `demand_id`, `contract_id`, `created_at`, `updated_at`) VALUES
+(1, '21.3.2022', 2, 2, 'First Sending', 1, 1, '2023-03-13 21:19:24', '2023-03-13 21:19:24');
 
 -- --------------------------------------------------------
 
@@ -1661,6 +1803,13 @@ ALTER TABLE `agent_lists`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indexes for table `authentication_log`
+--
+ALTER TABLE `authentication_log`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `authentication_log_authenticatable_type_authenticatable_id_index` (`authenticatable_type`,`authenticatable_id`);
+
+--
 -- Indexes for table `contracts`
 --
 ALTER TABLE `contracts`
@@ -1695,6 +1844,18 @@ ALTER TABLE `file_management`
 -- Indexes for table `hospitals`
 --
 ALTER TABLE `hospitals`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `interviews`
+--
+ALTER TABLE `interviews`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `interview_labours`
+--
+ALTER TABLE `interview_labours`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -1854,10 +2015,16 @@ ALTER TABLE `agent_lists`
   MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
+-- AUTO_INCREMENT for table `authentication_log`
+--
+ALTER TABLE `authentication_log`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+
+--
 -- AUTO_INCREMENT for table `contracts`
 --
 ALTER TABLE `contracts`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `countries`
@@ -1869,7 +2036,7 @@ ALTER TABLE `countries`
 -- AUTO_INCREMENT for table `demands`
 --
 ALTER TABLE `demands`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `failed_jobs`
@@ -1890,6 +2057,18 @@ ALTER TABLE `hospitals`
   MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
+-- AUTO_INCREMENT for table `interviews`
+--
+ALTER TABLE `interviews`
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
+--
+-- AUTO_INCREMENT for table `interview_labours`
+--
+ALTER TABLE `interview_labours`
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+
+--
 -- AUTO_INCREMENT for table `labour_docs`
 --
 ALTER TABLE `labour_docs`
@@ -1899,19 +2078,19 @@ ALTER TABLE `labour_docs`
 -- AUTO_INCREMENT for table `labour_management`
 --
 ALTER TABLE `labour_management`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT for table `medical_tests`
 --
 ALTER TABLE `medical_tests`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT for table `medical_test_temp_lists`
 --
 ALTER TABLE `medical_test_temp_lists`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
 
 --
 -- AUTO_INCREMENT for table `members_lists`
@@ -1923,7 +2102,7 @@ ALTER TABLE `members_lists`
 -- AUTO_INCREMENT for table `migrations`
 --
 ALTER TABLE `migrations`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=46;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=53;
 
 --
 -- AUTO_INCREMENT for table `nrcs`
@@ -1989,7 +2168,7 @@ ALTER TABLE `roles`
 -- AUTO_INCREMENT for table `sendings`
 --
 ALTER TABLE `sendings`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `townships`
