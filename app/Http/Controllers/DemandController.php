@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Exports\DemandExport;
 use App\Http\Requests\StoreDemand;
 use App\Http\Requests\UpdateDemand;
 use App\Models\Country;
@@ -9,6 +10,7 @@ use App\Models\Demand;
 use App\Models\Office;
 use App\Models\OverseasAgency;
 use Illuminate\Http\Request;
+use Maatwebsite\Excel\Facades\Excel;
 
 class DemandController extends Controller
 {
@@ -117,5 +119,11 @@ class DemandController extends Controller
     {
         $demand = Demand::findOrFail($id);
         return json_encode($demand);
+    }
+
+
+    public function demandExportExcel(Request $request)
+    {
+        return Excel::download(new DemandExport(), 'excel_' . date("Y-m-d H:i:s") . '.xlsx');
     }
 }

@@ -2,12 +2,14 @@
 
 namespace App\Http\Controllers;
 
+use App\Exports\MedicalTestExport;
 use App\Http\Requests\StoreMedicalTest;
 use App\Models\Hospital;
 use App\Models\MedicalTest;
 use App\Models\MedicalTestTempList;
 use App\Models\Passport;
 use Illuminate\Http\Request;
+use Maatwebsite\Excel\Facades\Excel;
 
 class MedicalTestController extends Controller
 {
@@ -190,5 +192,10 @@ class MedicalTestController extends Controller
         return json_encode(array(
             "statusCode" => 200,
         ));
+    }
+
+    public function medicalTestExportExcel(Request $request)
+    {
+        return Excel::download(new MedicalTestExport(), 'excel_' . date("Y-m-d H:i:s") . '.xlsx');
     }
 }

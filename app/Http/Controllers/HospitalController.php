@@ -2,11 +2,13 @@
 
 namespace App\Http\Controllers;
 
+use App\Exports\HospitalExport;
 use App\Http\Requests\StoreHospital;
 use App\Http\Requests\UpdateHospital;
 use App\Models\Hospital;
 use App\Models\HospitalFile;
 use Illuminate\Http\Request;
+use Maatwebsite\Excel\Facades\Excel;
 
 class HospitalController extends Controller
 {
@@ -123,5 +125,11 @@ class HospitalController extends Controller
         $country = Hospital::findOrFail($id);
         $country->delete();
         return redirect()->back()->with('success', 'Process is completed.');
+    }
+
+    public function hospitalExportExcel(Request $request)
+    {
+        $hospitals = Hospital::all();
+        return Excel::download(new HospitalExport($hospitals), 'excel_' . date("Y-m-d H:i:s") . '.xlsx');
     }
 }

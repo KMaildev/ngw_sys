@@ -29,7 +29,7 @@
 
                         <div class="mb-3 row">
                             <label for="html5-text-input" class="col-md-3 col-form-label">
-                                Contact
+                                Contact Person
                             </label>
                             <div class="col-md-9">
                                 <input type="text" class="form-control @error('contact') form-control-danger @enderror"

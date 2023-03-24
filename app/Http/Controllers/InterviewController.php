@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Exports\InterviewExport;
 use App\Http\Requests\StoreInterview;
 use App\Http\Requests\UpdateInterview;
 use App\Models\Demand;
@@ -9,6 +10,7 @@ use App\Models\Interview;
 use App\Models\InterviewLabour;
 use App\Models\OverseasAgency;
 use Illuminate\Http\Request;
+use Maatwebsite\Excel\Facades\Excel;
 
 class InterviewController extends Controller
 {
@@ -81,5 +83,10 @@ class InterviewController extends Controller
         $interview_labours = InterviewLabour::where('interview_id', $id)
             ->get();
         return view('interview.show', compact('interview', 'interview_labours'));
+    }
+
+    public function interviewExportExcel(Request $request)
+    {
+        return Excel::download(new InterviewExport(), 'excel_' . date("Y-m-d H:i:s") . '.xlsx');
     }
 }

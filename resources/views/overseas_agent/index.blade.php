@@ -12,18 +12,29 @@
                         <div class="card-title-elements ms-auto">
                             <div class="card-header-elements ms-auto">
                                 <form action="{{ route('overseas_agent.index') }}" method="GET" autocomplete="off">
-                                    <input type="text" class="form-control form-control-sm" placeholder="Search"
+                                    <input type="text" class="form-control" placeholder="Search"
                                         name="search">
                                 </form>
                             </div>
 
+
+                            <a href="{{ route('overseas_agent_excel') }}" class="dt-button create-new btn btn-success">
+                                <span>
+                                    <i class="fa fa-download me-sm-2"></i>
+                                    <span class="d-none d-sm-inline-block">
+                                        Excel
+                                    </span>
+                                </span>
+                            </a>
+
                             <a href="{{ route('overseas_agent.create') }}"
-                                class="dt-button create-new btn btn-primary btn-sm">
+                                class="dt-button create-new btn btn-primary">
                                 <span>
                                     <i class="bx bx-plus me-sm-2"></i>
                                     <span class="d-none d-sm-inline-block">Create</span>
                                 </span>
                             </a>
+
 
                         </div>
                     </div>

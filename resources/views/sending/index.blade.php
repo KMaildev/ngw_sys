@@ -64,6 +64,15 @@
                                 </form>
                             </div>
 
+                            <a href="{{ route('sending_export_excel') }}" class="dt-button create-new btn btn-success">
+                                <span>
+                                    <i class="fa fa-download me-sm-2"></i>
+                                    <span class="d-none d-sm-inline-block">
+                                        Excel
+                                    </span>
+                                </span>
+                            </a>
+
                         </div>
                     </div>
                 </div>
@@ -159,7 +168,8 @@
                                                     Files
                                                 </a>
 
-                                                <form hidden action="{{ route('sending.destroy', $sending->id) }}" method="POST">
+                                                <form hidden action="{{ route('sending.destroy', $sending->id) }}"
+                                                    method="POST">
                                                     @csrf
                                                     @method('DELETE')
                                                     <button type="button" class="dropdown-item del_confirm"

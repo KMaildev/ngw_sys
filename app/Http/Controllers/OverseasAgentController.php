@@ -2,11 +2,13 @@
 
 namespace App\Http\Controllers;
 
+use App\Exports\OverseasAgencyExport;
 use App\Http\Requests\StoreOverseaAgency;
 use App\Http\Requests\UpdateOverseaAgency;
 use App\Models\Country;
 use App\Models\OverseasAgency;
 use Illuminate\Http\Request;
+use Maatwebsite\Excel\Facades\Excel;
 
 class OverseasAgentController extends Controller
 {
@@ -131,5 +133,10 @@ class OverseasAgentController extends Controller
     {
         $overseas_agency = OverseasAgency::findOrFail($id);
         return json_encode($overseas_agency);
+    }
+
+    public function overseasAgentExportExcel(Request $request)
+    {
+        return Excel::download(new OverseasAgencyExport(), 'excel_' . date("Y-m-d H:i:s") . '.xlsx');
     }
 }

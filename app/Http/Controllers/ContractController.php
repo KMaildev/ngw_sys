@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Exports\ContractExport;
 use App\Http\Requests\StoreContracts;
 use App\Http\Requests\UpdateContracts;
 use App\Models\Contract;
@@ -10,6 +11,7 @@ use App\Models\LabourManagement;
 use App\Models\Office;
 use App\Models\OverseasAgency;
 use Illuminate\Http\Request;
+use Maatwebsite\Excel\Facades\Excel;
 
 class ContractController extends Controller
 {
@@ -89,5 +91,10 @@ class ContractController extends Controller
         $contract = Contract::findOrFail($id);
         $contract->delete();
         return redirect()->back()->with('success', 'Deleted successfully.');
+    }
+
+    public function contractExportExcel(Request $request)
+    {
+        return Excel::download(new ContractExport(), 'excel_' . date("Y-m-d H:i:s") . '.xlsx');
     }
 }

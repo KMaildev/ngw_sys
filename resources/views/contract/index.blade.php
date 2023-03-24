@@ -64,6 +64,15 @@
                                 </form>
                             </div>
 
+                            <a href="{{ route('contract_export_excel') }}" class="dt-button create-new btn btn-success">
+                                <span>
+                                    <i class="fa fa-download me-sm-2"></i>
+                                    <span class="d-none d-sm-inline-block">
+                                        Excel
+                                    </span>
+                                </span>
+                            </a>
+
                             <div class="card-header-elements ms-2">
                                 <a href="{{ route('contract.create') }}" class="dt-button create-new btn btn-primary">
                                     <span>

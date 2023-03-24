@@ -1,5 +1,6 @@
 <?php
 
+use App\Exports\HospitalExport;
 use App\Http\Controllers\AgentListController;
 use App\Http\Controllers\ContractController;
 use App\Http\Controllers\CountryController;
@@ -38,9 +39,14 @@ Route::middleware('auth')->group(function () {
 
     Route::resource('users', UserController::class);
     Route::resource('country', CountryController::class);
+
     Route::resource('agent_list', AgentListController::class);
+    Route::get('agent_list_excel', [AgentListController::class, 'agentListExportExcel'])->name('agent_list_excel');
+
     Route::resource('overseas_agent', OverseasAgentController::class);
     Route::get('overseas_agent_ajax/{id}', [OverseasAgentController::class, 'dependentAjax'])->name('overseas_agent_ajax');
+    Route::get('overseas_agent_excel', [OverseasAgentController::class, 'overseasAgentExportExcel'])->name('overseas_agent_excel');
+
     Route::resource('passport', PassportController::class);
     Route::get('find_passport_ajax/{id}', [PassportController::class, 'findPassportAjax'])->name('find_passport_ajax');
     Route::post('/passport_import', [PassportController::class, 'passportImport'])->name('passport_import');
@@ -50,38 +56,31 @@ Route::middleware('auth')->group(function () {
     Route::get('/cancel_reject_passport/{id}', [PassportController::class, 'cancelRejectPassport'])->name('cancel_reject_passport');
     Route::resource('demand', DemandController::class);
     Route::get('demand_ajax/{id}', [DemandController::class, 'demandAjax'])->name('demand_ajax');
-
-
+    Route::get('demand_export_excel', [DemandController::class, 'demandExportExcel'])->name('demand_export_excel');
 
 
     Route::resource('contract', ContractController::class);
+    Route::get('contract_export_excel', [ContractController::class, 'contractExportExcel'])->name('contract_export_excel');
+
     Route::resource('labour_management', LabourManagementController::class);
     Route::get('labour_create_view/{id}', [LabourManagementController::class, 'createAndView'])->name('labour_create_view');
     Route::get('view_contract_labour/{id}', [LabourManagementController::class, 'viewContractLabour'])->name('view_contract_labour');
     Route::post('sbumit_to_contract', [LabourManagementController::class, 'submitToContract'])->name('sbumit_to_contract');
 
-
-
-
-
-
-
-
     Route::resource('sending', SendingController::class);
+    Route::get('sending_export_excel', [SendingController::class, 'sendingExportExcel'])->name('sending_export_excel');
+
     Route::get('sending_create/{id}', [SendingController::class, 'create'])->name('sending_create');
     Route::get('sending_labour/{id}', [LabourManagementController::class, 'sendingLabour'])->name('sending_labour');
     Route::post('remove_from_sending/{id}', [LabourManagementController::class, 'removeFromSending'])->name('remove_from_sending');
-
 
     Route::get('passport_export', [PassportController::class, 'passportExport'])->name('passport_export');
     Route::get('contract_labour_passport_export/{id}', [LabourManagementController::class, 'contractLabourPassportExport'])->name('contract_labour_passport_export');
     Route::get('sending_labour_passport_export/{id}', [LabourManagementController::class, 'sendingLabourPassportExport'])->name('sending_labour_passport_export');
 
-
     Route::resource('township', TownshipController::class);
     Route::get('get_by_region_id/{id}', [TownshipController::class, 'getByRegionId'])->name('get_by_region_id');
     Route::resource('members_list', MembersListsController::class);
-
 
     Route::resource('file_management', FileManagementController::class);
     Route::get('file_upload_view_demand/{id}', [FileManagementController::class, 'fileUploadViewDemand'])->name('file_upload_view_demand');
@@ -102,6 +101,7 @@ Route::middleware('auth')->group(function () {
     Route::resource('nrc', NrcController::class);
     Route::get('get_nrc_by_code/{id}', [NrcController::class, 'getByNrcCode'])->name('get_nrc_by_code');
     Route::resource('hospital', HospitalController::class);
+    Route::get('hospital_export_excel', [HospitalController::class, 'hospitalExportExcel'])->name('hospital_export_excel');
 
     Route::resource('medical_test', MedicalTestController::class);
     Route::get('medical_failed_labour', [MedicalTestController::class, 'medicalFailedLabour'])->name('medical_failed_labour');
@@ -111,11 +111,14 @@ Route::middleware('auth')->group(function () {
     Route::get('update_pass_failed', [MedicalTestController::class, 'updatePassFailed'])->name('update_pass_failed');
     Route::get('get_medical_test_temp_interview', [MedicalTestController::class, 'getMedicalTestTempListInterview'])->name('get_medical_test_temp_interview');
 
+    Route::get('medical_test_export_excel', [MedicalTestController::class, 'medicalTestExportExcel'])->name('medical_test_export_excel');
+
     Route::resource('passport_datatable', PassportDatatableController::class);
     Route::get('get_passport_datatable', [PassportDatatableController::class, 'index'])->name('get_passport_datatable');
     Route::get('get_medical_tests_pass_labour', [PassportDatatableController::class, 'medicalTestsPassLabour'])->name('get_medical_tests_pass_labour');
 
     Route::resource('interview', InterviewController::class);
+    Route::get('interview_export_excel', [InterviewController::class, 'interviewExportExcel'])->name('interview_export_excel');
 
     Route::resource('interview_labour', InterviewLabourController::class);
     Route::get('add_interview_worker/{id}', [InterviewLabourController::class, 'addInterviewWorker'])->name('add_interview_worker');

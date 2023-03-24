@@ -36,6 +36,15 @@
                                 </form>
                             </div>
 
+                            <a href="{{ route('medical_test_export_excel') }}" class="dt-button create-new btn btn-success">
+                                <span>
+                                    <i class="fa fa-download me-sm-2"></i>
+                                    <span class="d-none d-sm-inline-block">
+                                        Excel
+                                    </span>
+                                </span>
+                            </a>
+
                             <a href="{{ route('medical_test.create') }}" class="dt-button create-new btn btn-primary">
                                 <span>
                                     <i class="bx bx-plus me-sm-2"></i>

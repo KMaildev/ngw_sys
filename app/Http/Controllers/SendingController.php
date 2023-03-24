@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Exports\SendingExport;
 use App\Http\Requests\StoreSending;
 use App\Http\Requests\UpdateSending;
 use App\Models\Contract;
@@ -11,6 +12,7 @@ use App\Models\Office;
 use App\Models\OverseasAgency;
 use App\Models\Sending;
 use Illuminate\Http\Request;
+use Maatwebsite\Excel\Facades\Excel;
 
 class SendingController extends Controller
 {
@@ -119,5 +121,10 @@ class SendingController extends Controller
         $contract = Sending::findOrFail($id);
         $contract->delete();
         return redirect()->back()->with('success', 'Deleted successfully.');
+    }
+
+    public function sendingExportExcel(Request $request)
+    {
+        return Excel::download(new SendingExport(), 'excel_' . date("Y-m-d H:i:s") . '.xlsx');
     }
 }

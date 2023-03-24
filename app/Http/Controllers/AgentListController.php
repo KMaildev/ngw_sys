@@ -2,12 +2,14 @@
 
 namespace App\Http\Controllers;
 
+use App\Exports\AgentListExport;
 use App\Http\Requests\StoreAgentList;
 use App\Http\Requests\UpdateAgentList;
 use App\Models\AgentList;
 use App\Models\MembersLists;
 use App\Models\Region;
 use Illuminate\Http\Request;
+use Maatwebsite\Excel\Facades\Excel;
 
 class AgentListController extends Controller
 {
@@ -193,5 +195,10 @@ class AgentListController extends Controller
         $oversea = AgentList::findOrFail($id);
         $oversea->delete();
         return redirect()->back()->with('success', 'Process is completed.');
+    }
+
+    public function agentListExportExcel(Request $request)
+    {
+        return Excel::download(new AgentListExport(), 'excel_' . date("Y-m-d H:i:s") . '.xlsx');
     }
 }
