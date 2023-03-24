@@ -86,10 +86,15 @@ class PassportController extends Controller
         }
 
         $Passport = new Passport();
+
+        $countTotal = Passport::count();
+        $count_no = sprintf('%06d', $countTotal + 1);
+        $Passport->labour_code = sprintf('NGW-LB-' . $count_no);
+
         $Passport->name = $request->name;
         $Passport->father_name = $request->father_name;
-        $Passport->nrc = $request->nrc;
-        $Passport->date_of_birth = $request->date_of_birth;
+
+
         $Passport->passport = $request->passport;
         $Passport->passport_date = $request->passport_date;
         $Passport->place_of_passport = $request->place_of_passport;
@@ -111,12 +116,11 @@ class PassportController extends Controller
         $Passport->nation_religion = $request->nation_religion;
         $Passport->region_state = $request->region_state;
 
-        $Passport->labour_code = $request->labour_code;
         $Passport->age = $request->age;
         $Passport->passport_expiry_date = $request->passport_expiry_date;
         $Passport->qualification = $request->qualification;
-        $Passport->weight = $request->weight;
-        $Passport->height = $request->height;
+        $Passport->weight = $request->weight . '(lb)';
+        $Passport->height = $request->height . '(kg)';
         $Passport->tatto = $request->tatto;
         $Passport->smoking = $request->smoking;
         $Passport->alcohol = $request->alcohol;
@@ -130,7 +134,6 @@ class PassportController extends Controller
         $Passport->photo = $photo_path ?? '';
         $Passport->nrc_front = $nrc_front_path ?? '';
         $Passport->nrc_back = $nrc_back_path ?? '';
-
 
         $Passport->identification_card = $request->identification_card;
         $Passport->issue_date_of_id_card = $request->issue_date_of_id_card;
@@ -148,8 +151,19 @@ class PassportController extends Controller
         $Passport->passport_register_status = $request->passport_register_status;
         $Passport->leader = $request->leader;
         $Passport->user_id = auth()->user()->id;
-        $Passport->save();
 
+        $Passport->nrc_code = $request->nrcCode;
+        $Passport->nrc_name = $request->nrcName;
+        $Passport->nrc_type = $request->nrcType;
+        $Passport->nrc_number = $request->nrcFieldCode;
+        $Passport->nrc = $request->nrc;
+
+        $Passport->dob_year = $request->year;
+        $Passport->dob_month = $request->month;
+        $Passport->dob_day = $request->day;
+        $Passport->date_of_birth = $request->year . '.' . $request->month . '.' . $request->day;
+
+        $Passport->save();
         $passport_id = $Passport->id;
         if ($request->has('deposit')) {
             $passport_payment = new PassportPayment();

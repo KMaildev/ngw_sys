@@ -24,13 +24,17 @@ class StorePassport extends FormRequest
     public function rules()
     {
         return [
-            'labour_code' => 'required|unique:passports,labour_code',
             'name' => 'required',
             'address' => 'required',
             'phone' => 'required',
             'agent_list_id' => 'required',
 
             'deposit' => 'numeric',
+
+            'nrcCode' => 'required',
+            'nrcName' => 'required',
+            'nrcType' => 'required',
+            'nrcFieldCode' => 'required',
         ];
     }
 }

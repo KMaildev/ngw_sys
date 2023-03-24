@@ -144,6 +144,20 @@ class MedicalTestController extends Controller
             ],
         );
 
+        // MedicalTestTempList::create(
+        //     [
+        //         'agent_name' => $passport->agent_list_table->name ?? '',
+        //         'name' => $passport->name ?? '',
+        //         'passport' => $passport->passport ?? '',
+        //         'nrc' => $passport->nrc ?? '',
+        //         'passport_id' => $passport->id,
+        //         'agent_list_id' => $passport->agent_list_id,
+        //         'session_id' => session()->getId(),
+        //         'user_id' => auth()->user()->id,
+        //         'types' => $request->types,
+        //     ]
+        // );
+
         return json_encode(array(
             "statusCode" => 200
         ));

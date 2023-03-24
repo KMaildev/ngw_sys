@@ -116,7 +116,7 @@
                             </label>
                             <div class="col-md-9">
                                 <input type="text"
-                                    class="form-control @error('contract_date') form-control-danger @enderror"
+                                    class="date_picker form-control @error('contract_date') form-control-danger @enderror"
                                     name="contract_date">
                                 @error('contract_date')
                                     <div class="form-control-feedback" style="color: red;">

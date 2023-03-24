@@ -24,7 +24,6 @@ class StoreAgentList extends FormRequest
     public function rules()
     {
         return [
-            'agent_code' => 'required|unique:agent_lists,agent_code',
             'name' => 'required',
             'region_id' => 'required',
             'township_id' => 'required',
@@ -33,6 +32,12 @@ class StoreAgentList extends FormRequest
             'photo' => 'mimes:png,jpg,jpeg|max:2048',
             'nrc_front' => 'mimes:png,jpg,jpeg|max:2048',
             'nrc_back' => 'mimes:png,jpg,jpeg|max:2048',
+
+
+            'nrcCode' => 'required',
+            'nrcName' => 'required',
+            'nrcType' => 'required',
+            'nrcFieldCode' => 'required',
         ];
     }
 }

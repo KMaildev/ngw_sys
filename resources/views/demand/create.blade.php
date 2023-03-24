@@ -153,7 +153,7 @@
                             </label>
                             <div class="col-md-9">
                                 <input type="text"
-                                    class="form-control @error('demand_date') form-control-danger @enderror"
+                                    class="date_picker form-control @error('demand_date') form-control-danger @enderror"
                                     name="demand_date" placeholder="Demand Date">
                                 @error('demand_date')
                                     <div class="form-control-feedback" style="color: red;">
@@ -169,7 +169,7 @@
                             </label>
                             <div class="col-md-9">
                                 <input type="text"
-                                    class="form-control @error('cabinet_date') form-control-danger @enderror"
+                                    class="date_picker form-control @error('cabinet_date') form-control-danger @enderror"
                                     name="cabinet_date" placeholder="Cabinet Date">
                                 @error('cabinet_date')
                                     <div class="form-control-feedback" style="color: red;">
@@ -185,7 +185,7 @@
                             </label>
                             <div class="col-md-9">
                                 <input type="text"
-                                    class="form-control @error('issue_date') form-control-danger @enderror"
+                                    class="date_picker form-control @error('issue_date') form-control-danger @enderror"
                                     name="issue_date" placeholder="Issue Date">
                                 @error('issue_date')
                                     <div class="form-control-feedback" style="color: red;">

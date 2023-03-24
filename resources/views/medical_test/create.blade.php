@@ -142,6 +142,10 @@
                         name: 'nrc',
                     },
                     {
+                        data: 'medical_tests_status',
+                        name: 'medical_tests_status',
+                    },
+                    {
                         data: 'action',
                         name: 'action',
                     },

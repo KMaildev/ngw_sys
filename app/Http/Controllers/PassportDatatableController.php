@@ -12,7 +12,7 @@ class PassportDatatableController extends Controller
 {
     public function index(Request $request)
     {
-        $data = Passport::with('agent_list_table')
+        $data = Passport::with('agent_list_table', 'medical_tests_status')
             ->where('reject_status', NULL)
             ->orderBy('id', 'DESC');
 
@@ -47,6 +47,10 @@ class PassportDatatableController extends Controller
                 return $html;
             })
 
+            ->editColumn('medical_tests_status', function ($each) {
+                return  $each->medical_tests_status ? $each->medical_tests_status->failed_or_pass : '';
+            })
+
             ->addColumn('action', function ($each) {
                 $actions =
                     '
@@ -61,7 +65,7 @@ class PassportDatatableController extends Controller
             })
 
             ->addIndexColumn()
-            ->rawColumns(['agent_name', 'name', 'passport', 'nrc', 'action'])
+            ->rawColumns(['agent_name', 'name', 'passport', 'nrc', 'medical_tests_status', 'action'])
             ->make(true);
     }
 
@@ -71,7 +75,6 @@ class PassportDatatableController extends Controller
         $data = MedicalTest::with('passport_table', 'agent_lists_table')
             ->where('failed_or_pass', 'Pass')
             ->orderBy('id', 'DESC');
-
 
         return DataTables::of($data)
             ->addIndexColumn()
@@ -122,12 +125,16 @@ class PassportDatatableController extends Controller
                 });
             })
 
+            ->editColumn('medical_tests_status', function ($each) {
+                return  $each->failed_or_pass ? $each->failed_or_pass : '';
+            })
+
             ->addColumn('action', function ($each) {
                 $actions =
                     '
                         <button class="btn btn-info btn-xs" type="button" 
                             id="addToMedicalTest"
-                            data-id="' . $each->id . '"
+                            data-id="' . $each->passport_id . '"
                         >
                             Choose
                         </button>
@@ -136,7 +143,7 @@ class PassportDatatableController extends Controller
             })
 
             ->addIndexColumn()
-            ->rawColumns(['agent_name', 'name', 'passport', 'nrc', 'action'])
+            ->rawColumns(['agent_name', 'name', 'passport', 'nrc', 'medical_tests_status', 'action'])
             ->make(true);
     }
 }

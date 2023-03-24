@@ -66,14 +66,16 @@ class AgentListController extends Controller
             $nrc_back_path = $nrc_back->store('public/agents');
         }
 
-
         $oversea = new AgentList();
+        $countTotal = AgentList::count();
+        $count_no = sprintf('%04d', $countTotal + 1);
+
+        $oversea->agent_code = sprintf('NGW-SA-' . $count_no);
         $oversea->name = $request->name;
         $oversea->phone = $request->phone;
         $oversea->email = $request->email;
         $oversea->address = $request->address;
-        $oversea->agent_code = $request->agent_code;
-        $oversea->nrc = $request->nrc;
+        
         $oversea->region_id = $request->region_id;
         $oversea->township_id = $request->township_id;
         $oversea->remark = $request->remark;
@@ -83,6 +85,13 @@ class AgentListController extends Controller
         $oversea->photo = $photo_path ?? '';
         $oversea->nrc_front = $nrc_front_path ?? '';
         $oversea->nrc_back = $nrc_back_path ?? '';
+        $oversea->nrc = $request->nrc;
+
+        $oversea->nrc_code = $request->nrcCode;
+        $oversea->nrc_name = $request->nrcName;
+        $oversea->nrc_type = $request->nrcType;
+        $oversea->nrc_number = $request->nrcFieldCode;
+
         $oversea->save();
         $agent_list_id = $oversea->id;
 

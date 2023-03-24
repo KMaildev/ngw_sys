@@ -39,7 +39,7 @@
                                 <label class="form-label">
                                     Overseas Company
                                 </label>
-                                <input type="text" class="form-control"
+                                <input readonly type="text" class="form-control"
                                     value="{{ $interview->demands_table->overseas_agencies_table->company_name ?? '' }}" />
                             </div>
 
@@ -55,14 +55,14 @@
                                 <label class="form-label">
                                     Interview Date
                                 </label>
-                                <input type="text" class="form-control" value="{{ $interview->interview_date ?? '' }}" />
+                                <input readonly type="text" class="form-control" value="{{ $interview->interview_date ?? '' }}" />
                             </div>
 
                             <div class="col-md-4 mb-2">
                                 <label class="form-label">
                                     Interview Male
                                 </label>
-                                <input type="text" class="form-control"
+                                <input readonly type="text" class="form-control"
                                     value="{{ number_format($interview->interview_male) }}" />
                             </div>
 
@@ -70,7 +70,7 @@
                                 <label class="form-label">
                                     Interview Female
                                 </label>
-                                <input type="text" class="form-control"
+                                <input readonly type="text" class="form-control"
                                     value="{{ number_format($interview->interview_female) }}" />
                             </div>
 
@@ -78,7 +78,7 @@
                                 <label class="form-label">
                                     Interview Total
                                 </label>
-                                <input type="text" class="form-control"
+                                <input readonly type="text" class="form-control"
                                     value="{{ number_format($interview->interview_male + $interview->interview_female) }}" />
                             </div>
 
@@ -165,6 +165,10 @@
                         name: 'nrc',
                     },
                     {
+                        data: 'medical_tests_status',
+                        name: 'medical_tests_status',
+                    },
+                    {
                         data: 'action',
                         name: 'action',
                     },
@@ -189,7 +193,7 @@
 
             $('body').on('click', '#addToMedicalTest', function(e) {
                 e.preventDefault();
-                passportId = $(this).data('id');
+                var passportId = $(this).data('id');
                 var url = '{{ url('add_medical_test_temp_list') }}';
                 $.ajax({
                     url: url,
@@ -200,12 +204,11 @@
                     method: 'GET',
                     success: function(result) {
                         toastr.remove()
-                        toastr.success("Your processing has been completed.");
+                        // toastr.success("Your processing has been completed.");
                         getMedicalTestTempList();
                     }
                 });
             });
-
 
             function getMedicalTestTempList() {
                 var url = '{{ url('get_medical_test_temp_interview') }}';

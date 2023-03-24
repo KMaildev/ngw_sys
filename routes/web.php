@@ -6,6 +6,7 @@ use App\Http\Controllers\CountryController;
 use App\Http\Controllers\DemandController;
 use App\Http\Controllers\FileManagementController;
 use App\Http\Controllers\HospitalController;
+use App\Http\Controllers\HospitalFileController;
 use App\Http\Controllers\InterviewController;
 use App\Http\Controllers\InterviewLabourController;
 use App\Http\Controllers\InterviewWorkerController;
@@ -118,4 +119,8 @@ Route::middleware('auth')->group(function () {
 
     Route::resource('interview_labour', InterviewLabourController::class);
     Route::get('add_interview_worker/{id}', [InterviewLabourController::class, 'addInterviewWorker'])->name('add_interview_worker');
+
+
+    Route::resource('hospital_file', HospitalFileController::class);
+    Route::get('hospital_docs_management/{id}', [HospitalFileController::class, 'hospitalDocsManagement'])->name('hospital_docs_management');
 });

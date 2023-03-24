@@ -14,7 +14,7 @@
                             Single entry
                         </button>
                     </li>
-                    <li class="nav-item">
+                    <li class="nav-item" hidden>
                         <button type="button" class="nav-link" role="tab" data-bs-toggle="tab"
                             data-bs-target="#navs-top-profile" aria-controls="navs-top-profile" aria-selected="false">
                             Import Excel
@@ -29,22 +29,6 @@
                         <form action="{{ route('passport.store') }}" method="POST" autocomplete="off" id="create-form"
                             role="form" enctype="multipart/form-data">
                             @csrf
-
-                            <div class="mb-3 row">
-                                <label for="html5-text-input" class="col-md-3 col-form-label">
-                                    Labour Code
-                                </label>
-                                <div class="col-md-9">
-                                    <input class="form-control @error('labour_code') is-invalid @enderror" type="text"
-                                        name="labour_code" value="{{ old('labour_code') }}" placeholder="Labour Code" />
-                                    @error('labour_code')
-                                        <div class="invalid-feedback">
-                                            {{ $message }}
-                                        </div>
-                                    @enderror
-                                </div>
-                            </div>
-
 
                             <div class="mb-3 row">
                                 <label for="html5-text-input" class="col-md-3 col-form-label">Name</label>
@@ -90,20 +74,115 @@
                                 </div>
                             </div>
 
+
                             <div class="mb-3 row">
                                 <label for="html5-text-input" class="col-md-3 col-form-label">
-                                    N.R.C No
+                                    NRC
                                 </label>
-                                <div class="col-md-9">
-                                    <input type="text" class="form-control" name="nrc" placeholder="NRC"
-                                        value="{{ old('nrc') }}">
-                                    @error('nrc')
-                                        <div class="form-control-feedback">
-                                            {{ $message }}
+                                <div class="col-md-7">
+                                    <div id="nrcOption" class="py-1">
+                                        <div class="input-group">
+                                            <select name="nrcCode" id="nrcCode" class="form-control select2" required>
+                                                <option value="">
+                                                    ---
+                                                </option>
+
+                                                <option value="1">
+                                                    1/
+                                                </option>
+
+                                                <option value="2">
+                                                    2/
+                                                </option>
+
+                                                <option value="3">
+                                                    3/
+                                                </option>
+
+                                                <option value="4">
+                                                    4/
+                                                </option>
+
+                                                <option value="5">
+                                                    5/
+                                                </option>
+
+                                                <option value="6">
+                                                    6/
+                                                </option>
+
+                                                <option value="7">
+                                                    7/
+                                                </option>
+
+                                                <option value="8">
+                                                    8/
+                                                </option>
+
+                                                <option value="9">
+                                                    9/
+                                                </option>
+
+                                                <option value="10">
+                                                    10/
+                                                </option>
+
+                                                <option value="11">
+                                                    11/
+                                                </option>
+
+                                                <option value="12">
+                                                    12/
+                                                </option>
+
+                                                <option value="13">
+                                                    13/
+                                                </option>
+
+                                                <option value="14">
+                                                    14/
+                                                </option>
+
+                                            </select>
+
+                                            <select name="nrcName" id="nrcName" class="form-control select2" required>
+                                            </select>
+
+                                            <select name="nrcType" id="nrcType" class="form-control select2" required>
+                                                <option value="">--Select--</option>
+                                                <option value="(N)">
+                                                    (N)
+                                                </option>
+                                                <option value="(A)">
+                                                    (A)
+                                                </option>
+                                                <option value="(P)">
+                                                    (P)
+                                                </option>
+                                                <option value="(Y)">
+                                                    (Y)
+                                                </option>
+                                                <option value="(S)">
+                                                    (S)
+                                                </option>
+                                                <option value="(T)">
+                                                    (T)
+                                                </option>
+                                            </select>
+
+                                            <input type="text" class="form-control" name="nrcFieldCode"
+                                                id="nrcFieldCode" oninput="setNrcField()" required>
                                         </div>
-                                    @enderror
+                                    </div>
+
+                                    <div id="nrcEntry" class="py-2" hidden>
+                                        <input id="nrcNo" class="form-control @error('nrc') is-invalid @enderror"
+                                            type="text" name="nrc" value="{{ old('nrc') }}"
+                                            placeholder="Enter NRC No" />
+                                    </div>
                                 </div>
                             </div>
+
 
                             <div class="mb-3 row">
                                 <label for="html5-text-input" class="col-md-3 col-form-label">
@@ -164,18 +243,26 @@
                             </div>
 
 
+
                             <div class="mb-3 row">
                                 <label for="html5-text-input" class="col-md-3 col-form-label">
                                     Date of Birth
                                 </label>
-                                <div class="col-md-9">
-                                    <input type="text" class="form-control" name="date_of_birth"
-                                        placeholder="Date of Birth" value="{{ old('date_of_birth') }}">
-                                    @error('date_of_birth')
-                                        <div class="form-control-feedback">
-                                            {{ $message }}
-                                        </div>
-                                    @enderror
+                                <div class="col-md-5">
+                                    <div class="input-group">
+                                        <select class="form-control" id="year" name="year"
+                                            onchange="change_year(this)">
+                                        </select>
+                                        <select class="form-control" id="month" name="month"
+                                            onchange="change_month(this)">
+                                        </select>
+                                        <select class="form-control" id="day" name="day"
+                                            onchange="change_day(this)">
+                                        </select>
+
+                                        <input id="DateOfBirth" type="text" name="date_of_birth"
+                                            value="{{ old('date_of_birth') }}" hidden>
+                                    </div>
                                 </div>
                             </div>
 
@@ -216,7 +303,7 @@
                                     Passport Issue Date
                                 </label>
                                 <div class="col-md-9">
-                                    <input type="text" class="form-control" name="passport_date"
+                                    <input type="text" class="date_picker form-control" name="passport_date"
                                         placeholder="Date of Passport" value="{{ old('passport_date') }}">
                                     @error('passport_date')
                                         <div class="form-control-feedback"> {{ $message }}
@@ -232,7 +319,7 @@
                                     Passport Expiry Date
                                 </label>
                                 <div class="col-md-9">
-                                    <input type="text" class="form-control" name="passport_expiry_date"
+                                    <input type="text" class="date_picker form-control" name="passport_expiry_date"
                                         placeholder="Passport Expiry Date" value="{{ old('passport_expiry_date') }}">
                                     @error('passport_expiry_date')
                                         <div class="form-control-feedback">
@@ -280,8 +367,13 @@
                                     Weight
                                 </label>
                                 <div class="col-md-9">
-                                    <input type="text" class="form-control" name="weight"
-                                        value="{{ old('weight') }}" placeholder="145cm">
+                                    <div class="input-group">
+                                        <input type="text" class="form-control" name="weight"
+                                            value="{{ old('weight') }}">
+                                        <span class="input-group-text" id="basic-addon2">
+                                            (lb)
+                                        </span>
+                                    </div>
                                     @error('weight')
                                         <div class="form-control-feedback">
                                             {{ $message }}
@@ -295,8 +387,13 @@
                                     Height
                                 </label>
                                 <div class="col-md-9">
-                                    <input type="text" class="form-control" name="height" placeholder="50kg"
-                                        value="{{ old('height') }}">
+                                    <div class="input-group">
+                                        <input type="text" class="form-control" name="height"
+                                            value="{{ old('height') }}">
+                                        <span class="input-group-text" id="basic-addon2">
+                                            (kg)
+                                        </span>
+                                    </div>
                                     @error('height')
                                         <div class="form-control-feedback">
                                             {{ $message }}
@@ -408,8 +505,14 @@
                                     သား
                                 </label>
                                 <div class="col-md-3">
-                                    <input type="text" class="form-control" name="son"
-                                        value="{{ old('son') }}">
+                                    <select name="son" class="form-control">
+                                        <option value="No">
+                                            No
+                                        </option>
+                                        <option value="Yes">
+                                            Yes
+                                        </option>
+                                    </select>
                                     @error('son')
                                         <div class="form-control-feedback">
                                             {{ $message }}
@@ -437,8 +540,14 @@
                                     သမီး
                                 </label>
                                 <div class="col-md-3">
-                                    <input type="text" class="form-control" name="daughter"
-                                        value="{{ old('daughter') }}">
+                                    <select name="daughter" class="form-control">
+                                        <option value="No">
+                                            No
+                                        </option>
+                                        <option value="Yes">
+                                            Yes
+                                        </option>
+                                    </select>
                                     @error('daughter')
                                         <div class="form-control-feedback">
                                             {{ $message }}
@@ -548,8 +657,13 @@
                                     Contact No (Own)
                                 </label>
                                 <div class="col-md-9">
-                                    <input type="text" class="form-control" name="phone" placeholder="Phone"
-                                        value="{{ old('phone') }}">
+                                    <div class="input-group">
+                                        <span class="input-group-text" id="basic-addon2">
+                                            (+959)
+                                        </span>
+                                        <input type="text" class="form-control" name="phone" placeholder="Phone"
+                                            value="{{ old('phone') }}">
+                                    </div>
                                     @error('phone')
                                         <div class="form-control-feedback">
                                             {{ $message }}
@@ -565,8 +679,13 @@
                                     Contact No (Family)
                                 </label>
                                 <div class="col-md-9">
-                                    <input type="text" class="form-control" name="phone_family"
-                                        value="{{ old('phone_family') }}">
+                                    <div class="input-group">
+                                        <span class="input-group-text" id="basic-addon2">
+                                            (+959)
+                                        </span>
+                                        <input type="text" class="form-control" name="phone_family"
+                                            value="{{ old('phone_family') }}">
+                                    </div>
                                     @error('phone_family')
                                         <div class="form-control-feedback">
                                             {{ $message }}
@@ -670,7 +789,7 @@
                             </div>
 
 
-                            <div class="mb-3 row">
+                            <div class="mb-3 row" hidden>
                                 <label for="html5-text-input" class="col-md-3 col-form-label">
                                     Leader
                                 </label>
@@ -692,7 +811,7 @@
                                 </label>
                                 <div class="col-md-9">
                                     <input type="text" class="form-control" name="deposit"
-                                        value="{{ old('deposit') }}">
+                                        value="0">
                                     @error('deposit')
                                         <div class="form-control-feedback">
                                             {{ $message }}
@@ -816,7 +935,7 @@
                                 </label>
                                 <div class="col-md-9">
                                     <input type="text"
-                                        class="form-control @error('issue_of_labour_date') form-control-danger @enderror"
+                                        class="date_picker form-control @error('issue_of_labour_date') form-control-danger @enderror"
                                         name="issue_of_labour_date" value="{{ old('issue_of_labour_date') }}"
                                         placeholder="Issue of Labour Date">
                                     @error('issue_of_labour_date')
@@ -858,7 +977,7 @@
                                 </label>
                                 <div class="col-md-9">
                                     <input type="text"
-                                        class="form-control @error('owic_date') form-control-danger @enderror"
+                                        class="date_picker form-control @error('owic_date') form-control-danger @enderror"
                                         name="owic_date" value="{{ old('owic_date') }}" placeholder="OWIC Date">
                                     @error('owic_date')
                                         <div class="form-control-feedback"> {{ $message }} </div>
@@ -899,7 +1018,7 @@
                                 </label>
                                 <div class="col-md-9">
                                     <input type="text"
-                                        class="form-control @error('issue_date_of_id_card') form-control-danger @enderror"
+                                        class="date_picker form-control @error('issue_date_of_id_card') form-control-danger @enderror"
                                         name="issue_date_of_id_card" value="{{ old('issue_date_of_id_card') }}">
                                     @error('issue_date_of_id_card')
                                         <div class="form-control-feedback"> {{ $message }} </div>
@@ -1000,4 +1119,53 @@
 @section('script')
     {!! JsValidator::formRequest('App\Http\Requests\StorePassport', '#create-form') !!}
     {!! JsValidator::formRequest('App\Http\Requests\PassportImportFile', '#create-import-form') !!}
+
+    <script>
+        var nrcFieldCodeNo = '';
+        $('select[id="nrcCode"]').on("change", function() {
+            var nrc_code = $(this).val();
+            nrcFieldCodeNo = nrc_code;
+            setNrcField();
+            if (nrc_code) {
+                $.ajax({
+                    url: `/get_nrc_by_code/${nrc_code}`,
+                    type: "GET",
+                    dataType: "json",
+                    success: function(data) {
+                        // $('select[name="nrcName"]').empty();
+                        $('select[name="nrcName"]').append(
+                            "<option>--Select--</option>"
+                        );
+                        $.each(data, function(key, value) {
+                            $('select[name="nrcName"]').append(
+                                '<option value="' + value.name_en + '">' +
+                                value.name_en +
+                                "</option>"
+                            );
+                        });
+                    },
+                });
+            }
+        });
+
+        var nrcFieldName = '';
+        $('select[name="nrcName"]').on("change", function() {
+            nrcFieldName = $(this).val();
+            setNrcField();
+        });
+
+        var nrcFieldType = '';
+        $('select[name="nrcType"]').on("change", function() {
+            nrcFieldType = $(this).val();
+            setNrcField();
+        });
+
+
+        // NRC INput 
+        function setNrcField() {
+            var nrcFieldCode = document.getElementById("nrcFieldCode").value;
+            var nrc = nrcFieldCodeNo + '/' + nrcFieldName + nrcFieldType + nrcFieldCode;
+            document.getElementById("nrcNo").value = nrc;
+        }
+    </script>
 @endsection

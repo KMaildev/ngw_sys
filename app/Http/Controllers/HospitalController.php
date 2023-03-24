@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Requests\StoreHospital;
 use App\Http\Requests\UpdateHospital;
 use App\Models\Hospital;
+use App\Models\HospitalFile;
 use Illuminate\Http\Request;
 
 class HospitalController extends Controller
@@ -19,6 +20,7 @@ class HospitalController extends Controller
         $search = request('search');
         $countryies = Hospital::query()
             ->where('name', 'LIKE', "%{$search}%")
+            ->orWhere('remark', 'LIKE', "%{$search}%")
             ->get();
         return view('hospital.index', compact('countryies'));
     }
@@ -45,8 +47,27 @@ class HospitalController extends Controller
         $h->name = $request->name;
         $h->location = $request->location;
         $h->phone = $request->phone;
+        $h->remark = $request->remark;
+        $h->submit_date = $request->submit_date;
         $h->save();
-        return redirect()->back()->with('success', 'Process is completed.');
+        $hospital_id = $h->id;
+
+        if ($request->hasFile('attachment_files')) {
+            foreach ($request->file('attachment_files') as $key => $file) {
+                $path = $file->store('public/attachment_files');
+                $original_name = $file->getClientOriginalName();
+
+                $insert[$key]['file_path'] = $path;
+                $insert[$key]['file_name'] = $original_name;
+                $insert[$key]['hospital_id'] = $hospital_id;
+                $insert[$key]['user_id'] = auth()->user()->id ?? 0;
+                $insert[$key]['upload_date'] =  date('Y-m-d');
+                $insert[$key]['created_at'] =  date('Y-m-d H:i:s');
+                $insert[$key]['updated_at'] =  date('Y-m-d H:i:s');
+            }
+            HospitalFile::insert($insert);
+        }
+        return redirect()->back()->with('success', 'Your processing has been completed.');
     }
 
     /**
@@ -85,6 +106,8 @@ class HospitalController extends Controller
         $h->name = $request->name;
         $h->location = $request->location;
         $h->phone = $request->phone;
+        $h->remark = $request->remark;
+        $h->submit_date = $request->submit_date;
         $h->update();
         return redirect()->back()->with('success', 'Process is completed.');
     }

@@ -14,7 +14,7 @@
                         role="form" enctype="multipart/form-data">
                         @csrf
 
-                        <div class="mb-3 row">
+                        <div class="mb-3 row" hidden>
                             <label for="html5-text-input" class="col-md-3 col-form-label">
                                 Agent Code
                             </label>
@@ -115,6 +115,7 @@
                                         </select>
 
                                         <select name="nrcType" id="nrcType" class="form-control select2" required>
+                                            <option value="">--Select--</option>
                                             <option value="(N)">
                                                 (N)
                                             </option>
@@ -365,7 +366,10 @@
                     type: "GET",
                     dataType: "json",
                     success: function(data) {
-                        $('select[name="nrcName"]').empty();
+                        // $('select[name="nrcName"]').empty();
+                        $('select[name="nrcName"]').append(
+                            "<option>--Select--</option>"
+                        );
                         $.each(data, function(key, value) {
                             $('select[name="nrcName"]').append(
                                 '<option value="' + value.name_en + '">' +
@@ -401,7 +405,6 @@
             var nrc = nrcFieldCodeNo + '/' + nrcFieldName + nrcFieldType + nrcFieldCode;
             document.getElementById("nrcNo").value = nrc;
         }
-
 
 
         $("#NRCSelect").click(function() {

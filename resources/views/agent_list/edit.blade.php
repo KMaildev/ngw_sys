@@ -19,7 +19,7 @@
                                 Agent Code
                             </label>
                             <div class="col-md-9">
-                                <input class="form-control @error('agent_code') is-invalid @enderror" type="text"
+                                <input readonly class="form-control @error('agent_code') is-invalid @enderror" type="text"
                                     name="agent_code" value="{{ $agent_list->agent_code ?? '' }}" />
                                 @error('agent_code')
                                     <div class="invalid-feedback">

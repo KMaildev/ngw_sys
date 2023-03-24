@@ -2,8 +2,6 @@
 @section('content')
     <div class="row">
         @include('components.contact_information')
-
-
         <div class="col-md-12 py-3">
             <div class="card mb-3">
                 <div class="card-header border-bottom">

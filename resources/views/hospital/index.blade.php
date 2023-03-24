@@ -34,27 +34,44 @@
                                 <th class="text-center text-white">Hospital Name</th>
                                 <th class="text-center text-white">Location</th>
                                 <th class="text-center text-white">Phone</th>
+                                <th class="text-center text-white">Submit Date</th>
+                                <th class="text-center text-white">Remark</th>
+                                <th class="text-center text-white">Attachment File</th>
                                 <th class="text-center text-white">Actions</th>
                             </tr>
                         </thead>
                         <tbody class="table-border-bottom-0">
                             @foreach ($countryies as $key => $country)
                                 <tr>
-                                    <td>
+                                    <td class="text-center">
                                         {{ $key + 1 }}
                                     </td>
 
-                                    <td>
+                                    <td class="text-center">
                                         {{ $country->name ?? '' }}
                                     </td>
 
-                                    <td>
+                                    <td class="text-center">
                                         {{ $country->location ?? '' }}
                                     </td>
 
-                                    <td>
+                                    <td class="text-center">
                                         <a href="tel:{{ $country->phone ?? '' }}">
                                             {{ $country->phone ?? '' }}
+                                        </a>
+                                    </td>
+
+                                    <td class="text-center">
+                                        {{ $country->submit_date ?? '' }}
+                                    </td>
+
+                                    <td class="text-center">
+                                        {{ $country->remark ?? '' }}
+                                    </td>
+
+                                    <td class="text-center">
+                                        <a href="{{ route('hospital_docs_management', $country->id) }}">
+                                            Attachment File
                                         </a>
                                     </td>
 

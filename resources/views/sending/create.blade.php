@@ -181,7 +181,7 @@
                             </label>
                             <div class="col-md-9">
                                 <input type="text"
-                                    class="form-control @error('sending_date') form-control-danger @enderror"
+                                    class="date_picker form-control @error('sending_date') form-control-danger @enderror"
                                     name="sending_date" value="{{ old('sending_date') }}">
                                 @error('sending_date')
                                     <div class="form-control-feedback" style="color: red;">

@@ -14,6 +14,7 @@
         <th class="text-center text-white">Name</th>
         <th class="text-center text-white">Passport</th>
         <th class="text-center text-white">NRC</th>
+        <th class="text-center text-white">Status</th>
         <th class="text-center text-white">Action</th>
     </tr>
 </thead>
@@ -40,6 +41,10 @@
 
     <th>
         <input type="text" style="width: 100%;" data-colum="5" hidden>
+    </th>
+
+    <th>
+        <input type="text" style="width: 100%;" data-colum="6" hidden>
     </th>
 
 </tfoot>

@@ -98,7 +98,16 @@ class Passport extends Model
 
     public function medical_tests_table()
     {
-        return $this->belongsTo(MedicalTest::class, 'passport_id', 'id');
+        return $this->belongsTo(MedicalTest::class, 'passport_id', 'id')->latest();
     }
 
+    public function medical_tests_status()
+    {
+        return $this->belongsTo(MedicalTest::class, 'id', 'passport_id')->latest();
+    }
+
+    public function interview_labours_status()
+    {
+        return $this->belongsTo(InterviewLabour::class, 'id', 'passport_id')->latest();
+    }
 }

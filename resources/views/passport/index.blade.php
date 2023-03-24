@@ -308,6 +308,14 @@
                                 </th>
 
                                 <th class="text-center text-white" style="background-color: #296166;">
+                                    Interview
+                                </th>
+
+                                <th class="text-center text-white" style="background-color: #296166;">
+                                    Medical Test
+                                </th>
+
+                                <th class="text-center text-white" style="background-color: #296166;">
                                     Action
                                 </th>
                             </tr>
@@ -534,6 +542,26 @@
 
                                     <td style="text-align: right">
                                         {{ number_format($passport->passport_payments_table->sum('deposit'), 2) }}
+                                    </td>
+
+                                    <td class="text-center">
+                                        @if ($passport->interview_labours_status->passport_id ?? '')
+                                            {{ $passport->interview_labours_status->interviews_table->interview_date ?? '' }}
+                                        @else
+                                            <span class="badge bg-danger">
+                                                Pading
+                                            </span>
+                                        @endif
+                                    </td>
+
+                                    <td class="text-center">
+                                        @if ($passport->medical_tests_status->failed_or_pass == null)
+                                            <span class="badge bg-danger">
+                                                Pading
+                                            </span>
+                                        @else
+                                            {{ $passport->medical_tests_status->failed_or_pass ?? '' }}
+                                        @endif
                                     </td>
 
                                     <td style="text-align: center">
