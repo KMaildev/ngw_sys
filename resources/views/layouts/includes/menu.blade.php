@@ -47,7 +47,7 @@
                         </a>
                     </li>
 
-                    <li class="menu-item">
+                    <li class="menu-item" hidden>
                         <a href="{{ route('permission.index') }}" class="menu-link">
                             Permission
                         </a>

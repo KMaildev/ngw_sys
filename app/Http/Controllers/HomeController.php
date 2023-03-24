@@ -83,16 +83,6 @@ class HomeController extends Controller
         $passport_male_female = new LaravelChart($chart_options);
 
 
-
-        $chart_options = [
-            'chart_title' => 'Male - Female',
-            'report_type' => 'group_by_string',
-            'model' => 'App\Models\Passport',
-            'group_by_field' => 'reject_status',
-            'chart_type' => 'pie',
-        ];
-        $passport_reject = new LaravelChart($chart_options);
-
-        return view('home', compact('total_demand', 'total_interview', 'total_contract', 'total_sending', 'passports_report', 'medical_test', 'passport_male_female', 'passport_reject'));
+        return view('home', compact('total_demand', 'total_interview', 'total_contract', 'total_sending', 'passports_report', 'medical_test', 'passport_male_female'));
     }
 }

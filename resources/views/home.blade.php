@@ -99,8 +99,7 @@
             </div>
 
 
-
-            <div class="col-12">
+            <div class="col-4 py-3">
                 <div class="card">
                     <div class="card-body py-5">
                         <h6>{{ $passports_report->options['chart_title'] }}</h6>
@@ -133,18 +132,6 @@
                 </div>
             </div>
 
-
-            <div class="col-4 py-3">
-                <div class="card">
-                    <div class="card-body py-5">
-                        <h6>{{ $passport_reject->options['chart_title'] }} </h6>
-                        <div style="height: 400px;">
-                            {!! $passport_reject->renderHtml() !!}
-                        </div>
-                    </div>
-                </div>
-            </div>
-
         </div>
     </div>
 
@@ -160,7 +147,6 @@
         {!! $passport_male_female->renderChartJsLibrary() !!}
         {!! $passport_male_female->renderJs() !!}
 
-        {!! $passport_reject->renderChartJsLibrary() !!}
-        {!! $passport_reject->renderJs() !!}
+
     </script>
 @endsection
